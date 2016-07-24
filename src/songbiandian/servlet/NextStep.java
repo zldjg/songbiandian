@@ -15,8 +15,12 @@ import songbiandian.jdbc.*;
  * @author TerenceWu
  *
  */
-@SuppressWarnings("serial")
 public class NextStep extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6916953463322430065L;
+
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/**

@@ -22,8 +22,12 @@ import songbiandian.jdbc.*;
  * @author TerenceWu
  *
  */
-@SuppressWarnings("serial")
 public class GenerateTestReportTemplate extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7805765951203071906L;
+
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -31,10 +35,6 @@ public class GenerateTestReportTemplate extends HttpServlet {
 		 * 设置日期格式
 		 */
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		/**
-		 * 一个ArrayList,用于存储模板信息
-		 */
-		List<TemplateInfo> templateInfoList = new ArrayList<>();
 		/**
 		 * 试验模板名称
 		 */
@@ -111,12 +111,7 @@ public class GenerateTestReportTemplate extends HttpServlet {
 				templateInfo.setEquipmentType(resultSet.getString(3));
 				templateInfo.setEquipmentName(resultSet.getString(4));
 				templateInfo.setTemplateAddedTime(resultSet.getString(5));
-				/**
-				 * 把这个templateInfo放入ArrayList
-				 */
-				templateInfoList.add(templateInfo);
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -210,7 +205,7 @@ public class GenerateTestReportTemplate extends HttpServlet {
 		session.setAttribute("paramoffirstlinemap", paramOfFirstLineOfProjectMap);
 		session.setAttribute("paramofprojectmap", paramOfProjectMap);
 		session.setAttribute("paramofnoposition", paramOfProjectWithNoPosition);
-		session.setAttribute("templateinfolist", templateInfoList);
+		session.setAttribute("templateinfo", templateInfo);
 		/**
 		 * 跳转到Sybg_mbdetails.jsp
 		 */

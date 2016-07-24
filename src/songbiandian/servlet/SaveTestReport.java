@@ -14,8 +14,12 @@ import songbiandian.javabean.*;
  * @author TerenceWu
  *
  */
-@SuppressWarnings("serial")
 public class SaveTestReport extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2919564878872121775L;
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

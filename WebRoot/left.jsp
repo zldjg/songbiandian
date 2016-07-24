@@ -1,9 +1,9 @@
 <%@ page pageEncoding="utf-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
 <!-- saved from url=(0054)http://localhost:8088/TransformerInfo/UserLoginServlet -->
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <title></title>
 <!--leftmenu styles-->
@@ -40,7 +40,7 @@
         </li>
         <li><a href="Sybg_mb.jsp" target="mainFrame"><img src="images/icon_03.png" alt="" width="16" height="16" />&nbsp;&nbsp;试验报告管理</a> 
         	<ul class="submenu">           
-			<li><a href="Sybg_mb.jsp"  target="mainFrame"><img src="images/menu_03.png" alt="" width="16" height="16" />&nbsp;&nbsp;试验模板管理</a></li>
+			<li><a href="findAllTemplates"  target="mainFrame"><img src="images/menu_03.png" alt="" width="16" height="16" />&nbsp;&nbsp;试验模板管理</a></li>
             <!--li><a href="Sybg_gl.jsp" target="mainFrame"><img src="images/menu_03.png" alt="" width="16" height="16" />&nbsp;&nbsp;试验参数管理</a></li-->
 			<li><a href="Sybg_gl.jsp"  target="mainFrame"><img src="images/menu_03.png" alt="" width="16" height="16" />&nbsp;&nbsp;试验报告管理</a></li>
             <li><a href="Sybg_shh.jsp" target="mainFrame"><img src="images/menu_03.png" alt="" width="16" height="16" />&nbsp;&nbsp;试验报告审核</a></li>
