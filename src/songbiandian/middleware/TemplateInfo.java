@@ -11,8 +11,20 @@ public class TemplateInfo {
 		super();
 	}
 	
+	private TemplateInfo(int templateId, String templateName, String equipmentType, String equipmentName, String templateAddedTime) {
+		this.templateId = templateId;
+		this.templateName = templateName;
+		this.equipmentType = equipmentType;
+		this.equipmentName = equipmentName;
+		this.templateAddedTime = templateAddedTime;
+	}
+	
 	public static TemplateInfo getInstanceOfTemplateInfo() {
 		return new TemplateInfo();
+	}
+	
+	public static TemplateInfo getInstanceOfTemplateInfo(int templateId, String templateName, String equipmentType, String equipmentName, String templateAddedTime) {
+		return new TemplateInfo(templateId, templateName, equipmentType, equipmentName, templateAddedTime);
 	}
 	
 	public int getTemplateId() {
