@@ -67,7 +67,7 @@ $(function(){
     <div class="maincon">
         <!--btns-->
         <ul class="btnOptions">
-          <li><a href="Sybg_lr.jsp"><img src="images/btn-lr.jpg" width="75" height="35" /></a></li>
+          <li><a href="findAllTemplateNames"><img src="images/btn-lr.jpg" width="75" height="35" /></a></li>
           <li><a href="Sybg_lr.jsp"><img src="images/btn-edit.jpg" width="75" height="35" /></a></li>
           <li><a href="#"><img src="images/btn-del.jpg" width="75" height="35" /></a></li>
           <li><a href="#"><img src="images/btn-daoc.jpg" width="75" height="35" /></a></li>

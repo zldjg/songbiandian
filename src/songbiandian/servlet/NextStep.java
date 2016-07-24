@@ -240,49 +240,19 @@ public class NextStep extends HttpServlet {
 			paramOfProjectMap.put(project, paramOfPosition);
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		/**
 		 * 接下来就是把数据放到session中去了
 		 */
 		session.setAttribute("testreportname", reportTemplateName);
+		session.setAttribute("test_equipmentname", equipmentName);
+		session.setAttribute("test_projectslist", projectsList);
+		session.setAttribute("test_positionofprojectmap", positionOfProject);
+		session.setAttribute("test_paramofpositionmap", paramOfPosition);
+		session.setAttribute("test_standardMap", projectStandardMap);
+		session.setAttribute("test_testinstrumentMap", projectTestInstrumentMap);
+		session.setAttribute("test_paramoffirstlinemap", paramOfFirstLineOfProjectMap);
+		session.setAttribute("test_paramofprojectmap", paramOfProjectMap);
+		session.setAttribute("test_paramofnoposition", paramOfProjectWithNoPosition);
 		
 		/**
 		 * 跳转数据录入界面

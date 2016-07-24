@@ -1,4 +1,5 @@
 <%@ page pageEncoding="utf-8" %>
+<%@ page import="java.util.*,songbiandian.middleware.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -64,9 +65,10 @@ $(function(){
         <li>试验模板管理</li>
         <li>实验报告录入</li>
     </ul>   
-    <span style="margin-top:3px; float:right; margin-right:10px;"><a href="saveTestReport" class="longblue">保存信息</a></span>
+    <span style="margin-top:3px; float:right; margin-right:10px;"><input type="submit" value="保存信息"/></span>
 </div>
 <!--/当前位置-->
+<form action="saveTestReport" method="post">
 <div class="mainindex" id="mainindex">
     <div class="maincon">
         <!--列表信息-->
@@ -77,12 +79,231 @@ $(function(){
             </div>
         </div>
         <div class="sybgtab-style" >
-            
+            <table class="main">
+        		<tr>
+        			<td style="width:10%">试验单位</td>
+        			<td style="width:40%"></td>
+        			<td style="width:10%">试验日期</td>
+        			<td style="width:40%"></td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:15%">天气</td>
+        			<td style="width:18%"></td>
+        			<td style="width:15%">温度</td>
+        			<td style="width:18%"></td>
+        			<td style="width:15%">湿度</td>
+        			<td style="width:18%"></td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:15%">试验人员</td>
+        			<td style="width:18%"></td>
+        			<td style="width:15%">试验地点</td>
+        			<td style="width:18%"></td>
+        			<td style="width:15%">报告日期</td>
+        			<td style="width:18%"></td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:15%">报告人</td>
+        			<td style="width:18%"></td>
+        			<td style="width:15%">审核人</td>
+        			<td style="width:18%"></td>
+        			<td style="width:15%">批准人</td>
+        			<td style="width:18%"></td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:10%">试验型号</td>
+        			<td style="width:40%"></td>
+        			<td style="width:10%">运行编号</td>
+        			<td style="width:40%"></td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:10%">额定电压</td>
+        			<td style="width:40%"></td>
+        			<td style="width:10%">额定容量</td>
+        			<td style="width:40%"></td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:10%">额定电流</td>
+        			<td style="width:40%"></td>
+        			<td style="width:10%">连接组别</td>
+        			<td style="width:40%"></td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:10%">生产厂家</td>
+        			<td style="width:40%"></td>
+        			<td style="width:10%">生产日期</td>
+        			<td style="width:40%"></td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:10%">安装地点</td>
+        			<td style="width:40%"></td>
+        			<td style="width:10%">出厂编号</td>
+        			<td style="width:40%"></td>
+        		</tr>
+        	</table>
+        </div>
+        <br/>
+        <div class="reporttemplate">
+        	<table class="title" style="width:70%; margin:auto; text-align:center; margin-bottom:1px">
+        		<tr>
+        			<td>试验记录</td>
+        		</tr>
+        	</table>
+			<table class="main" cellpadding="0px">
+				<tr></tr>
+				<%
+					String equipmentName = (String)session.getAttribute("test_equipmentname");
+					ArrayList<String> projects = (ArrayList<String>)session.getAttribute("test_projectslist");
+					HashMap<String, ArrayList<String>> positionListMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_positionofprojectmap");
+					HashMap<String, ArrayList<String>> paramListMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_paramofpositionmap");
+					HashMap<String, String> standardMap = (HashMap<String, String>)session.getAttribute("test_standardMap");
+					HashMap<String, String> testInstrumentMap = (HashMap<String, String>)session.getAttribute("test_testinstrumentMap");
+					HashMap<String, ArrayList<String>> paramOfFirstLineMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_paramoffirstlinemap");
+					HashMap<String, HashMap<String, ArrayList<String>>> paramOfProjectMap = (HashMap<String, HashMap<String, ArrayList<String>>>)session.getAttribute("test_paramofprojectmap");
+					HashMap<String, ArrayList<String>> paramOfNoPositionMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_paramofnoposition");
+					for (String project : projects) {
+						HashMap<String, ArrayList<String>> paramOfSingleProjectMap = paramOfProjectMap.get(project);
+				 %>
+				 		<tr>
+				 			<td><%=project %></td>
+				 			<td>
+				 				<table class="sub">
+				 					<%
+				 						ArrayList<String> positionListOfProject = positionListMap.get(project);
+				 						if (positionListOfProject == null) {
+				 							ArrayList<String> paramOfNoPosition = paramOfNoPositionMap.get(project);
+				 							if (paramOfNoPosition.size() == 1) {
+				 					 %>
+				 					 			<tr>
+				 					 				<td class="sub"></td>
+				 					 			</tr>
+				 					 <%
+				 					 		}
+				 					 		else {
+				 					  %>
+				 					  			<tr>
+				 					 <%
+				 					  			for (String param : paramOfNoPosition) {
+				 					  %>
+				 					   				<td class="sub">
+				 					   					<%=param %>
+				 					   				</td>
+				 					   				<td class="sub"></td>
+				 					 <%
+				 					  			}
+				 					  %>
+				 					  			</tr>
+				 					 <%
+				 					  			}
+				 					  		}
+				 					  	else {
+				 					  %>
+				 					   			<tr>
+				 					   				<td>试验位置</td>
+				 					 <%
+				 					   		ArrayList<String> paramOfFirstLineList = paramOfFirstLineMap.get(project);
+				 					   		if (paramOfFirstLineList != null) {
+				 					   			if (paramOfFirstLineList.size() == 1) {
+				 					  %>
+				 					   				 <td class="sub">试验值</td>
+				 					 <%
+				 					   			}
+				 					   			else {
+				 					   				for (String param : paramOfFirstLineList) {
+				 					  %>
+				 					   				 	<td class="sub"><%=param %></td>
+				 					 <%
+				 					   				}
+				 					   			}
+				 					   		}
+				 					  %>
+				 					   			</tr>
+				 					 <%
+				 					   		for (String position : positionListOfProject) {		
+				 				      %>
+				 					   			<tr>
+				 					   				<td style="width:120px"><%=position %></td>
+				 					   				<%
+				 					   				HashMap<String, ArrayList<String>> paramOfThisPositionMap = paramOfProjectMap.get(projects);
+				 					   				ArrayList<String> paramOfThisPositionList = paramOfThisPositionMap.get(position);
+				 					   				if (paramOfThisPositionList != null) {
+				 					   				if (paramOfThisPositionList.size() == paramOfFirstLineList.size()) {
+				 					   					for (int j = 0 ; j < paramOfThisPositionList.size() ; j++) {
+				 					   				 %>
+				 					   				 		<td class="sub"></td>
+				 					   				<%
+				 					   					}
+				 					   				}
+				 					   				else {
+				 					   					if (paramOfThisPositionList.size() == 1) {
+				 					   				 %>
+				 					   				 		<td id="singleparam"></td>
+				 					   				<%
+				 					   					}
+				 					   					else {
+				 					   						for (String parameter : paramOfThisPositionList) {
+				 					   				 %>
+				 					   				 			<td><%=parameter %></td>
+				 					   				 			<td></td>
+				 					   				<%
+				 					   						}
+				 					   					}
+				 					   				}
+				 					   				 %>
+				 					   			</tr>
+				 					 <%
+				 					 			}
+				 					 		}
+				 					 	}
+				 					  %>
+				 				</table>
+				 			</td>
+				 		</tr>
+				 		<tr>
+				 			<td>试验标准</td>
+				 			<td class="standard"><%=standardMap.get(project) %></td>
+				 		</tr>
+				 		<tr>
+				 			<td>试验仪器</td>
+				 			<td class="instrument"><%=testInstrumentMap.get(project) %></td>
+				 		</tr>
+				 		<tr>
+				 			<td>项目结论</td>
+				 			<td>
+				 				<input type="text" size="9" placeholder="合格/不合格"/>
+				 			</td>
+				 		</tr>
+				 <%
+				 	}
+				  %>
+				 <tr>
+				 	<td>试验报告是否合格</td>
+				 	<td>
+				 		<input type="text" size="9" placeholder="合格/不合格"/>
+				 	</td>
+				 </tr>
+			</table>
         </div>
           <!--/列表信息-->
     </div> 
 </div>
-
+</form>
 
 <!--height Resize js-->
 <script type="text/javascript">

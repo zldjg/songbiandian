@@ -54,4 +54,14 @@
     	<servlet-name>findAllTemplates</servlet-name>
     	<url-pattern>/findAllTemplates</url-pattern>
     </servlet-mapping>
+    <servlet>
+    	<servlet-name>findAllTemplateNames</servlet-name>
+    	<servlet-class>songbiandian.servlet.FindAllTemplateNames</servlet-class>
+    	<enabled>true</enabled>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>findAllTemplateNames</servlet-name>
+    	<url-pattern>/findAllTemplateNames</url-pattern>
+    </servlet-mapping>
 </web-app>

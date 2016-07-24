@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page pageEncoding="utf-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -139,8 +140,18 @@ $(function(){
               </tr>
               <tr class="tr1">
                 <td width="10%" class="tdc2">实验报告模板：</td>
-                <td width="90%" colspan="5"> <input name="reporttemplate" type="radio" value="利民道-220kV避雷器-电气-交接试验-20160126" /> 利民道-220kV避雷器-电气-交接试验-20160126<br />
-                 <input name="reporttemplate" type="radio" value="利民道-220kV避雷器-电气-交接试验-20160127" /> 利民道-220kV避雷器-电气-交接试验-20160127<br /></td>
+                <td width="90%" colspan="5">
+                <%
+                	ArrayList<String> templateNamesList = (ArrayList<String>)session.getAttribute("templatenameslist");
+                	if (templateNamesList != null) {
+                		for (String templateName : templateNamesList) {
+                 %>
+                 			<input name="reporttemplate" type="radio" value="<%=templateName %>"><%=templateName %></input><br/>
+                <%
+                		}
+                	}
+                 %>
+                </td>
               </tr>
               <tr class="tr1">
                 <td width="10%"></td>
