@@ -251,8 +251,8 @@ $(function(){
 				 					   			<tr>
 				 					   				<td>试验位置</td>
 				 					 <%
-				 					   			ArrayList<String> paramOfFirstLineList = paramOfFirstLineMap.get(projects[i]);
-				 					   			session.setAttribute("paramnum", paramOfFirstLineList.size());
+				 					   		ArrayList<String> paramOfFirstLineList = paramOfFirstLineMap.get(projects[i]);
+				 					   		if (paramOfFirstLineList != null) {
 				 					   			if (paramOfFirstLineList.size() == 1) {
 				 					  %>
 				 					   				 <td class="sub">试验值</td>
@@ -265,6 +265,7 @@ $(function(){
 				 					 <%
 				 					   				}
 				 					   			}
+				 					   		}
 				 					  %>
 				 					   			</tr>
 				 					 <%
@@ -275,6 +276,7 @@ $(function(){
 				 					   				<%
 				 					   				HashMap<String, ArrayList<String>> paramOfThisPositionMap = paramOfProjectMap.get(projects[i]);
 				 					   				ArrayList<String> paramOfThisPositionList = paramOfThisPositionMap.get(position);
+				 					   				if (paramOfThisPositionList != null) {
 				 					   				if (paramOfThisPositionList.size() == paramOfFirstLineList.size()) {
 				 					   					for (int j = 0 ; j < paramOfThisPositionList.size() ; j++) {
 				 					   				 %>
@@ -300,6 +302,7 @@ $(function(){
 				 					   				 %>
 				 					   			</tr>
 				 					 <%
+				 					 			}
 				 					 		}
 				 					 	}
 				 					  %>

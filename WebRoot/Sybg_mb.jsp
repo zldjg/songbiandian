@@ -1,3 +1,5 @@
+<%@page import="songbiandian.middleware.TemplateInfo"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page pageEncoding="utf-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -74,35 +76,50 @@ $(function(){
         <!--/btns-->
         <!--列表信息-->
         <div class="ziliaobox">
-    	<form name="del" method="post" action="#">        
+    	<form name="del" method="post" action="#"> 
+    	  <%
+    	  	ArrayList<TemplateInfo> templateInfoList = (ArrayList<TemplateInfo>)session.getAttribute("templateinfolist");
+    	   %>       
           <table width="100%" class="zltab" border="0" cellspacing="0" cellpadding="0">
               <tr class="tr0">
-                <td width="4%" class="tdc"><input name="chkAll" type="checkbox" id="chkAll" onclick="CheckAll(this.form)" value="checkbox" /></td>
-                <td width="8%">编号</td>
-                <td width="18%">模板名称</td>
-                <td width="20%">设备类型</td>
-                <td width="20%">试验性质</td>
-                <td width="18%">编辑时间</td>
-                <td width="14%">操作</td>
+                <td style="text-align:center" width="4%" class="tdc"><input name="chkAll" type="checkbox" id="chkAll" onclick="CheckAll(this.form)" value="checkbox" /></td>
+                <td style="text-align:center" width="8%">编号</td>
+                <td style="text-align:center" width="28%">模板名称</td>
+                <td style="text-align:center" width="10%">设备类型</td>
+                <td style="text-align:center" width="8%">试验性质</td>
+                <td style="text-align:center" width="20%">编辑时间</td>
+                <td style="text-align:center" width="14%">操作</td>
               </tr>
-              <tr class="tr1">
-                <td class="tdc"><input name='ID' type='checkbox' onclick="unselectall()" value='1' /></td>
-                <td>MB-001</td>
-                <td>模板一</td>
-                <td>避雷器</td>
-                <td>交接</td>
-                <td>2015-01-23 12:12:45</td>
-                <td><a href="Sybg_mbdetails.jsp">查看详细</a></td>
-              </tr> 
-              <tr class="tr1">
-                <td class="tdc"><input name='ID' type='checkbox' onclick="unselectall()" value='2' /></td>
-                <td>MB-002</td>
-                <td>模板二</td>
-                <td>避雷器</td>
-                <td>交接</td>
-                <td>2015-01-23 12:12:45</td>
-                <td><a href="Sybg_mbdetails.jsp">查看详细</a></td>
-              </tr>                                   
+              <%
+              	if (templateInfoList == null) {
+               %>     
+               		<tr class="tr1">
+               			<td class="tdc"><input name="ID" type="checkbox" onclick="unselectall()" value="2" /></td>
+               			<td></td>
+               			<td></td>
+               			<td></td>
+               			<td></td>
+               			<td></td>
+               			<td><a></a></td>
+               		</tr>
+              <%
+              	}
+              	else {
+              		for (TemplateInfo template : templateInfoList) {
+               %>
+               			<tr>
+               				<td class="tdc"><input name="ID" type="checkbox" onclick="unselectall()" value="2" /></td>
+               				<td style="text-align:center"><%=template.getTemplateId() %></td>
+               				<td style="text-align:center"><%=template.getTemplateName() %></td>
+               				<td style="text-align:center"><%=template.getEquipmentType() %></td>
+               				<td style="text-align:center">交接</td>
+               				<td style="text-align:center"><%=template.getTemplateAddedTime() %></td>
+               				<td style="text-align:center"><a href="Sybg_mbdetails.jsp?id=<%=template.getTemplateName() %>">查看详细</a></td>
+               			</tr>
+              <%
+              		}
+              	}
+               %>
               <tr class="tr2">
                 <td colspan="8">
                 	<div id="paging1" class="page" style="float:right"></div>

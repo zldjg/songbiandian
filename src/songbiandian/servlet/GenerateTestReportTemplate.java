@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.io.*;
 
@@ -26,6 +27,14 @@ public class GenerateTestReportTemplate extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		/**
+		 * 设置日期格式
+		 */
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		/**
+		 * 一个ArrayList,用于存储模板信息
+		 */
+		List<TemplateInfo> templateInfoList = new ArrayList<>();
 		/**
 		 * 试验模板名称
 		 */
@@ -84,22 +93,28 @@ public class GenerateTestReportTemplate extends HttpServlet {
 		
 		TemplateInfo templateInfo = TemplateInfo.getInstanceOfTemplateInfo();
 		
-		String sqlInfo1 = "insert into test_report_template_metadata(test_report_template_templateName,test_report_template_equipmentType,test_report_template_equipmentName) values(?,?,?)";
+		String sqlInfo1 = "insert into test_report_template_metadata(test_report_template_templateName,test_report_template_equipmentType,test_report_template_equipmentName,test_report_template_addedTime) values(?,?,?,?)";
 		String sqlInfo2 = "insert into test_report_template_subdata(test_report_template_ID,test_projectName) values(?,?)";
-		String getTemplateIdSql = "select * from sybg_mb where equipmentname='" + equipmentName + "'";
+		String getTemplateIdSql = "select * from test_report_template_metadata where test_report_template_equipmentName='" + equipmentName + "'";
 		try {
 			preparedStatement = connection.prepareStatement(sqlInfo1);
 			preparedStatement.setString(1, templateName);
 			preparedStatement.setString(2, equipmentType);
 			preparedStatement.setString(3, equipmentName);
+			preparedStatement.setString(4, dateFormat.format(new Date()));
 			preparedStatement.executeUpdate();
 			
 			ResultSet resultSet = dbConn.executeQuery(getTemplateIdSql);
 			while (resultSet.next()) {
 				templateInfo.setTemplateId(resultSet.getInt(1));
 				templateInfo.setTemplateName(resultSet.getString(2));
-				templateInfo.setEquipmentType(equipmentType);
+				templateInfo.setEquipmentType(resultSet.getString(3));
 				templateInfo.setEquipmentName(resultSet.getString(4));
+				templateInfo.setTemplateAddedTime(resultSet.getString(5));
+				/**
+				 * 把这个templateInfo放入ArrayList
+				 */
+				templateInfoList.add(templateInfo);
 			}
 			
 		} catch (SQLException e) {
@@ -195,6 +210,7 @@ public class GenerateTestReportTemplate extends HttpServlet {
 		session.setAttribute("paramoffirstlinemap", paramOfFirstLineOfProjectMap);
 		session.setAttribute("paramofprojectmap", paramOfProjectMap);
 		session.setAttribute("paramofnoposition", paramOfProjectWithNoPosition);
+		session.setAttribute("templateinfolist", templateInfoList);
 		/**
 		 * 跳转到Sybg_mbdetails.jsp
 		 */

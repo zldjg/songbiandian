@@ -5,6 +5,7 @@ public class TemplateInfo {
 	private String templateName;
 	private String equipmentType;
 	private String equipmentName;
+	private String templateAddedTime;
 	
 	private TemplateInfo() {
 		super();
@@ -14,47 +15,44 @@ public class TemplateInfo {
 		return new TemplateInfo();
 	}
 	
-	public synchronized int getTemplateId() {
+	public int getTemplateId() {
 		return templateId;
 	}
 	
-	public synchronized void setTemplateId(int templateId) {
+	public void setTemplateId(int templateId) {
 		this.templateId = templateId;
 	}
 	
 	public String getTemplateName() {
-		synchronized (equipmentName) {
 			return templateName;
-		}
 	}
 	
 	public void setTemplateName(String templateName) {
-		synchronized (this.templateName) {
 			this.templateName = templateName;
-		}
 	}
 	
 	public String getEquipmentType() {
-		synchronized (equipmentType) {
 			return equipmentType;
-		}
 	}
 	
 	public void setEquipmentType(String equipmentType) {
-		synchronized (this.equipmentType) {
 			this.equipmentType = equipmentType;
-		}
+
 	}
 	
 	public String getEquipmentName() {
-		synchronized (equipmentName) {
 			return equipmentName;
-		}
 	}
 	
 	public void setEquipmentName(String equipmentName) {
-		synchronized (this.equipmentName) {
-			this.equipmentName = equipmentName;
-		}
+		this.equipmentName = equipmentName;
+	}
+	
+	public String getTemplateAddedTime() {
+			return templateAddedTime;
+	}
+	
+	public void setTemplateAddedTime(String addedTime) {
+		this.templateAddedTime = addedTime;
 	}
 }
