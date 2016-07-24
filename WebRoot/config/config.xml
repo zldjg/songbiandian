@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<equipmets>
+	<equipment name="10kV干式变">
+		<project name="绝缘电阻(MΩ)">
+			<position name="一次对二次及地">
+				<parameter>default</parameter>
+			</position>
+			<position name="二次对一次及地">
+				<parameter>default</parameter>
+			</position>
+			<position name="铁心对地">
+				<parameter>default</parameter>
+			</position>
+		</project>
+		<project name="直流电阻">
+			<position name="AB">
+				<parameter>I</parameter>
+				<parameter>II</parameter>
+				<parameter>III</parameter>
+				<parameter>IV</parameter>
+				<parameter>V</parameter>
+			</position>
+			<position name="BC">
+				<parameter>I</parameter>
+				<parameter>II</parameter>
+				<parameter>III</parameter>
+				<parameter>IV</parameter>
+				<parameter>V</parameter>
+			</position>
+			<position name="CA">
+				<parameter>I</parameter>
+				<parameter>II</parameter>
+				<parameter>III</parameter>
+				<parameter>IV</parameter>
+				<parameter>V</parameter>
+			</position>
+			<position name="二次直阻">
+				<parameter>a0</parameter>
+				<parameter>b0</parameter>
+				<parameter>c0</parameter>
+			</position>
+		</project>
+		<project name="电压比">
+			<position name="AB/ab">
+				<parameter>I</parameter>
+				<parameter>II</parameter>
+				<parameter>III</parameter>
+				<parameter>IV</parameter>
+				<parameter>V</parameter>
+			</position>
+			<position name="BC/bc">
+				<parameter>I</parameter>
+				<parameter>II</parameter>
+				<parameter>III</parameter>
+				<parameter>IV</parameter>
+				<parameter>V</parameter>
+			</position>
+			<position name="CA/ca">
+				<parameter>I</parameter>
+				<parameter>II</parameter>
+				<parameter>III</parameter>
+				<parameter>IV</parameter>
+				<parameter>V</parameter>
+			</position>
+		</project>
+	</equipment>
+	<equipment name="35kV干式变">
+		<project name="绝缘电阻(MΩ)">
+			<position name="一次对二次及地">
+				<parameter>R15s</parameter>
+				<parameter>R60s</parameter>
+				<parameter>R600s</parameter>
+				<parameter>R60s/R15s</parameter>
+				<parameter>R600s/R60s</parameter>
+			</position>
+			<position name="二次对一次及地">
+				<parameter>R15s</parameter>
+				<parameter>R60s</parameter>
+				<parameter>R600s</parameter>
+				<parameter>R60s/R15s</parameter>
+				<parameter>R600s/R60s</parameter>
+			</position>
+			<position name="铁心对地">
+				<parameter>default</parameter>
+			</position>
+			<position name="夹件对地">
+				<parameter>default</parameter>
+			</position>
+		</project>
+		<project name="直流电阻">
+			<position name="AB">
+				<parameter>I</parameter>
+				<parameter>II</parameter>
+				<parameter>III</parameter>
+				<parameter>IV</parameter>
+				<parameter>V</parameter>
+			</position>
+			<position name="BC">
+				<parameter>I</parameter>
+				<parameter>II</parameter>
+				<parameter>III</parameter>
+				<parameter>IV</parameter>
+				<parameter>V</parameter>
+			</position>
+			<position name="CA">
+				<parameter>I</parameter>
+				<parameter>II</parameter>
+				<parameter>III</parameter>
+				<parameter>IV</parameter>
+				<parameter>V</parameter>
+			</position>
+			<position name="二次直阻">
+				<parameter>a0</parameter>
+				<parameter>b0</parameter>
+				<parameter>c0</parameter>
+			</position>
+		</project>
+		<project name="电压比">
+			<position name="AB/a0">
+				<parameter>I</parameter>
+				<parameter>II</parameter>
+				<parameter>III</parameter>
+				<parameter>IV</parameter>
+				<parameter>V</parameter>
+			</position>
+			<position name="BC/b0">
+				<parameter>I</parameter>
+				<parameter>II</parameter>
+				<parameter>III</parameter>
+				<parameter>IV</parameter>
+				<parameter>V</parameter>
+			</position>
+			<position name="CA/c0">
+				<parameter>I</parameter>
+				<parameter>II</parameter>
+				<parameter>III</parameter>
+				<parameter>IV</parameter>
+				<parameter>V</parameter>
+			</position>
+		</project>
+		<project name="连接组别">
+			<parameter>default</parameter>
+		</project>
+		<project name="空载试验">
+			<parameter>PO(W)</parameter>
+			<parameter>IO(%)</parameter>
+		</project>
+		<project name="空载电流">
+			<parameter>default</parameter>
+		</project>
+		<project name="空载损耗">
+			<parameter>PO(W)</parameter>
+			<parameter>IO(%)</parameter>
+		</project>
+		<project name="负载损耗">
+			<parameter>default</parameter>
+		</project>
+		<project name="短路阻抗">
+			<parameter>default</parameter>
+		</project>
+		<project name="局部放电">
+			<position name="试验电压45.5kV">
+				<parameter>default</parameter>
+			</position>
+		</project>
+		<project name="交流耐压">
+			<position name="一次对二次及地        60kV_1min">
+				<parameter>default</parameter>
+			</position>
+			<position name="二次对一次及地        2kV_1min">
+				<parameter>default</parameter>
+			</position>
+		</project>
+	</equipment>
+</equipmets>

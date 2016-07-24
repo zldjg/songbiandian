@@ -1,0 +1,23 @@
+<div class="project1" style="text-align:center">
+	<table>
+		<tr>
+			<td>绝缘电阻(mΩ)</td>
+			<td>
+				<table>
+					<tr>
+						<td>位置</td>
+						<td>R15s</td>
+						<td>R60s</td>
+						<td>R60s/R15s</td>
+					</tr>
+					<tr>
+						<td>铁心对地</td>
+					</tr>
+					<tr>
+						<td>夹件对地</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>

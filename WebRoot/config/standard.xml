@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<standards>
+	<equipment name="10kV干式变">
+		<project name="绝缘电阻(MΩ)">
+			<standard>铁心对地≥10MΩ</standard>
+			<testinstrument>KYORITSU兆欧表3125</testinstrument>
+		</project>
+		<project name="直流电阻">
+			<standard>相间差不能大于4%,线间差不能大于2%</standard>
+			<testinstrument>变压器直流电阻测试仪 HN8040</testinstrument>
+		</project>
+		<project name="电压比">
+			<standard>额定分接电压比允许偏差为±0.5%,其它分接的偏差应在变压器阻抗值（%）的1/10以内,但不超过±1%</standard>
+			<testinstrument>变压器变比测试仪 SM63A</testinstrument>
+		</project>
+		<project name="连接组别">
+			<standard>符合铭牌要求</standard>
+			<testinstrument>变压器变比测试仪 SM63A</testinstrument>
+		</project>
+		<project name="空载试验">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="空载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="负载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="短路阻抗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="局部放电">
+			<standard></standard>
+			<testinstrument></testinstrument>
+		</project>
+		<project name="交流耐压">
+			<standard>符合要求</standard>
+			<testinstrument>调频谐振试验装置FKTF-220kVA/200kV</testinstrument>
+		</project>
+	</equipment>
+	<equipment name="35kV油变">
+		<project name="绝缘电阻">
+			<standard>R60S/R15S≥1.3,铁芯对地绝缘电阻≥10MΩ</standard>
+			<testinstrument>KYORITSU兆欧表3125</testinstrument>
+		</project>
+		<project name="直流电阻">
+			<standard>相间差不能大于2%，线间差不能大于1%</standard>
+			<testinstrument>变压器直流电阻测试仪 HN8040</testinstrument>
+		</project>
+		<project name="电压比">
+			<standard>额定分接电压比允许偏差为±0.5%,其它分接的偏差应在变压器阻抗值（%）的1/10以内,但不超过±1%</standard>
+			<testinstrument>变压器变比测试仪 SM63A</testinstrument>
+		</project>
+		<project name="空载电流">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="空载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="负载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="短路阻抗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="交流耐压">
+			<standard>符合要求</standard>
+			<testinstrument>调频谐振试验装置FKTF-220kVA/200kV</testinstrument>
+		</project>
+		<project name="绕组介损">
+			<standard>35kV≤1.5%</standard>
+			<testinstrument>介质损耗测试仪 AL-6000</testinstrument>
+		</project>
+		<project name="绕组泄漏电流">
+			<standard>油浸电力变压器在20℃时 6～15kV≤33µA,20～35kV≤50µA</standard>
+			<testinstrument>高压直流发生器Z-VI</testinstrument>
+		</project>
+	</equipment>
+	<equipment name="35kV干式变">
+		<project name="绝缘电阻(MΩ)">
+			<standard>R60S/R15S≥1.3 R600S/R60S≥1.5</standard>
+			<testinstrument>KYORITSU兆欧表3125</testinstrument>
+		</project>
+		<project name="直流电阻">
+			<standard>相间差不能大于4%,线间差不能大于2%</standard>
+			<testinstrument>变压器直流电阻测试仪 HN8040</testinstrument>
+		</project>
+		<project name="电压比">
+			<standard>额定分接电压比允许偏差为±0.5%,其它分接的偏差应在变压器阻抗值（%）的1/10以内,但不超过±1%</standard>
+			<testinstrument>变压器变比测试仪 SM63A</testinstrument>
+		</project>
+		<project name="连接组别">
+			<standard>符合铭牌要求</standard>
+			<testinstrument>互感器综合测试仪 FA-103</testinstrument>
+		</project>
+		<project name="空载试验">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="空载电流">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="空载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="负载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="短路阻抗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="局部放电">
+			<standard></standard>
+			<testinstrument></testinstrument>
+		</project>
+		<project name="交流耐压">
+			<standard>符合要求</standard>
+			<testinstrument>调频谐振试验装置FKTF-220kVA/200kV</testinstrument>
+		</project>
+	</equipment>
+	<equipment name="35kV油变">
+		<project name="绝缘电阻">
+			<standard>R60S/R15S≥1.3,铁芯对地绝缘电阻≥10MΩ</standard>
+			<testinstrument>KYORITSU兆欧表3125</testinstrument>
+		</project>
+		<project name="直流电阻">
+			<standard>相间差不能大于2%，线间差不能大于1%</standard>
+			<testinstrument>变压器直流电阻测试仪 HN8040</testinstrument>
+		</project>
+		<project name="电压比">
+			<standard>额定分接电压比允许偏差为±0.5%,其它分接的偏差应在变压器阻抗值（%）的1/10以内,但不超过±1%</standard>
+			<testinstrument>变压器变比测试仪 SM63A</testinstrument>
+		</project>
+		<project name="空载电流">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="空载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="负载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="短路阻抗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="交流耐压">
+			<standard>符合要求</standard>
+			<testinstrument>调频谐振试验装置FKTF-220kVA/200kV</testinstrument>
+		</project>
+		<project name="绕组介损">
+			<standard>35kV≤1.5%</standard>
+			<testinstrument>介质损耗测试仪 AL-6000</testinstrument>
+		</project>
+		<project name="绕组泄漏电流">
+			<standard>油浸电力变压器在20℃时 6～15kV≤33µA,20～35kV≤50µA</standard>
+			<testinstrument>高压直流发生器Z-VI</testinstrument>
+		</project>
+	</equipment>
+	<equipment name="35kV油变">
+		<project name="绝缘电阻(MΩ)">
+			<standard>铁心对地≥10MΩ</standard>
+			<testinstrument>KYORITSU兆欧表3125</testinstrument>
+		</project>
+		<project name="直流电阻">
+			<standard>相间差不能大于4%,线间差不能大于2%</standard>
+			<testinstrument>变压器直流电阻测试仪 HN8040</testinstrument>
+		</project>
+		<project name="电压比">
+			<standard>额定分接电压比允许偏差为±0.5%,其它分接的偏差应在变压器阻抗值（%）的1/10以内,但不超过±1%</standard>
+			<testinstrument>变压器变比测试仪 SM63A</testinstrument>
+		</project>
+		<project name="连接组别">
+			<standard>符合铭牌要求</standard>
+			<testinstrument>变压器变比测试仪 SM63A</testinstrument>
+		</project>
+		<project name="空载试验">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="空载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="负载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="短路阻抗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="局部放电">
+			<standard></standard>
+			<testinstrument></testinstrument>
+		</project>
+		<project name="交流耐压">
+			<standard>符合要求</standard>
+			<testinstrument>调频谐振试验装置FKTF-220kVA/200kV</testinstrument>
+		</project>
+	</equipment>
+	<equipment name="66kV站用变">
+		<project name="绝缘电阻(MΩ)">
+			<standard>铁心对地≥10MΩ</standard>
+			<testinstrument>KYORITSU兆欧表3125</testinstrument>
+		</project>
+		<project name="直流电阻">
+			<standard>相间差不能大于4%,线间差不能大于2%</standard>
+			<testinstrument>变压器直流电阻测试仪 HN8040</testinstrument>
+		</project>
+		<project name="电压比">
+			<standard>额定分接电压比允许偏差为±0.5%,其它分接的偏差应在变压器阻抗值（%）的1/10以内,但不超过±1%</standard>
+			<testinstrument>变压器变比测试仪 SM63A</testinstrument>
+		</project>
+		<project name="连接组别">
+			<standard>符合铭牌要求</standard>
+			<testinstrument>变压器变比测试仪 SM63A</testinstrument>
+		</project>
+		<project name="空载试验">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="空载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="负载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="短路阻抗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="局部放电">
+			<standard></standard>
+			<testinstrument></testinstrument>
+		</project>
+		<project name="交流耐压">
+			<standard>符合要求</standard>
+			<testinstrument>调频谐振试验装置FKTF-220kVA/200kV</testinstrument>
+		</project>
+		<project name="绕组介损">
+			<standard></standard>
+			<testinstrument></testinstrument>
+		</project>
+		<project name="绕组泄漏电流(μA)">
+			<standard></standard>
+			<testinstrument></testinstrument>
+		</project>
+	</equipment>
+	<equipment name="110kV二绕组">
+		<project name="绝缘电阻(MΩ)">
+			<standard>R60S/R15S≥1.3 R600S/R60S≥1.5</standard>
+			<testinstrument>KYORITSU兆欧表3125</testinstrument>
+		</project>
+		<project name="直流电阻">
+			<standard>相间差不能大于2%，线间差不能大于1%</standard>
+			<testinstrument>变压器直流电阻测试仪 HN8040</testinstrument>
+		</project>
+		<project name="电压比">
+			<standard>额定分接电压比允许偏差为±0.5%,其它分接的偏差应在变压器阻抗值（%）的1/10以内,但不超过±1%</standard>
+			<testinstrument>变压器变比测试仪 SM63A</testinstrument>
+		</project>
+		<project name="空载电流">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="空载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="负载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="短路阻抗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="交流耐压">
+			<standard>符合要求</standard>
+			<testinstrument>调频谐振试验装置FKTF-220kVA/200kV</testinstrument>
+		</project>
+		<project name="绕组介损">
+			<standard>110～220kV≤0.8% 35kV≤1.5%</standard>
+			<testinstrument>介质损耗测试仪 AL-6000</testinstrument>
+		</project>
+		<project name="绕组泄漏电流(μA)">
+			<standard>6～10kV≤10µA 20～35kV≤20µA 66～220kV≤40µA</standard>
+			<testinstrument>高压直流发生器Z-VI</testinstrument>
+		</project>
+	</equipment>
+	<equipment name="110kV三绕组">
+		<project name="绝缘电阻(MΩ)">
+			<standard>R60S/R15S≥1.3 R600S/R60S≥1.5 铁芯、夹件对地绝缘电阻≥10MΩ</standard>
+			<testinstrument>KYORITSU兆欧表3125</testinstrument>
+		</project>
+		<project name="直流电阻">
+			<standard>相间差不能大于2%，线间差不能大于1%</standard>
+			<testinstrument>变压器直流电阻测试仪 HN8040</testinstrument>
+		</project>
+		<project name="电压比">
+			<standard>额定分接电压比允许偏差为±0.5%,其它分接的偏差应在变压器阻抗值（%）的1/10以内,但不超过±1%</standard>
+			<testinstrument>变压器变比测试仪 SM63A</testinstrument>
+		</project>
+		<project name="空载电流">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="空载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="负载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="短路阻抗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="交流耐压">
+			<standard>符合要求</standard>
+			<testinstrument>调频谐振试验装置FKTF-220kVA/200kV</testinstrument>
+		</project>
+		<project name="绕组介损">
+			<standard>110～220kV≤0.8% 10~35kV≤1.5%</standard>
+			<testinstrument>介质损耗测试仪 AL-6000</testinstrument>
+		</project>
+		<project name="绕组泄漏电流(μA)">
+			<standard>6～10kV≤10µA     20～35kV≤20µA    66～220kV≤40µA
+								低                      中                  高
+			</standard>
+			<testinstrument>变压器直流电阻测试仪 HN8040</testinstrument>
+		</project>
+	</equipment>
+	<equipment name="220kV二绕组">
+		<project name="绝缘电阻(MΩ)">
+			<standard>R60S/R15S≥1.3 R600S/R60S≥1.5</standard>
+			<testinstrument>KYORITSU兆欧表3125</testinstrument>
+		</project>
+		<project name="直流电阻">
+			<standard>相间差不能大于2%，线间差不能大于1%</standard>
+			<testinstrument>变压器直流电阻测试仪 HN8040</testinstrument>
+		</project>
+		<project name="电压比">
+			<standard>额定分接电压比允许偏差为±0.5%,其它分接的偏差应在变压器阻抗值（%）的1/10以内,但不超过±1%</standard>
+			<testinstrument>变压器变比测试仪 SM63A</testinstrument>
+		</project>
+		<project name="空载电流">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="空载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="负载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="短路阻抗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="交流耐压">
+			<standard>符合要求</standard>
+			<testinstrument>调频谐振试验装置FKTF-220kVA/200kV</testinstrument>
+		</project>
+		<project name="绕组介损">
+			<standard>110～220kV≤0.8% 35kV≤1.5%</standard>
+			<testinstrument>介质损耗测试仪 AL-6000</testinstrument>
+		</project>
+		<project name="绕组泄漏电流(μA)">
+			<standard>6～10kV≤10µA 20～35kV≤20µA 66～220kV≤40µA</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+	</equipment>
+	<equipment name="220kV三绕组">
+		<project name="绝缘电阻(MΩ)">
+			<standard>R60S/R15S≥1.3 R600S/R60S≥1.5 铁芯、 夹件对地绝缘电阻≥10MΩ</standard>
+			<testinstrument>KYORITSU兆欧表3125</testinstrument>
+		</project>
+		<project name="直流电阻">
+			<standard>相间差不能大于2%，线间差不能大于1%</standard>
+			<testinstrument>变压器直流电阻测试仪 HN8040</testinstrument>
+		</project>
+		<project name="电压比">
+			<standard>额定分接电压比允许偏差为±0.5%,其它分接的偏差应在变压器阻抗值（%）的1/10以内,但不超过±1%</standard>
+			<testinstrument>变压器变比测试仪 SM63A</testinstrument>
+		</project>
+		<project name="空载试验">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="空载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="负载损耗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="短路阻抗">
+			<standard>符合制造厂技术要求</standard>
+			<testinstrument>直流高压发生器 Z-VI</testinstrument>
+		</project>
+		<project name="局部放电">
+			<standard></standard>
+			<testinstrument></testinstrument>
+		</project>
+		<project name="交流耐压">
+			<standard>符合要求</standard>
+			<testinstrument>调频谐振试验装置FKTF-220kVA/200kV</testinstrument>
+		</project>
+		<project name="绕组介损">
+			<standard>110～220kV≤0.8% 35kV≤1.5%</standard>
+			<testinstrument>介质损耗测试仪 AL-6000</testinstrument>
+		</project>
+		<project name="绕组泄漏电流(μA)">
+			<standard>6～10kV≤10µA 20～35kV≤20µA 66～220kV≤40µA</standard>
+			<testinstrument>直流发生器测试仪 KF6602</testinstrument>
+		</project>
+	</equipment>
+</standards>

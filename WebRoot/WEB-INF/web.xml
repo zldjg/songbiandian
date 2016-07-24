@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>songbiandian</display-name>
+    <welcome-file-list>
+        <welcome-file>main.jsp</welcome-file>
+    </welcome-file-list>
+    <servlet>
+        <servlet-name>generateTestReportTemplate</servlet-name>
+        <servlet-class>songbiandian.servlet.GenerateTestReportTemplate</servlet-class>
+        <enabled>true</enabled>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>generateTestReportTemplate</servlet-name>
+        <url-pattern>/generateTestReportTemplate</url-pattern>
+    </servlet-mapping>
+    <servlet>
+    	<servlet-name>saveTestReport</servlet-name>
+    	<servlet-class>songbiandian.servlet.SaveTestReport</servlet-class>
+    	<enabled>true</enabled>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>saveTestReport</servlet-name>
+    	<url-pattern>/saveTestReport</url-pattern>
+    </servlet-mapping>
+    <servlet>
+    	<servlet-name>nextStep</servlet-name>
+    	<servlet-class>songbiandian.servlet.NextStep</servlet-class>
+    	<enabled>true</enabled>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>nextStep</servlet-name>
+    	<url-pattern>/nextStep</url-pattern>
+    </servlet-mapping>
+    <servlet>
+    	<servlet-name>getReportTemplate</servlet-name>
+    	<servlet-class>songbiandian.servlet.GetReportTemplate</servlet-class>
+    	<enabled>true</enabled>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>getReportTemplate</servlet-name>
+    	<url-pattern>/getReportTemplate</url-pattern>
+    </servlet-mapping>
+</web-app>
