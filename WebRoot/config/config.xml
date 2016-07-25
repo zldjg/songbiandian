@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <equipmets>
-	<equipment name="10kV干式变">
-		<project name="绝缘电阻(MΩ)">
+	<equipment name="10kv干式变">
+		<project name="绝缘电阻(mω)">
 			<position name="一次对二次及地">
 				<parameter>default</parameter>
 			</position>
@@ -64,8 +64,8 @@
 			</position>
 		</project>
 	</equipment>
-	<equipment name="35kV干式变">
-		<project name="绝缘电阻(MΩ)">
+	<equipment name="35kv干式变">
+		<project name="绝缘电阻(mω)">
 			<position name="一次对二次及地">
 				<parameter>R15s</parameter>
 				<parameter>R60s</parameter>

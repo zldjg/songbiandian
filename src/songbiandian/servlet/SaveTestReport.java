@@ -15,9 +15,6 @@ import songbiandian.javabean.*;
  *
  */
 public class SaveTestReport extends HttpServlet {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2919564878872121775L;
 
 	@SuppressWarnings("unchecked")
@@ -26,40 +23,81 @@ public class SaveTestReport extends HttpServlet {
 		/**
 		 * 数据库连接对象以及表头ReportTitle对象
 		 */
-		ReportTitle reportTitle = ReportTitle.getInstanceOfReportTitle();
+		//ReportTitle reportTitle = ReportTitle.getInstanceOfReportTitle();
 		DBConn dbConn = DBConn.getInstanceOfDBConn();
 		
 		/**
 		 * 取出session并且把session中的数据取出来
 		 */
 		HttpSession session = request.getSession();
-		String equipmentName = (String)session.getAttribute("equipmentname");
-		String[] projects = (String[])session.getAttribute("projectstring");
-		HashMap<String, ArrayList<String>> positionListMap = (HashMap<String, ArrayList<String>>)session.getAttribute("positionofprojectmap");
-		HashMap<String, ArrayList<String>> paramListMap = (HashMap<String, ArrayList<String>>)session.getAttribute("paramofpositionmap");
-		HashMap<String, String> standardMap = (HashMap<String, String>)session.getAttribute("standardMap");
-		HashMap<String, String> testInstrumentMap = (HashMap<String, String>)session.getAttribute("testinstrumentMap");
-		HashMap<String, ArrayList<String>> paramOfFirstLineMap = (HashMap<String, ArrayList<String>>)session.getAttribute("paramoffirstlinemap");
-		HashMap<String, HashMap<String, ArrayList<String>>> paramOfProjectMap = (HashMap<String, HashMap<String, ArrayList<String>>>)session.getAttribute("paramofprojectmap");
-		HashMap<String, ArrayList<String>> paramOfNoPositionMap = (HashMap<String, ArrayList<String>>)session.getAttribute("paramofnoposition");
+		String equipmentName = (String)session.getAttribute("test_equipmentname");
+		List<String> projectsList = (List<String>)session.getAttribute("test_projectslist");
+		HashMap<String, ArrayList<String>> positionListMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_positionofprojectmap");
+		HashMap<String, ArrayList<String>> paramListMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_paramofpositionmap");
+		HashMap<String, String> standardMap = (HashMap<String, String>)session.getAttribute("test_standardMap");
+		HashMap<String, String> testInstrumentMap = (HashMap<String, String>)session.getAttribute("test_testinstrumentMap");
+		HashMap<String, ArrayList<String>> paramOfFirstLineMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_paramoffirstlinemap");
+		HashMap<String, HashMap<String, ArrayList<String>>> paramOfProjectMap = (HashMap<String, HashMap<String, ArrayList<String>>>)session.getAttribute("test_paramofprojectmap");
+		HashMap<String, ArrayList<String>> paramOfNoPositionMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_paramofnoposition");
 		
 		/**
 		 * 处理表格主体的部分
 		 */
-		for (int i = 0 ; i < projects.length ; i++) {
-			ArrayList<String> positionListOfProject = positionListMap.get(projects[i]);
-			if (positionListOfProject == null) {
-				
-			}
-			else {
-				
-			}
-		}
+		for (String project : projectsList) {
+			HashMap<String, ArrayList<String>> paramOfSingleProjectMap = paramOfProjectMap.get(project);
+	 		ArrayList<String> positionListOfProject = positionListMap.get(project);
+	 		if (positionListOfProject == null) {
+	 			ArrayList<String> paramOfNoPosition = paramOfNoPositionMap.get(project);
+	 			if (paramOfNoPosition.size() == 1) {
+	 				
+	 			}
+	 			else {
+	 				for (String param : paramOfNoPosition) {
+
+	 				}
+	 			}
+	 		}
+	 		else {
+	 			ArrayList<String> paramOfFirstLineList = paramOfFirstLineMap.get(project);
+	 			if (paramOfFirstLineList != null) {
+	 				if (paramOfFirstLineList.size() == 1) {
+	 					
+	 				}
+	 				else {
+	 					for (String param : paramOfFirstLineList) {
+	 						
+	 					}
+	 				}
+	 			}
+	 			for (String position : positionListOfProject) {		
+	 				HashMap<String, ArrayList<String>> paramOfThisPositionMap = paramOfProjectMap.get(project);
+	 				ArrayList<String> paramOfThisPositionList = paramOfThisPositionMap.get(position);
+	 				if (paramOfThisPositionList != null) {
+	 					if (paramOfThisPositionList.size() == paramOfFirstLineList.size()) {
+	 					   	for (int j = 0 ; j < paramOfThisPositionList.size() ; j++) {
+	 					   		
+	 					   	}
+	 					}
+	 					else {
+	 					   	if (paramOfThisPositionList.size() == 1) {
+
+	 					   	}
+	 					   	else {
+	 					   		for (String parameter : paramOfThisPositionList) {
+	 					   			
+	 					   		}
+	 					   	}
+	 					}
+
+	 				}
+	 			}
+	 		}
+	 	}
 		
 		/**
 		 * 处理表头的部分
 		 */
-		String testUnit = request.getParameter("test_unit");
+		//String testUnit = request.getParameter("test_unit");
 		
 		response.sendRedirect("Sybg_gl.jsp");
 	}

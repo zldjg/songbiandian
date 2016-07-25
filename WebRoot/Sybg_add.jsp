@@ -91,21 +91,21 @@ $(function(){
               	<td width="10%" class="tdc2">设备名称</td>
                 <td>
                 	<select class="select1" name="equipment" style="width:15%">
-                		<option value="10kV干式变">10kV干式变</option>
-						<option value="35kV干式变">35kV干式变</option>
-						<option value="35kV油变">35kV油变</option>
-						<option value="66kV站用变">66kV站用变</option>
-						<option value="110kV二绕组">110kV二绕组</option>
-						<option value="110kV三绕组">110kV三绕组</option>
-						<option value="220kV二绕组">220kV二绕组</option>
-						<option value="220kV三绕组">220kV三绕组</option>
+                		<option value="10kv干式变">10kV干式变</option>
+						<option value="35kv干式变">35kV干式变</option>
+						<option value="35kv油变">35kV油变</option>
+						<option value="66kv站用变">66kV站用变</option>
+						<option value="110kv二绕组">110kV二绕组</option>
+						<option value="110kv三绕组">110kV三绕组</option>
+						<option value="220kv二绕组">220kV二绕组</option>
+						<option value="220kv三绕组">220kV三绕组</option>
                 	</select>
                 </td>
               </tr>
               <tr class="tr1">
                 <td width="15%">选择试验项目：</td>
                 <td width="85%" colspan="4">
-                    <input type="checkbox" name="project" value="绝缘电阻(MΩ)" />绝缘电阻(MΩ)
+                    <input type="checkbox" name="project" value="绝缘电阻(mω)" />绝缘电阻(MΩ)
 					<input type="checkbox" name="project" value="直流电阻" />直流电阻
 					<input type="checkbox" name="project" value="电压比" />电压比
 					<input type="checkbox" name="project" value="交流耐压" />交流耐压
