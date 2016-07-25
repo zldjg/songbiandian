@@ -61,6 +61,7 @@ public class SaveTestReport extends HttpServlet {
 	 				try {
 						preparedStatement = connection.prepareStatement(insertSql);
 						preparedStatement.setString(1, requestValue);
+						preparedStatement.executeUpdate();
 					} catch (SQLException e) {
 						System.out.println("插入数据失败!");
 						e.printStackTrace();
@@ -107,6 +108,7 @@ public class SaveTestReport extends HttpServlet {
 	 					   		try {
 									preparedStatement = connection.prepareStatement(insertSql);
 									preparedStatement.setString(1, requestValue);
+									preparedStatement.executeUpdate();
 								} catch (SQLException e) {
 									System.out.println("插入数据失败!");
 									e.printStackTrace();

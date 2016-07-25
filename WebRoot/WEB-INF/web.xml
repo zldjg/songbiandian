@@ -74,4 +74,14 @@
     	<servlet-name>findAllTestReportInfos</servlet-name>
     	<url-pattern>/findAllTestReportInfos</url-pattern>
     </servlet-mapping>
+    <servlet>
+    	<servlet-name>test</servlet-name>
+    	<servlet-class>songbiandian.servlet.Test</servlet-class>
+    	<enabled>true</enabled>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>test</servlet-name>
+    	<url-pattern>/test</url-pattern>
+    </servlet-mapping>
 </web-app>
