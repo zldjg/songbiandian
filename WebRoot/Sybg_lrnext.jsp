@@ -1,17 +1,56 @@
-<%@ page pageEncoding="utf-8" %>
+<%@ page pageEncoding="UTF-8" %>
 <%@ page import="java.util.*,songbiandian.middleware.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
+<style type="text/css">
+	table.main{
+				text-align:center;
+				width:70%;
+				margin:auto;
+				margin-top:-1px;
+				border-collapse:collapse;
+				border-spacing:0px;
+				border:none;
+			}
+			td{
+				border:solid #000 1px;
+				height:40px;
+			}
+			table.sub{
+				text-align:center;
+				margin-top:-1px;
+				margin-bottom:-1px;
+				margin-right:0px;
+				width:100%;
+				border-collapse:collapse;
+				border:none;
+			}
+			td.sub{
+				width:80px;
+				border:solid #000 1px;
+				height:40px;
+			}
+			td.instrument{
+				color:green;
+				border:solid #000 1px;
+				height:40px;
+			}
+			td.standard{
+				color:red;
+				border:solid #000 1px;
+				height:40px;
+			}
+</style>
 <link href="css/iestyle.css" rel="stylesheet" type="text/css" />
 <link href="css/select.css" rel="stylesheet" type="text/css" />
 <!--scrollbar style-->
-<link href="css/perfect-scrollbar.css" rel="stylesheet" />
+<link href="css/perfect-scrollbar.css" rel="stylesheet"></link>
 <!--/scrollbar style-->
 <!--menu style-->
-<link href="css/style-menu.css" rel="stylesheet" />
+<link href="css/style-menu.css" rel="stylesheet"></link>
 <!--/menu style-->
 <!--分页插件style-->
 <link type="text/css" rel="stylesheet" href="css/simplePagination.css"/>
@@ -65,21 +104,18 @@ $(function(){
         <li>试验模板管理</li>
         <li>实验报告录入</li>
     </ul>   
-    <span style="margin-top:3px; float:right; margin-right:10px;"><input type="submit" value="保存信息"/></span>
+    <span style="margin-top:3px; float:right; margin-right:10px;"><a href="Sybg_gl.html" class="longblue">保存信息</a></span>
 </div>
 <!--/当前位置-->
-<form action="saveTestReport" method="post">
 <div class="mainindex" id="mainindex">
     <div class="maincon">
-        <!--列表信息-->
-        
         <div class="fangan-detailse">
             <div class="title1 font28">
             	<span><%=session.getAttribute("testreportname") %></span> 试验报告
             </div>
         </div>
-        <div class="sybgtab-style" >
-            <table class="main">
+        <div class="reporttitle">
+        	<table class="main">
         		<tr>
         			<td style="width:10%">试验单位</td>
         			<td style="width:40%"></td>
@@ -169,7 +205,7 @@ $(function(){
 				<tr></tr>
 				<%
 					String equipmentName = (String)session.getAttribute("test_equipmentname");
-					ArrayList<String> projects = (ArrayList<String>)session.getAttribute("test_projectslist");
+					List<String> projects = (List<String>)session.getAttribute("test_projectslist");
 					HashMap<String, ArrayList<String>> positionListMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_positionofprojectmap");
 					HashMap<String, ArrayList<String>> paramListMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_paramofpositionmap");
 					HashMap<String, String> standardMap = (HashMap<String, String>)session.getAttribute("test_standardMap");
@@ -191,7 +227,7 @@ $(function(){
 				 							if (paramOfNoPosition.size() == 1) {
 				 					 %>
 				 					 			<tr>
-				 					 				<td class="sub"></td>
+				 					 				<td class="sub"><input type="text"/></td>
 				 					 			</tr>
 				 					 <%
 				 					 		}
@@ -204,7 +240,7 @@ $(function(){
 				 					   				<td class="sub">
 				 					   					<%=param %>
 				 					   				</td>
-				 					   				<td class="sub"></td>
+				 					   				<td class="sub"><input type="text"/></td>
 				 					 <%
 				 					  			}
 				 					  %>
@@ -240,27 +276,27 @@ $(function(){
 				 					   			<tr>
 				 					   				<td style="width:120px"><%=position %></td>
 				 					   				<%
-				 					   				HashMap<String, ArrayList<String>> paramOfThisPositionMap = paramOfProjectMap.get(projects);
+				 					   				HashMap<String, ArrayList<String>> paramOfThisPositionMap = paramOfProjectMap.get(project);
 				 					   				ArrayList<String> paramOfThisPositionList = paramOfThisPositionMap.get(position);
 				 					   				if (paramOfThisPositionList != null) {
 				 					   				if (paramOfThisPositionList.size() == paramOfFirstLineList.size()) {
 				 					   					for (int j = 0 ; j < paramOfThisPositionList.size() ; j++) {
 				 					   				 %>
-				 					   				 		<td class="sub"></td>
+				 					   				 		<td class="sub"><input type="text"/></td>
 				 					   				<%
 				 					   					}
 				 					   				}
 				 					   				else {
 				 					   					if (paramOfThisPositionList.size() == 1) {
 				 					   				 %>
-				 					   				 		<td id="singleparam"></td>
+				 					   				 		<td id="singleparam"><input type="text"/></td>
 				 					   				<%
 				 					   					}
 				 					   					else {
 				 					   						for (String parameter : paramOfThisPositionList) {
 				 					   				 %>
 				 					   				 			<td><%=parameter %></td>
-				 					   				 			<td></td>
+				 					   				 			<td><input type="text"/></td>
 				 					   				<%
 				 					   						}
 				 					   					}
@@ -299,11 +335,10 @@ $(function(){
 				 	</td>
 				 </tr>
 			</table>
-        </div>
-          <!--/列表信息-->
+		</div>
     </div> 
 </div>
-</form>
+
 
 <!--height Resize js-->
 <script type="text/javascript">
@@ -344,7 +379,7 @@ var start = {
     istoday: false,
     choose: function(datas){
          end.min = datas; //开始日选好后，重置结束日的最小日期
-         end.start = datas; //将结束日的初始值设定为开始日
+         end.start = datas;//将结束日的初始值设定为开始日
     }
 };
 
