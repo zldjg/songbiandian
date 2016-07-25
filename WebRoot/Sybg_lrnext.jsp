@@ -96,6 +96,7 @@ $(function(){
 </head>
 <body>
 <!--当前位置-->
+<form action="saveTestReport" method="post">
 <div class="place">
     <span>位置：</span>
     <ul class="placeul">
@@ -104,7 +105,7 @@ $(function(){
         <li>试验模板管理</li>
         <li>实验报告录入</li>
     </ul>   
-    <span style="margin-top:3px; float:right; margin-right:10px;"><a href="Sybg_gl.html" class="longblue">保存信息</a></span>
+    <span style="margin-top:3px; float:right; margin-right:10px;"><input type="submit" value="保存信息"/></span>
 </div>
 <!--/当前位置-->
 <div class="mainindex" id="mainindex">
@@ -114,6 +115,7 @@ $(function(){
             	<span><%=session.getAttribute("testreportname") %></span> 试验报告
             </div>
         </div>
+        
         <div class="reporttitle">
         	<table class="main">
         		<tr>
@@ -225,10 +227,10 @@ $(function(){
 				 						if (positionListOfProject == null) {
 				 							ArrayList<String> paramOfNoPosition = paramOfNoPositionMap.get(project);
 				 							if (paramOfNoPosition.size() == 1) {
-				 								String tdName = equipmentName + "_" + project + "_" + paramOfNoPosition.get(0);
+				 								String tdName = equipmentName + "_" + project;
 				 					 %>
 				 					 			<tr>
-				 					 				<td class="sub"><input type="text" name=<%=tdName %>/></td>
+				 					 				<td class="sub"><input name=<%=tdName %> type="text"  /></td>
 				 					 			</tr>
 				 					 <%
 				 					 		}
@@ -237,12 +239,12 @@ $(function(){
 				 					  			<tr>
 				 					 <%
 				 					  			for (String param : paramOfNoPosition) {
-				 					  				String tdName = equipmentName + "_" + project + "_" + param;
+				 					  				String tdName = equipmentName + "_" + project;
 				 					  %>
 				 					   				<td class="sub">
 				 					   					<%=param %>
 				 					   				</td>
-				 					   				<td class="sub"><input type="text" name=<%=tdName %>/></td>
+				 					   				<td class="sub"><input name=<%=tdName %> type="text" /></td>
 				 					 <%
 				 					  			}
 				 					  %>
@@ -283,22 +285,22 @@ $(function(){
 				 					   				if (paramOfThisPositionList != null) {
 				 					   				if (paramOfThisPositionList.size() == paramOfFirstLineList.size()) {
 				 					   					for (int j = 0 ; j < paramOfThisPositionList.size() ; j++) {
-				 					   						String tdName = equipmentName + "_" + project + "_" + position + "_" + paramOfThisPositionList.get(j);
+				 					   						String tdName = equipmentName + "_" + project + "_" + position;
 				 					   				 %>
-				 					   				 		<td class="sub"><input type="text" name=<%=tdName %>/></td>
+				 					   				 		<td class="sub"><input name=<%=tdName %> type="text" /></td>
 				 					   				<%
 				 					   					}
 				 					   				}
 				 					   				else {
 				 					   					if (paramOfThisPositionList.size() == 1) {
-				 					   						String tdName = equipmentName + "_" + project + "_" + position + "_" + paramOfThisPositionList.get(0);
+				 					   						String tdName = equipmentName + "_" + project + "_" + position;
 				 					   				 %>
 				 					   				 		<td id="singleparam"><input name=<%=tdName %> type="text"/></td>
 				 					   				<%
 				 					   					}
 				 					   					else {
 				 					   						for (String parameter : paramOfThisPositionList) {
-				 					   							String tdName = equipmentName + "_" + project + "_" + position + "_" + parameter;
+				 					   							String tdName = equipmentName + "_" + project + "_" + position;
 				 					   				 %>
 				 					   				 			<td><%=parameter %></td>
 				 					   				 			<td><input name=<%=tdName %> type="text"/></td>
@@ -402,6 +404,7 @@ var end = {
 laydate(start);
 laydate(end);
 </script>
+</form>
 </body>
 
 </html>
