@@ -225,9 +225,10 @@ $(function(){
 				 						if (positionListOfProject == null) {
 				 							ArrayList<String> paramOfNoPosition = paramOfNoPositionMap.get(project);
 				 							if (paramOfNoPosition.size() == 1) {
+				 								String tdName = equipmentName + "_" + project + "_" + paramOfNoPosition.get(0);
 				 					 %>
 				 					 			<tr>
-				 					 				<td class="sub"><input type="text"/></td>
+				 					 				<td class="sub"><input type="text" name=<%=tdName %>/></td>
 				 					 			</tr>
 				 					 <%
 				 					 		}
@@ -236,11 +237,12 @@ $(function(){
 				 					  			<tr>
 				 					 <%
 				 					  			for (String param : paramOfNoPosition) {
+				 					  				String tdName = equipmentName + "_" + project + "_" + param;
 				 					  %>
 				 					   				<td class="sub">
 				 					   					<%=param %>
 				 					   				</td>
-				 					   				<td class="sub"><input type="text"/></td>
+				 					   				<td class="sub"><input type="text" name=<%=tdName %>/></td>
 				 					 <%
 				 					  			}
 				 					  %>
@@ -281,22 +283,25 @@ $(function(){
 				 					   				if (paramOfThisPositionList != null) {
 				 					   				if (paramOfThisPositionList.size() == paramOfFirstLineList.size()) {
 				 					   					for (int j = 0 ; j < paramOfThisPositionList.size() ; j++) {
+				 					   						String tdName = equipmentName + "_" + project + "_" + position + "_" + paramOfThisPositionList.get(j);
 				 					   				 %>
-				 					   				 		<td class="sub"><input type="text"/></td>
+				 					   				 		<td class="sub"><input type="text" name=<%=tdName %>/></td>
 				 					   				<%
 				 					   					}
 				 					   				}
 				 					   				else {
 				 					   					if (paramOfThisPositionList.size() == 1) {
+				 					   						String tdName = equipmentName + "_" + project + "_" + position + "_" + paramOfThisPositionList.get(0);
 				 					   				 %>
-				 					   				 		<td id="singleparam"><input type="text"/></td>
+				 					   				 		<td id="singleparam"><input name=<%=tdName %> type="text"/></td>
 				 					   				<%
 				 					   					}
 				 					   					else {
 				 					   						for (String parameter : paramOfThisPositionList) {
+				 					   							String tdName = equipmentName + "_" + project + "_" + position + "_" + parameter;
 				 					   				 %>
 				 					   				 			<td><%=parameter %></td>
-				 					   				 			<td><input type="text"/></td>
+				 					   				 			<td><input name=<%=tdName %> type="text"/></td>
 				 					   				<%
 				 					   						}
 				 					   					}
