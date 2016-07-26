@@ -20,15 +20,14 @@ import songbiandian.middleware.SqlStringProcess;
  */
 public class SaveTestReport extends HttpServlet {
 	private static final long serialVersionUID = 2919564878872121775L;
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		/**
-		 * 数据库连接对象以及表头ReportTitle对象
+		 * 数据库相关对象
 		 */
-		//ReportTitle reportTitle = ReportTitle.getInstanceOfReportTitle();
 		DBConn dbConn = DBConn.getInstanceOfDBConn();
 		Connection connection = dbConn.getConnection();
 		PreparedStatement preparedStatement = null;
@@ -40,10 +39,6 @@ public class SaveTestReport extends HttpServlet {
 		String equipmentName = (String)session.getAttribute("test_equipmentname");
 		List<String> projectsList = (List<String>)session.getAttribute("test_projectslist");
 		HashMap<String, ArrayList<String>> positionListMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_positionofprojectmap");
-		//HashMap<String, ArrayList<String>> paramListMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_paramofpositionmap");
-		//HashMap<String, String> standardMap = (HashMap<String, String>)session.getAttribute("test_standardMap");
-		//HashMap<String, String> testInstrumentMap = (HashMap<String, String>)session.getAttribute("test_testinstrumentMap");
-		//HashMap<String, ArrayList<String>> paramOfFirstLineMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_paramoffirstlinemap");
 		HashMap<String, HashMap<String, ArrayList<String>>> paramOfProjectMap = (HashMap<String, HashMap<String, ArrayList<String>>>)session.getAttribute("test_paramofprojectmap");
 		HashMap<String, ArrayList<String>> paramOfNoPositionMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_paramofnoposition");
 		
@@ -51,7 +46,6 @@ public class SaveTestReport extends HttpServlet {
 		 * 处理表格主体的部分
 		 */
 		for (String project : projectsList) {
-			//HashMap<String, ArrayList<String>> paramOfSingleProjectMap = paramOfProjectMap.get(project);
 	 		ArrayList<String> positionListOfProject = positionListMap.get(project);
 	 		if (positionListOfProject == null) {
 	 			String inputName = equipmentName + "_" + project;
@@ -86,68 +80,51 @@ public class SaveTestReport extends HttpServlet {
 	 			}
 	 		}
 	 		else {
-	 			/**ArrayList<String> paramOfFirstLineList = paramOfFirstLineMap.get(project);
-	 			if (paramOfFirstLineList != null) {
-	 				if (paramOfFirstLineList.size() == 1) {
-	 					
-	 				}
-	 				else {
-	 					for (String param : paramOfFirstLineList) {
-	 						
-	 					}
-	 				}
-	 			}
-	 			*/
 	 			for (String position : positionListOfProject) {		
 	 				HashMap<String, ArrayList<String>> paramOfThisPositionMap = paramOfProjectMap.get(project);
 	 				ArrayList<String> paramOfThisPositionList = paramOfThisPositionMap.get(position);
 	 				String inputName = equipmentName + "_" + project + "_" + position;
-	 				//System.out.println(inputName);
 	 				if (paramOfThisPositionList != null) {
-	 					   	if (paramOfThisPositionList.size() == 1) {
-	 					   		String requestValue = request.getParameter(inputName);
-	 					   		String insertSql = "insert into " + SqlStringProcess.deleteSpecificChar(inputName, "/").toLowerCase() + "(test_value) values(?)";
-	 					   		try {
-									preparedStatement = connection.prepareStatement(insertSql);
-									preparedStatement.setString(1, requestValue);
-									preparedStatement.executeUpdate();
-								} catch (SQLException e) {
-									System.out.println("插入数据失败!");
-									e.printStackTrace();
-								}
-	 					   	}
-	 					   	else {
-	 					   		System.out.println(inputName);
+	 					if (paramOfThisPositionList.size() == 1) {
+	 						String requestValue = request.getParameter(inputName);
+	 					   	String insertSql = "insert into " + SqlStringProcess.deleteSpecificChar(inputName, "/").toLowerCase() + "(test_value) values(?)";
+	 					   	try {
+								preparedStatement = connection.prepareStatement(insertSql);
+								preparedStatement.setString(1, requestValue);
+								preparedStatement.executeUpdate();
+							} catch (SQLException e) {
+								System.out.println("插入数据失败!");
+								e.printStackTrace();
+							}
+	 					}
+	 					else {
+	 					   	System.out.println(inputName);
 	 					   		
-	 					   		String[] requestValues = request.getParameterValues(inputName);
+	 					   	String[] requestValues = request.getParameterValues(inputName);
 	 					   		
-	 					   		String tempOne = SqlStringProcess.generateFormatOne(paramOfThisPositionList);
-	 					   		String tempTwo = SqlStringProcess.generateFormatTwo(paramOfThisPositionList);
-	 					   		String insertSql = "insert into " + SqlStringProcess.deleteSpecificChar(inputName, "/").toLowerCase() + SqlStringProcess.deleteSpecificChar(tempOne, "/") + " values" + tempTwo;
-	 					   		//System.out.println(insertSql);
-	 					   		try {
-									preparedStatement = connection.prepareStatement(insertSql);
-									for (int i = 1 ; i <= paramOfThisPositionList.size() ; i++) {
-										preparedStatement.setString(i, requestValues[i-1]);
-									}
-									preparedStatement.executeUpdate();
-								} catch (SQLException e) {
-									System.out.println("插入数据失败!");
-									e.printStackTrace();
+	 					   	String tempOne = SqlStringProcess.generateFormatOne(paramOfThisPositionList);
+	 					   	String tempTwo = SqlStringProcess.generateFormatTwo(paramOfThisPositionList);
+	 					   	String insertSql = "insert into " + SqlStringProcess.deleteSpecificChar(inputName, "/").toLowerCase() + SqlStringProcess.deleteSpecificChar(tempOne, "/") + " values" + tempTwo;
+	 					   	try {
+								preparedStatement = connection.prepareStatement(insertSql);
+								for (int i = 1 ; i <= paramOfThisPositionList.size() ; i++) {
+									preparedStatement.setString(i, requestValues[i-1]);
 								}
-	 					   	}
-	 					
-	 					
+								preparedStatement.executeUpdate();
+							} catch (SQLException e) {
+								System.out.println("插入数据失败!");
+								e.printStackTrace();
+							}
+	 					}
 	 				}
 	 			}
 	 		}
-	 	}
+		}
 		
 		/**
-		 * 处理表头的部分
+		 * OK,以上就是表格主体的部分，接下来应该处理表格开头的那一部分数据了!
+		 * 最困难的部分已经过去!
 		 */
-		//String testUnit = request.getParameter("test_unit");
-		
 		response.sendRedirect("Sybg_gl.jsp");
 	}
 	

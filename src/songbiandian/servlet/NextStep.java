@@ -2,7 +2,9 @@ package songbiandian.servlet;
 
 import java.io.*;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -30,6 +32,12 @@ public class NextStep extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/**
+		 * 设置日期格式
+		 */
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		
+		String currentDate = dateFormat.format(new Date());
 		/**
 		 * 用于存放试验项目的List
 		 */
@@ -85,6 +93,7 @@ public class NextStep extends HttpServlet {
 		/**
 		 * 负责把前期数据存储进试验报告表头临时数据的SQL语句
 		 */
+		/**
 		String insertReportTitleTemp = "insert into test_report_title_temp(station_name,voltage_rank,equipment_type,equipment_name,test_attribute,weather,temperature,humidity) values(?,?,?,?,?,?,?,?)";
 		
 		try {
@@ -106,6 +115,7 @@ public class NextStep extends HttpServlet {
 		 * 接下来的工作是最为关键的,需要通过模板名称把该模板相关的设备信息、试验项目信息以及对应的位置和参数信息全部找出来
 		 */
 		//找出模板对应的设备名称sql
+		/**
 		String findEquipmentNameSql = "select test_report_template_equipmentName,test_report_template_ID from test_report_template_metadata where test_report_template_templateName='" + reportTemplateName + "'";
 		
 		ResultSet resultSet = dbConn.executeQuery(findEquipmentNameSql);
@@ -253,6 +263,10 @@ public class NextStep extends HttpServlet {
 		session.setAttribute("test_paramoffirstlinemap", paramOfFirstLineOfProjectMap);
 		session.setAttribute("test_paramofprojectmap", paramOfProjectMap);
 		session.setAttribute("test_paramofnoposition", paramOfProjectWithNoPosition);
+		session.setAttribute("report_date", currentDate);
+		session.setAttribute("test_weather", weather);
+		session.setAttribute("test_temperature", temperature);
+		session.setAttribute("test_humidity", humidity);
 		
 		/**
 		 * 跳转数据录入界面
