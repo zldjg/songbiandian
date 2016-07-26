@@ -179,6 +179,7 @@ public class SaveTestReport extends HttpServlet {
 		String insertTestReportTitleSql = "insert into test_report_metadata(test_report_name,station_name,equipment_type,test_attribute,test_person,test_date,report_date,test_unit,report_person,test_approver,test_location,assessor,test_model,runtime_serialnumber,rated_voltage,rated_current,rated_capacity,connection_group,manufacture_name,manufacture_date,install_location,manufacture_number) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			preparedStatement = connection.prepareStatement(insertTestReportTitleSql);
+			//TO DO
 		} catch (SQLException e) {
 			System.out.println("插入数据失败!");
 			e.printStackTrace();
