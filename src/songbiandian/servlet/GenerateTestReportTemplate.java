@@ -28,6 +28,7 @@ public class GenerateTestReportTemplate extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 7805765951203071906L;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -192,6 +193,9 @@ public class GenerateTestReportTemplate extends HttpServlet {
 		 * 获取session
 		 */
 		HttpSession session = request.getSession();
+		
+		ArrayList<TemplateInfo> templateInfosList = (ArrayList<TemplateInfo>)session.getAttribute("templateinfolist");
+		templateInfosList.add(templateInfo);
 		/**
 		 * 把相关对象放入session中去
 		 */
@@ -205,11 +209,10 @@ public class GenerateTestReportTemplate extends HttpServlet {
 		session.setAttribute("paramoffirstlinemap", paramOfFirstLineOfProjectMap);
 		session.setAttribute("paramofprojectmap", paramOfProjectMap);
 		session.setAttribute("paramofnoposition", paramOfProjectWithNoPosition);
-		session.setAttribute("templateinfo", templateInfo);
+		
 		/**
 		 * 跳转到Sybg_mbdetails.jsp
 		 */
-		//response.sendRedirect("generatetestreport.jsp");
 		response.sendRedirect("Sybg_mbdetails.jsp");
 	}
 	

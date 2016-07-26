@@ -124,9 +124,9 @@ $(function(){
         	<table class="main">
         		<tr>
         			<td style="width:10%">试验单位</td>
-        			<td style="width:40%"><input class="dfinput" style="width:200px" autofocus="autofocus"/></td>
+        			<td style="width:40%"><input name="test_unit" class="dfinput" style="width:200px" autofocus="autofocus"/></td>
         			<td style="width:10%">试验日期</td>
-        			<td style="width:40%"><input class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"><input name="test_date" class="dfinput" style="width:150px"/></td>
         		</tr>
         	</table>
         	<table class="main">
@@ -142,9 +142,9 @@ $(function(){
         	<table class="main">
         		<tr>
         			<td style="width:15%">试验人员</td>
-        			<td style="width:18%"><input class="dfinput" style="width:80px"/></td>
+        			<td style="width:18%"><input name="test_person" class="dfinput" style="width:80px"/></td>
         			<td style="width:15%">试验地点</td>
-        			<td style="width:18%"><input class="dfinput" style="width:80px"/></td>
+        			<td style="width:18%"><input name="test_location" class="dfinput" style="width:80px"/></td>
         			<td style="width:15%">报告日期</td>
         			<td style="width:18%"><%=session.getAttribute("report_date") %></td>
         		</tr>
@@ -152,51 +152,51 @@ $(function(){
         	<table class="main">
         		<tr>
         			<td style="width:15%">报告人</td>
-        			<td style="width:18%"><input class="dfinput" style="width:80px"/></td>
+        			<td style="width:18%"><input name="report-person" class="dfinput" style="width:80px"/></td>
         			<td style="width:15%">审核人</td>
-        			<td style="width:18%"><input class="dfinput" style="width:80px"/></td>
+        			<td style="width:18%"><input name="assessor" class="dfinput" style="width:80px"/></td>
         			<td style="width:15%">批准人</td>
-        			<td style="width:18%"><input class="dfinput" style="width:80px"/></td>
+        			<td style="width:18%"><input name="approver" class="dfinput" style="width:80px"/></td>
         		</tr>
         	</table>
         	<table class="main">
         		<tr>
         			<td style="width:10%">试验型号</td>
-        			<td style="width:40%"><input class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"><input name="test_model" class="dfinput" style="width:150px"/></td>
         			<td style="width:10%">运行编号</td>
-        			<td style="width:40%"><input class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"><input name="runtime_serialnumber" class="dfinput" style="width:150px"/></td>
         		</tr>
         	</table>
         	<table class="main">
         		<tr>
         			<td style="width:10%">额定电压</td>
-        			<td style="width:40%"><input class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"><input name="rated_voltage" class="dfinput" style="width:150px"/></td>
         			<td style="width:10%">额定容量</td>
-        			<td style="width:40%"><input class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"><input name="rated_capacity" class="dfinput" style="width:150px"/></td>
         		</tr>
         	</table>
         	<table class="main">
         		<tr>
         			<td style="width:10%">额定电流</td>
-        			<td style="width:40%"><input class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"><input name="rated_current" class="dfinput" style="width:150px"/></td>
         			<td style="width:10%">连接组别</td>
-        			<td style="width:40%"><input class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"><input name="connection_group" class="dfinput" style="width:150px"/></td>
         		</tr>
         	</table>
         	<table class="main">
         		<tr>
         			<td style="width:10%">生产厂家</td>
-        			<td style="width:40%"><input class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"><input name="manufacture_name" class="dfinput" style="width:150px"/></td>
         			<td style="width:10%">生产日期</td>
-        			<td style="width:40%"><input class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"><input name="manufacture_date" class="dfinput" style="width:150px"/></td>
         		</tr>
         	</table>
         	<table class="main">
         		<tr>
         			<td style="width:10%">安装地点</td>
-        			<td style="width:40%"><input class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"><input name="install_location" class="dfinput" style="width:150px"/></td>
         			<td style="width:10%">出厂编号</td>
-        			<td style="width:40%"><input class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"><input name="manufacture_number" class="dfinput" style="width:150px"/></td>
         		</tr>
         	</table>
         </div>

@@ -25,9 +25,7 @@ import songbiandian.middleware.TestInstrument;
  *
  */
 public class NextStep extends HttpServlet {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 6916953463322430065L;
 
 	@Override
@@ -93,7 +91,6 @@ public class NextStep extends HttpServlet {
 		/**
 		 * 负责把前期数据存储进试验报告表头临时数据的SQL语句
 		 */
-		/**
 		String insertReportTitleTemp = "insert into test_report_title_temp(station_name,voltage_rank,equipment_type,equipment_name,test_attribute,weather,temperature,humidity) values(?,?,?,?,?,?,?,?)";
 		
 		try {
@@ -115,7 +112,6 @@ public class NextStep extends HttpServlet {
 		 * 接下来的工作是最为关键的,需要通过模板名称把该模板相关的设备信息、试验项目信息以及对应的位置和参数信息全部找出来
 		 */
 		//找出模板对应的设备名称sql
-		/**
 		String findEquipmentNameSql = "select test_report_template_equipmentName,test_report_template_ID from test_report_template_metadata where test_report_template_templateName='" + reportTemplateName + "'";
 		
 		ResultSet resultSet = dbConn.executeQuery(findEquipmentNameSql);
@@ -254,6 +250,8 @@ public class NextStep extends HttpServlet {
 		 * 接下来就是把数据放到session中去了
 		 */
 		session.setAttribute("testreportname", reportTemplateName);
+		session.setAttribute("stationname", stationName);
+		session.setAttribute("equipmenttype", equipmentType);
 		session.setAttribute("test_equipmentname", equipmentName);
 		session.setAttribute("test_projectslist", projectsList);
 		session.setAttribute("test_positionofprojectmap", positionOfProject);

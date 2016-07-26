@@ -119,20 +119,6 @@ $(function(){
               <%
               		}
               	}
-              	TemplateInfo addedTemplateRightNow = (TemplateInfo)session.getAttribute("templateinfo");
-              	if (addedTemplateRightNow != null) {
-               %>
-              <tr class="tr1">
-              	<td class="tdc"><input name="ID" type="checkbox" onclick="unselectall()" value="2" /></td>
-              	<td style="text-align:center"><%=addedTemplateRightNow.getTemplateId() %></td>
-              	<td style="text-align:center"><%=addedTemplateRightNow.getTemplateName() %></td>
-              	<td style="text-align:center"><%=addedTemplateRightNow.getEquipmentType() %></td>
-              	<td style="text-align:center">交接</td>
-              	<td style="text-align:center"><%=addedTemplateRightNow.getTemplateAddedTime() %></td>
-              	<td style="text-align:center"><a href="Sybg_mbdetails.jsp?templatename=<%=addedTemplateRightNow.getTemplateName() %>">查看详细</a></td>
-              </tr>
-              <%
-              	}
                %>
               <tr class="tr2">
                 <td colspan="8">
