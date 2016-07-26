@@ -30,4 +30,9 @@ public class SqlStringProcess {
 		int index = tempStringBuffer.indexOf(")");
 		return tempStringBuffer.substring(0, index-1) + ")";
 	}
+	
+	public static String deleteSpecificChar(String targetString, String charToBeDeleted) {
+		String resultString = targetString.replaceAll(charToBeDeleted, "");
+		return resultString;
+	}
 }

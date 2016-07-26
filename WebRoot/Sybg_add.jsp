@@ -105,7 +105,7 @@ $(function(){
               <tr class="tr1">
                 <td width="15%">选择试验项目：</td>
                 <td width="85%" colspan="4">
-                    <input type="checkbox" name="project" value="绝缘电阻(mω)" />绝缘电阻(MΩ)
+                    <input type="checkbox" name="project" value="绝缘电阻" />绝缘电阻(MΩ)
 					<input type="checkbox" name="project" value="直流电阻" />直流电阻
 					<input type="checkbox" name="project" value="电压比" />电压比
 					<input type="checkbox" name="project" value="交流耐压" />交流耐压

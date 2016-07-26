@@ -28,6 +28,10 @@
 				border-collapse:collapse;
 				border:none;
 			}
+			input.dfinput{
+				width:70px;
+				height:30px;
+			}
 			td.sub{
 				width:80px;
 				border:solid #000 1px;
@@ -230,7 +234,7 @@ $(function(){
 				 								String tdName = equipmentName + "_" + project;
 				 					 %>
 				 					 			<tr>
-				 					 				<td class="sub"><input name=<%=tdName %> type="text"  /></td>
+				 					 				<td class="sub"><input class="dfinput" name=<%=tdName %> type="text"  /></td>
 				 					 			</tr>
 				 					 <%
 				 					 		}
@@ -244,7 +248,7 @@ $(function(){
 				 					   				<td class="sub">
 				 					   					<%=param %>
 				 					   				</td>
-				 					   				<td class="sub"><input name=<%=tdName %> type="text" /></td>
+				 					   				<td class="sub"><input class="dfinput" name=<%=tdName %> type="text" /></td>
 				 					 <%
 				 					  			}
 				 					  %>
@@ -287,7 +291,7 @@ $(function(){
 				 					   					for (int j = 0 ; j < paramOfThisPositionList.size() ; j++) {
 				 					   						String tdName = equipmentName + "_" + project + "_" + position;
 				 					   				 %>
-				 					   				 		<td class="sub"><input name=<%=tdName %> type="text" /></td>
+				 					   				 		<td class="sub"><input class="dfinput" name=<%=tdName %> type="text" /></td>
 				 					   				<%
 				 					   					}
 				 					   				}
@@ -295,7 +299,7 @@ $(function(){
 				 					   					if (paramOfThisPositionList.size() == 1) {
 				 					   						String tdName = equipmentName + "_" + project + "_" + position;
 				 					   				 %>
-				 					   				 		<td id="singleparam"><input name=<%=tdName %> type="text"/></td>
+				 					   				 		<td id="singleparam"><input class="dfinput" name=<%=tdName %> type="text"/></td>
 				 					   				<%
 				 					   					}
 				 					   					else {
@@ -303,7 +307,7 @@ $(function(){
 				 					   							String tdName = equipmentName + "_" + project + "_" + position;
 				 					   				 %>
 				 					   				 			<td><%=parameter %></td>
-				 					   				 			<td><input name=<%=tdName %> type="text"/></td>
+				 					   				 			<td><input class="dfinput" name=<%=tdName %> type="text"/></td>
 				 					   				<%
 				 					   						}
 				 					   					}

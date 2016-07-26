@@ -65,20 +65,20 @@
 		</project>
 	</equipment>
 	<equipment name="35kv干式变">
-		<project name="绝缘电阻(mω)">
+		<project name="绝缘电阻">
 			<position name="一次对二次及地">
 				<parameter>R15s</parameter>
 				<parameter>R60s</parameter>
 				<parameter>R600s</parameter>
-				<parameter>R60s/R15s</parameter>
-				<parameter>R600s/R60s</parameter>
+				<parameter>R60sR15s</parameter>
+				<parameter>R600sR60s</parameter>
 			</position>
 			<position name="二次对一次及地">
 				<parameter>R15s</parameter>
 				<parameter>R60s</parameter>
 				<parameter>R600s</parameter>
-				<parameter>R60s/R15s</parameter>
-				<parameter>R600s/R60s</parameter>
+				<parameter>R60sR15s</parameter>
+				<parameter>R600sR60s</parameter>
 			</position>
 			<position name="铁心对地">
 				<parameter>default</parameter>

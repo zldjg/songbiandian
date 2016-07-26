@@ -24,6 +24,7 @@ public class SaveTestReport extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		/**
 		 * 数据库连接对象以及表头ReportTitle对象
 		 */
@@ -57,7 +58,7 @@ public class SaveTestReport extends HttpServlet {
 	 			ArrayList<String> paramOfNoPosition = paramOfNoPositionMap.get(project);
 	 			if (paramOfNoPosition.size() == 1) {
 	 				String requestValue = request.getParameter(inputName);
-	 				String insertSql = "insert into " + inputName + "(default) values(?)";
+	 				String insertSql = "insert into " + SqlStringProcess.deleteSpecificChar(inputName, "/").toLowerCase() + "(test_value) values(?)";
 	 				try {
 						preparedStatement = connection.prepareStatement(insertSql);
 						preparedStatement.setString(1, requestValue);
@@ -71,7 +72,7 @@ public class SaveTestReport extends HttpServlet {
 	 				String[] requestValues = request.getParameterValues(inputName);
 	 				String tempOne = SqlStringProcess.generateFormatOne(paramOfNoPosition);
 	 				String tempTwo = SqlStringProcess.generateFormatTwo(paramOfNoPosition);
-	 				String insertSql = "insert into " + inputName + tempOne + " values" + tempTwo;
+	 				String insertSql = "insert into " + SqlStringProcess.deleteSpecificChar(inputName, "/").toLowerCase() + SqlStringProcess.deleteSpecificChar(tempOne, "/") + " values" + tempTwo;
 	 				try {
 	 					preparedStatement = connection.prepareStatement(insertSql);
 	 					for (int i = 1 ; i <= paramOfNoPosition.size() ; i++) {
@@ -101,10 +102,11 @@ public class SaveTestReport extends HttpServlet {
 	 				HashMap<String, ArrayList<String>> paramOfThisPositionMap = paramOfProjectMap.get(project);
 	 				ArrayList<String> paramOfThisPositionList = paramOfThisPositionMap.get(position);
 	 				String inputName = equipmentName + "_" + project + "_" + position;
+	 				//System.out.println(inputName);
 	 				if (paramOfThisPositionList != null) {
 	 					   	if (paramOfThisPositionList.size() == 1) {
 	 					   		String requestValue = request.getParameter(inputName);
-	 					   		String insertSql = "insert into " + inputName.toLowerCase() + "(default) values(?)";
+	 					   		String insertSql = "insert into " + SqlStringProcess.deleteSpecificChar(inputName, "/").toLowerCase() + "(test_value) values(?)";
 	 					   		try {
 									preparedStatement = connection.prepareStatement(insertSql);
 									preparedStatement.setString(1, requestValue);
@@ -115,10 +117,14 @@ public class SaveTestReport extends HttpServlet {
 								}
 	 					   	}
 	 					   	else {
+	 					   		System.out.println(inputName);
+	 					   		
 	 					   		String[] requestValues = request.getParameterValues(inputName);
+	 					   		
 	 					   		String tempOne = SqlStringProcess.generateFormatOne(paramOfThisPositionList);
 	 					   		String tempTwo = SqlStringProcess.generateFormatTwo(paramOfThisPositionList);
-	 					   		String insertSql = "insert into " + inputName.toLowerCase() + tempOne + " values" + tempTwo;
+	 					   		String insertSql = "insert into " + SqlStringProcess.deleteSpecificChar(inputName, "/").toLowerCase() + SqlStringProcess.deleteSpecificChar(tempOne, "/") + " values" + tempTwo;
+	 					   		//System.out.println(insertSql);
 	 					   		try {
 									preparedStatement = connection.prepareStatement(insertSql);
 									for (int i = 1 ; i <= paramOfThisPositionList.size() ; i++) {
