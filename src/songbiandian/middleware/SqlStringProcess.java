@@ -14,10 +14,8 @@ public class SqlStringProcess {
 			tempStringBuffer.append(parameter);
 			tempStringBuffer.append(",");
 		}
-		tempStringBuffer.append(")");
-		int index = tempStringBuffer.indexOf(")");
-		String generatedString = tempStringBuffer.substring(0, index-1) + ")";
-		return generatedString;
+		tempStringBuffer.append("test_report_name)");
+		return tempStringBuffer.toString();
 	}
 	
 	public static String generateFormatTwo(ArrayList<String> paramList) {
@@ -26,9 +24,8 @@ public class SqlStringProcess {
 			tempStringBuffer.append("?");
 			tempStringBuffer.append(",");
 		}
-		tempStringBuffer.append(")");
-		int index = tempStringBuffer.indexOf(")");
-		return tempStringBuffer.substring(0, index-1) + ")";
+		tempStringBuffer.append("?)");
+		return tempStringBuffer.toString();
 	}
 	
 	public static String deleteSpecificChar(String targetString, String charToBeDeleted) {

@@ -28,6 +28,8 @@ public class SaveTestReport extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		
+		
 		/**
 		 * 设置日期格式
 		 */
@@ -43,6 +45,10 @@ public class SaveTestReport extends HttpServlet {
 		 * 取出session并且把session中的数据取出来
 		 */
 		HttpSession session = request.getSession();
+		
+		//试验报告名称
+		String testReportName = (String) session.getAttribute("testreportname");
+		
 		ArrayList<TestReportMetaData> testReportMetaDatas = (ArrayList<TestReportMetaData>) session.getAttribute("report_test_metainfolist");
 		String equipmentName = (String)session.getAttribute("test_equipmentname");
 		List<String> projectsList = (List<String>)session.getAttribute("test_projectslist");
@@ -60,10 +66,11 @@ public class SaveTestReport extends HttpServlet {
 	 			ArrayList<String> paramOfNoPosition = paramOfNoPositionMap.get(project);
 	 			if (paramOfNoPosition.size() == 1) {
 	 				String requestValue = request.getParameter(inputName);
-	 				String insertSql = "insert into " + SqlStringProcess.deleteSpecificChar(inputName, "/").toLowerCase() + "(test_value) values(?)";
+	 				String insertSql = "insert into " + SqlStringProcess.deleteSpecificChar(inputName, "/").toLowerCase() + "(test_value,test_report_name) values(?,?)";
 	 				try {
 						preparedStatement = connection.prepareStatement(insertSql);
 						preparedStatement.setString(1, requestValue);
+						preparedStatement.setString(2, testReportName);
 						preparedStatement.executeUpdate();
 					} catch (SQLException e) {
 						System.out.println("插入数据失败!");
@@ -80,6 +87,7 @@ public class SaveTestReport extends HttpServlet {
 	 					for (int i = 1 ; i <= paramOfNoPosition.size() ; i++) {
 	 						preparedStatement.setString(i, requestValues[i-1]);
 	 					}
+	 					preparedStatement.setString(paramOfNoPosition.size()+1, testReportName);
 	 					preparedStatement.executeUpdate();
 	 				} catch (SQLException e) {
 	 					System.out.println("插入数据失败!");
@@ -95,10 +103,11 @@ public class SaveTestReport extends HttpServlet {
 	 				if (paramOfThisPositionList != null) {
 	 					if (paramOfThisPositionList.size() == 1) {
 	 						String requestValue = request.getParameter(inputName);
-	 					   	String insertSql = "insert into " + SqlStringProcess.deleteSpecificChar(inputName, "/").toLowerCase() + "(test_value) values(?)";
+	 					   	String insertSql = "insert into " + SqlStringProcess.deleteSpecificChar(inputName, "/").toLowerCase() + "(test_value,test_report_name) values(?,?)";
 	 					   	try {
 								preparedStatement = connection.prepareStatement(insertSql);
 								preparedStatement.setString(1, requestValue);
+								preparedStatement.setString(2, testReportName);
 								preparedStatement.executeUpdate();
 							} catch (SQLException e) {
 								System.out.println("插入数据失败!");
@@ -118,6 +127,7 @@ public class SaveTestReport extends HttpServlet {
 								for (int i = 1 ; i <= paramOfThisPositionList.size() ; i++) {
 									preparedStatement.setString(i, requestValues[i-1]);
 								}
+								preparedStatement.setString(paramOfThisPositionList.size()+1, testReportName);
 								preparedStatement.executeUpdate();
 							} catch (SQLException e) {
 								System.out.println("插入数据失败!");
@@ -135,8 +145,7 @@ public class SaveTestReport extends HttpServlet {
 		 * 首先我们需要获取一些请求参数
 		 */
 		
-		//试验报告名称
-		String testReportName = (String) session.getAttribute("testreportname");
+		
 		//试验性质
 		String testAttribute = (String) session.getAttribute("test_attribute");
 		//站名

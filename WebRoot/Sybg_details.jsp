@@ -1,5 +1,6 @@
+<%@page import="java.sql.ResultSet"%>
 <%@ page pageEncoding="utf-8" %>
-<%@ page import="java.util.*,songbiandian.middleware.*" %>
+<%@ page import="java.util.*,songbiandian.middleware.*,songbiandian.jdbc.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -18,6 +19,7 @@
 			td{
 				border:solid #000 1px;
 				height:40px;
+				text-align:center;
 			}
 			table.sub{
 				text-align:center;
@@ -110,11 +112,15 @@ $(function(){
     <span style="margin-top:3px; float:right; margin-right:10px;"><a onclick="history.go(-1)" class="longblue">返回</a></span>
 </div>
 <!--/当前位置-->
+<%
+DBConn dbConn = DBConn.getInstanceOfDBConn();
+String testReportName = (String)session.getAttribute("testreportname");
+ %>
 <div class="mainindex" id="mainindex">
     <div class="maincon">
         <div class="fangan-detailse">
             <div class="title1 font28">
-            	<span><%=session.getAttribute("testreportname") %></span> 试验报告
+            	<span><%=testReportName %></span> 试验报告
             </div>
         </div>
         
@@ -122,9 +128,9 @@ $(function(){
         	<table class="main">
         		<tr>
         			<td style="width:10%">试验单位</td>
-        			<td style="width:40%"><input name="test_unit" class="dfinput" style="width:200px" autofocus="autofocus"/></td>
+        			<td style="width:40%"></td>
         			<td style="width:10%">试验日期</td>
-        			<td style="width:40%"><input name="test_date" class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"></td>
         		</tr>
         	</table>
         	<table class="main">
@@ -140,9 +146,9 @@ $(function(){
         	<table class="main">
         		<tr>
         			<td style="width:15%">试验人员</td>
-        			<td style="width:18%"><input name="test_person" class="dfinput" style="width:80px"/></td>
+        			<td style="width:18%"></td>
         			<td style="width:15%">试验地点</td>
-        			<td style="width:18%"><input name="test_location" class="dfinput" style="width:80px"/></td>
+        			<td style="width:18%"></td>
         			<td style="width:15%">报告日期</td>
         			<td style="width:18%"><%=session.getAttribute("report_date") %></td>
         		</tr>
@@ -150,51 +156,51 @@ $(function(){
         	<table class="main">
         		<tr>
         			<td style="width:15%">报告人</td>
-        			<td style="width:18%"><input name="report-person" class="dfinput" style="width:80px"/></td>
+        			<td style="width:18%"></td>
         			<td style="width:15%">审核人</td>
-        			<td style="width:18%"><input name="assessor" class="dfinput" style="width:80px"/></td>
+        			<td style="width:18%"></td>
         			<td style="width:15%">批准人</td>
-        			<td style="width:18%"><input name="approver" class="dfinput" style="width:80px"/></td>
+        			<td style="width:18%"></td>
         		</tr>
         	</table>
         	<table class="main">
         		<tr>
         			<td style="width:10%">试验型号</td>
-        			<td style="width:40%"><input name="test_model" class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"></td>
         			<td style="width:10%">运行编号</td>
-        			<td style="width:40%"><input name="runtime_serialnumber" class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"></td>
         		</tr>
         	</table>
         	<table class="main">
         		<tr>
         			<td style="width:10%">额定电压</td>
-        			<td style="width:40%"><input name="rated_voltage" class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"></td>
         			<td style="width:10%">额定容量</td>
-        			<td style="width:40%"><input name="rated_capacity" class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"></td>
         		</tr>
         	</table>
         	<table class="main">
         		<tr>
         			<td style="width:10%">额定电流</td>
-        			<td style="width:40%"><input name="rated_current" class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"></td>
         			<td style="width:10%">连接组别</td>
-        			<td style="width:40%"><input name="connection_group" class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"></td>
         		</tr>
         	</table>
         	<table class="main">
         		<tr>
         			<td style="width:10%">生产厂家</td>
-        			<td style="width:40%"><input name="manufacture_name" class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"></td>
         			<td style="width:10%">生产日期</td>
-        			<td style="width:40%"><input name="manufacture_date" class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"></td>
         		</tr>
         	</table>
         	<table class="main">
         		<tr>
         			<td style="width:10%">安装地点</td>
-        			<td style="width:40%"><input name="install_location" class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"></td>
         			<td style="width:10%">出厂编号</td>
-        			<td style="width:40%"><input name="manufacture_number" class="dfinput" style="width:150px"/></td>
+        			<td style="width:40%"></td>
         		</tr>
         	</table>
         </div>
@@ -230,9 +236,14 @@ $(function(){
 				 							ArrayList<String> paramOfNoPosition = paramOfNoPositionMap.get(project);
 				 							if (paramOfNoPosition.size() == 1) {
 				 								String tdName = equipmentName + "_" + project;
+				 								String tableName = tdName.toLowerCase();
+				 								String findData = "select test_value from " + tableName + " where test_report_name='" + testReportName + "'";
+				 								ResultSet resultSet = dbConn.executeQuery(findData);
+				 								resultSet.next();
+				 								String value = resultSet.getString(1);
 				 					 %>
 				 					 			<tr>
-				 					 				<td class="sub"><input class="dfinput" name=<%=tdName %> type="text"  /></td>
+				 					 				<td class="sub"><%=value %></td>
 				 					 			</tr>
 				 					 <%
 				 					 		}
@@ -242,11 +253,16 @@ $(function(){
 				 					 <%
 				 					  			for (String param : paramOfNoPosition) {
 				 					  				String tdName = equipmentName + "_" + project;
+				 									String tableName = tdName.toLowerCase();
+				 									String findData = "select " + param + " from " + tableName + " where test_report_name='" + testReportName + "'";
+				 									ResultSet resultSet = dbConn.executeQuery(findData);
+				 									resultSet.next();
+				 									String value = resultSet.getString(1);
 				 					  %>
 				 					   				<td class="sub">
 				 					   					<%=param %>
 				 					   				</td>
-				 					   				<td class="sub"><input class="dfinput" name=<%=tdName %> type="text" /></td>
+				 					   				<td class="sub"><%=value %></td>
 				 					 <%
 				 					  			}
 				 					  %>
@@ -288,24 +304,38 @@ $(function(){
 				 					   				if (paramOfThisPositionList.size() == paramOfFirstLineList.size()) {
 				 					   					for (int j = 0 ; j < paramOfThisPositionList.size() ; j++) {
 				 					   						String tdName = equipmentName + "_" + project + "_" + position;
+				 					   						String tableName = SqlStringProcess.deleteSpecificChar(tdName, "/").toLowerCase();
+				 					   						String findData = "select " + paramOfThisPositionList.get(j) + " from " + tableName + " where test_report_name='" + testReportName + "'";
+				 					   						ResultSet resultSet = dbConn.executeQuery(findData);
+				 					   						resultSet.next();
+				 					   						String value = resultSet.getString(1);
 				 					   				 %>
-				 					   				 		<td class="sub"><input class="dfinput" name=<%=tdName %> type="text" /></td>
+				 					   				 		<td class="sub"><%=value %></td>
 				 					   				<%
 				 					   					}
 				 					   				}
 				 					   				else {
 				 					   					if (paramOfThisPositionList.size() == 1) {
 				 					   						String tdName = equipmentName + "_" + project + "_" + position;
+				 					   						String tableName = SqlStringProcess.deleteSpecificChar(tdName, "/").toLowerCase();
+				 					   						String findData = "select " + paramOfThisPositionList.get(0) + " from " + tableName + " where test_report_name='" + testReportName + "'";
+				 					   						ResultSet resultSet = dbConn.executeQuery(findData);
+				 					   						String value = resultSet.getString(1);
 				 					   				 %>
-				 					   				 		<td id="singleparam"><input class="dfinput" name=<%=tdName %> type="text"/></td>
+				 					   				 		<td id="singleparam"><%=value %></td>
 				 					   				<%
 				 					   					}
 				 					   					else {
 				 					   						for (String parameter : paramOfThisPositionList) {
 				 					   							String tdName = equipmentName + "_" + project + "_" + position;
+				 					   							String tableName = SqlStringProcess.deleteSpecificChar(tdName, "/").toLowerCase();
+				 					   							String findData = "select " + parameter + " from " + tableName + " where test_report_name='" + testReportName + "'";
+				 					   							ResultSet resultSet = dbConn.executeQuery(findData);
+				 					   							resultSet.next();
+				 					   							String value = resultSet.getString(1);
 				 					   				 %>
 				 					   				 			<td><%=parameter %></td>
-				 					   				 			<td><input class="dfinput" name=<%=tdName %> type="text"/></td>
+				 					   				 			<td><%=value %></td>
 				 					   				<%
 				 					   						}
 				 					   					}
