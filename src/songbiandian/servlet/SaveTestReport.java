@@ -46,8 +46,11 @@ public class SaveTestReport extends HttpServlet {
 		 */
 		HttpSession session = request.getSession();
 		
+		//使用的模板名称
+		String usedTemplateName = (String) session.getAttribute("testreporttemplatename");
+		
 		//试验报告名称
-		String testReportName = (String) session.getAttribute("testreportname");
+		String testReportName = request.getParameter("testreportname");
 		
 		ArrayList<TestReportMetaData> testReportMetaDatas = (ArrayList<TestReportMetaData>) session.getAttribute("report_test_metainfolist");
 		String equipmentName = (String)session.getAttribute("test_equipmentname");
@@ -156,12 +159,6 @@ public class SaveTestReport extends HttpServlet {
 		String testUnit = request.getParameter("test_unit");
 		//试验日期
 		String testDate = request.getParameter("test_date");
-		//天气
-		//String weather = (String) session.getAttribute("test_weather");
-		//温度
-		//String temperature = (String) session.getAttribute("test_temperature");
-		//湿度
-		//String humidity = (String) session.getAttribute("test_humidity");
 		//试验人员
 		String testPerson = request.getParameter("test_person");
 		//试验地点
@@ -197,7 +194,7 @@ public class SaveTestReport extends HttpServlet {
 
 		
 		
-		String insertTestReportTitleSql = "insert into test_report_metadata(test_report_name,station_name,equipment_type,test_attribute,test_person,test_date,report_date,test_unit,report_person,test_approver,test_location,assessor,test_model,runtime_serialnumber,rated_voltage,rated_current,rated_capacity,connection_group,manufacture_name,manufacture_date,install_location,manufacture_number,addedTime) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String insertTestReportTitleSql = "insert into test_report_metadata(test_report_name,station_name,equipment_type,test_attribute,test_person,test_date,report_date,test_unit,report_person,test_approver,test_location,assessor,test_model,runtime_serialnumber,rated_voltage,rated_current,rated_capacity,connection_group,manufacture_name,manufacture_date,install_location,manufacture_number,addedTime,test_report_template_name) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		String addedTime = "";
 		
@@ -227,6 +224,7 @@ public class SaveTestReport extends HttpServlet {
 			preparedStatement.setString(22, manufactureNumber);
 			addedTime = dateFormat.format(new Date());
 			preparedStatement.setString(23, addedTime);
+			preparedStatement.setString(24, usedTemplateName);
 			
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {

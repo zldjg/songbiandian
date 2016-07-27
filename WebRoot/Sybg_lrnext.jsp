@@ -116,7 +116,7 @@ $(function(){
     <div class="maincon">
         <div class="fangan-detailse">
             <div class="title1 font28">
-            	<span><%=session.getAttribute("testreportname") %></span> 试验报告
+            	<span><input class="dfinput" type="text" name="testreportname" placeholder="试验报告名称" style="font-size:10;height: 40px; width: 600px"/></span>
             </div>
         </div>
         

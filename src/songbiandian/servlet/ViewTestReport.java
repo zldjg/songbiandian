@@ -11,6 +11,7 @@ import javax.servlet.http.*;
 
 import org.dom4j.DocumentException;
 
+import songbiandian.javabean.TestReportTitle;
 import songbiandian.jdbc.*;
 import songbiandian.middleware.Parameter;
 import songbiandian.middleware.Position;
@@ -32,6 +33,7 @@ public class ViewTestReport extends HttpServlet {
 		
 		String testReportName = request.getParameter("testreportname");
 		
+		String testReportTemplateName = "";
 		/**
 		 * 用于存放试验项目的List
 		 */
@@ -53,10 +55,6 @@ public class ViewTestReport extends HttpServlet {
 		 * 创建数据库连接对象
 		 */
 		DBConn dbConn = DBConn.getInstanceOfDBConn();
-		/**
-		 * 获取数据库连接
-		 */
-		//Connection connection = dbConn.getConnection();
 		
 		/**
 		 * 设置请求格式
@@ -64,10 +62,40 @@ public class ViewTestReport extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		
+		/**
+		 * 从数据库里找出头部信息
+		 */
+		TestReportTitle testReportTitle = null;
+		String findTestReportTitleSql = "select test_report_ID,test_report_name,station_name,equipment_type,test_attribute,test_person,test_date,report_date,test_unit,report_person,test_approver,test_location,assessor,test_model,runtime_serialnumber,rated_voltage,rated_current,rated_capacity,connection_group,manufacture_name,manufacture_date,install_location,manufacture_number,addedTime,test_report_template_name from test_report_metadata where test_report_name='" + testReportName + "'";
+		ResultSet resultSet = dbConn.executeQuery(findTestReportTitleSql);
+		try {
+			while (resultSet.next()) {
+				testReportTitle = TestReportTitle.getInstanceOfTestReportTitle(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getString(11), resultSet.getString(12), resultSet.getString(13), resultSet.getString(14), resultSet.getString(15), resultSet.getString(16), resultSet.getString(17), resultSet.getString(18), resultSet.getString(19), resultSet.getString(20), resultSet.getString(21), resultSet.getString(22), resultSet.getString(23), resultSet.getString(24), resultSet.getString(25));
+			}
+		} catch (SQLException e) {
+			System.out.println("查找试验报告表头信息失败!");
+			e.printStackTrace();
+		}
+		
+		session.setAttribute("testreporttitle", testReportTitle);
+		
 		//找出模板对应的设备名称sql
-		String findEquipmentNameSql = "select test_report_template_equipmentName,test_report_template_ID from test_report_template_metadata where test_report_template_templateName='" + testReportName + "'";
+		String findTheTemplate = "select test_report_template_name from test_report_metadata where test_report_name='" + testReportName + "'";
+		
+		resultSet = dbConn.executeQuery(findTheTemplate);
+		
+		try {
+			while (resultSet.next()) {
+				testReportTemplateName = resultSet.getString(1);
+			}
+		} catch (SQLException e) {
+			System.out.println("查找试验报告对应的模板出现问题!");
+			e.printStackTrace();
+		}
+		
+		String findEquipmentNameSql = "select test_report_template_equipmentName,test_report_template_ID from test_report_template_metadata where test_report_template_templateName='" + testReportTemplateName + "'";
 				
-		ResultSet resultSet = dbConn.executeQuery(findEquipmentNameSql);
+		resultSet = dbConn.executeQuery(findEquipmentNameSql);
 		try {
 			while (resultSet.next()) {
 				equipmentName = resultSet.getString(1);

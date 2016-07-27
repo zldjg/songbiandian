@@ -1,6 +1,6 @@
 <%@page import="java.sql.ResultSet"%>
 <%@ page pageEncoding="utf-8" %>
-<%@ page import="java.util.*,songbiandian.middleware.*,songbiandian.jdbc.*" %>
+<%@ page import="java.util.*,songbiandian.middleware.*,songbiandian.jdbc.*,songbiandian.javabean.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -115,6 +115,7 @@ $(function(){
 <%
 DBConn dbConn = DBConn.getInstanceOfDBConn();
 String testReportName = (String)session.getAttribute("testreportname");
+TestReportTitle testReportTitle = (TestReportTitle)session.getAttribute("testreporttitle");
  %>
 <div class="mainindex" id="mainindex">
     <div class="maincon">
@@ -128,9 +129,9 @@ String testReportName = (String)session.getAttribute("testreportname");
         	<table class="main">
         		<tr>
         			<td style="width:10%">试验单位</td>
-        			<td style="width:40%"></td>
+        			<td style="width:40%"><%=testReportTitle.test_unit %></td>
         			<td style="width:10%">试验日期</td>
-        			<td style="width:40%"></td>
+        			<td style="width:40%"><%=testReportTitle.test_date %></td>
         		</tr>
         	</table>
         	<table class="main">
@@ -146,9 +147,9 @@ String testReportName = (String)session.getAttribute("testreportname");
         	<table class="main">
         		<tr>
         			<td style="width:15%">试验人员</td>
-        			<td style="width:18%"></td>
+        			<td style="width:18%"><%=testReportTitle.test_person %></td>
         			<td style="width:15%">试验地点</td>
-        			<td style="width:18%"></td>
+        			<td style="width:18%"><%=testReportTitle.test_location %></td>
         			<td style="width:15%">报告日期</td>
         			<td style="width:18%"><%=session.getAttribute("report_date") %></td>
         		</tr>
@@ -156,51 +157,51 @@ String testReportName = (String)session.getAttribute("testreportname");
         	<table class="main">
         		<tr>
         			<td style="width:15%">报告人</td>
-        			<td style="width:18%"></td>
+        			<td style="width:18%"><%=testReportTitle.report_person %></td>
         			<td style="width:15%">审核人</td>
-        			<td style="width:18%"></td>
+        			<td style="width:18%"><%=testReportTitle.assessor %></td>
         			<td style="width:15%">批准人</td>
-        			<td style="width:18%"></td>
+        			<td style="width:18%"><%=testReportTitle.test_approver %></td>
         		</tr>
         	</table>
         	<table class="main">
         		<tr>
         			<td style="width:10%">试验型号</td>
-        			<td style="width:40%"></td>
+        			<td style="width:40%"><%=testReportTitle.test_model %></td>
         			<td style="width:10%">运行编号</td>
-        			<td style="width:40%"></td>
+        			<td style="width:40%"><%=testReportTitle.runtime_serialnumber %></td>
         		</tr>
         	</table>
         	<table class="main">
         		<tr>
         			<td style="width:10%">额定电压</td>
-        			<td style="width:40%"></td>
+        			<td style="width:40%"><%=testReportTitle.rated_voltage %></td>
         			<td style="width:10%">额定容量</td>
-        			<td style="width:40%"></td>
+        			<td style="width:40%"><%=testReportTitle.rated_capacity %></td>
         		</tr>
         	</table>
         	<table class="main">
         		<tr>
         			<td style="width:10%">额定电流</td>
-        			<td style="width:40%"></td>
+        			<td style="width:40%"><%=testReportTitle.rated_current %></td>
         			<td style="width:10%">连接组别</td>
-        			<td style="width:40%"></td>
+        			<td style="width:40%"><%=testReportTitle.connection_group %></td>
         		</tr>
         	</table>
         	<table class="main">
         		<tr>
         			<td style="width:10%">生产厂家</td>
-        			<td style="width:40%"></td>
+        			<td style="width:40%"><%=testReportTitle.manufacture_name %></td>
         			<td style="width:10%">生产日期</td>
-        			<td style="width:40%"></td>
+        			<td style="width:40%"><%=testReportTitle.manufacture_date %></td>
         		</tr>
         	</table>
         	<table class="main">
         		<tr>
         			<td style="width:10%">安装地点</td>
-        			<td style="width:40%"></td>
+        			<td style="width:40%"><%=testReportTitle.install_location %></td>
         			<td style="width:10%">出厂编号</td>
-        			<td style="width:40%"></td>
+        			<td style="width:40%"><%=testReportTitle.manufacture_number %></td>
         		</tr>
         	</table>
         </div>

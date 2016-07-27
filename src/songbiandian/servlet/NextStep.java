@@ -249,7 +249,7 @@ public class NextStep extends HttpServlet {
 		/**
 		 * 接下来就是把数据放到session中去了
 		 */
-		session.setAttribute("testreportname", reportTemplateName);
+		session.setAttribute("testreporttemplatename", reportTemplateName);
 		session.setAttribute("stationname", stationName);
 		session.setAttribute("equipmenttype", equipmentType);
 		session.setAttribute("test_equipmentname", equipmentName);
