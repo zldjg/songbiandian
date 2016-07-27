@@ -85,7 +85,7 @@
 		</project>
 	</equipment>
 	<equipment name="35kv干式变">
-		<project name="绝缘电阻(mω)">
+		<project name="绝缘电阻">
 			<standard>R60S/R15S≥1.3 R600S/R60S≥1.5</standard>
 			<testinstrument>KYORITSU兆欧表3125</testinstrument>
 		</project>
@@ -131,7 +131,7 @@
 		</project>
 	</equipment>
 	<equipment name="66kV站用变">
-		<project name="绝缘电阻(MΩ)">
+		<project name="绝缘电阻">
 			<standard>铁心对地≥10MΩ</standard>
 			<testinstrument>KYORITSU兆欧表3125</testinstrument>
 		</project>
@@ -181,7 +181,7 @@
 		</project>
 	</equipment>
 	<equipment name="110kV二绕组">
-		<project name="绝缘电阻(MΩ)">
+		<project name="绝缘电阻">
 			<standard>R60S/R15S≥1.3 R600S/R60S≥1.5</standard>
 			<testinstrument>KYORITSU兆欧表3125</testinstrument>
 		</project>

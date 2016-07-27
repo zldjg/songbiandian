@@ -109,7 +109,7 @@ $(function(){
         
         <div class="fangan-detailse">
             <div class="title1 font28">
-            	<span><%=session.getAttribute("templatename") %></span> 试验报告
+            	<span><%=session.getAttribute("templatename") %></span> 试验报告模板
             </div>
         </div>
         <div class="reporttitle">

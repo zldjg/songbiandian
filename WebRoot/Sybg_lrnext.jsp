@@ -152,7 +152,7 @@ $(function(){
         	<table class="main">
         		<tr>
         			<td style="width:15%">报告人</td>
-        			<td style="width:18%"><input name="report-person" class="dfinput" style="width:80px"/></td>
+        			<td style="width:18%"><input name="report_person" class="dfinput" style="width:80px"/></td>
         			<td style="width:15%">审核人</td>
         			<td style="width:18%"><input name="assessor" class="dfinput" style="width:80px"/></td>
         			<td style="width:15%">批准人</td>

@@ -84,4 +84,24 @@
     	<servlet-name>test</servlet-name>
     	<url-pattern>/test</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>checkTemplate</servlet-name>
+        <servlet-class>songbiandian.servlet.CheckTemplate</servlet-class>
+        <enabled>true</enabled>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>checkTemplate</servlet-name>
+        <url-pattern>/checkTemplate</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>viewTestReport</servlet-name>
+        <servlet-class>songbiandian.servlet.ViewTestReport</servlet-class>
+        <enabled>true</enabled>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>viewTestReport</servlet-name>
+        <url-pattern>/viewTestReport</url-pattern>
+    </servlet-mapping>
 </web-app>

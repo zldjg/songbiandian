@@ -1,9 +1,53 @@
 <%@ page pageEncoding="utf-8" %>
+<%@ page import="java.util.*,songbiandian.middleware.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
+<style type="text/css">
+	table.main{
+				text-align:center;
+				width:70%;
+				margin:auto;
+				margin-top:-1px;
+				border-collapse:collapse;
+				border-spacing:0px;
+				border:none;
+			}
+			td{
+				border:solid #000 1px;
+				height:40px;
+			}
+			table.sub{
+				text-align:center;
+				margin-top:-1px;
+				margin-bottom:-1px;
+				margin-right:0px;
+				width:100%;
+				border-collapse:collapse;
+				border:none;
+			}
+			input.dfinput{
+				width:70px;
+				height:30px;
+			}
+			td.sub{
+				width:80px;
+				border:solid #000 1px;
+				height:40px;
+			}
+			td.instrument{
+				color:green;
+				border:solid #000 1px;
+				height:40px;
+			}
+			td.standard{
+				color:red;
+				border:solid #000 1px;
+				height:40px;
+			}
+</style>
 <link href="css/iestyle.css" rel="stylesheet" type="text/css" />
 <link href="css/select.css" rel="stylesheet" type="text/css" />
 <!--scrollbar style-->
@@ -68,326 +112,239 @@ $(function(){
 <!--/当前位置-->
 <div class="mainindex" id="mainindex">
     <div class="maincon">
-        <!--列表信息-->
-        
         <div class="fangan-detailse">
             <div class="title1 font28">
-            	<span>避雷器电气</span> 试验报告
+            	<span><%=session.getAttribute("testreportname") %></span> 试验报告
             </div>
         </div>
-        <div class="sybgtab-style" >
-            <table width="100%"  class="sybgtab" border="0" cellspacing="0" cellpadding="0">
-              <tr class="tr1">
-                <td width="16%" class="tdc2">站名</td>
-                <td width="16%">黄花店新</td>
-                <td width="16%" class="tdc2">运行编号</td>
-                <td width="16%">2063-3避雷器</td>
-                <td width="16%" class="tdc2">委托单位</td>
-                <td width="17%">天津电力公司</td>
-              </tr>
-              <tr class="tr1">
-                <td width="16%" class="tdc2">试验单位</td>
-                <td width="16%">电气试验与状态评价班</td>
-                <td width="16%" class="tdc2">试验性质</td>
-                <td width="16%">交接</td>
-                <td width="16%" class="tdc2">试验日期</td>
-                <td width="17%">2016-01-25</td>
-              </tr>
-              <tr class="tr1">
-                <td width="16%" class="tdc2">试验人员</td>
-                <td width="16%">孙大康</td>
-                <td width="16%" class="tdc2">试验地点</td>
-                <td width="16%">黄花店新</td>
-                <td width="16%" class="tdc2">报告日期</td>
-                <td width="17%">2016-01-26</td>
-              </tr>
-              <tr class="tr1">
-                <td width="16%" class="tdc2">报告人</td>
-                <td width="16%">高嵩</td>
-                <td width="16%" class="tdc2">审核人</td>
-                <td width="16%"></td>
-                <td width="16%" class="tdc2">批准人</td>
-                <td width="17%"></td>
-              </tr>
-              <tr class="tr1">
-                <td width="16%" class="tdc2">试验天气</td>
-                <td width="16%">晴</td>
-                <td width="16%" class="tdc2">温度</td>
-                <td width="16%">20°C</td>
-                <td width="16%" class="tdc2">湿度</td>
-                <td width="17%">20%</td>
-              </tr>
-            </table>
-            <table width="100%"  class="sybgtab" border="0" cellspacing="0" cellpadding="0">
-              <tr class="tr1">
-                <td width="25%" class="tdc2">相别</td>
-                <td width="25%" class="tdc1">A</td>
-                <td width="25%" class="tdc1">B</td>
-                <td width="25%" class="tdc1">C</td>
-              </tr>
-              <tr class="tr1">
-                <td width="25%" class="tdc2">厂名</td>
-                <td width="25%" class="tdc1">西安西电高压电器厂</td>
-                <td width="25%" class="tdc1">西安西电高压电器厂</td>
-                <td width="25%" class="tdc1">西安西电高压电器厂</td>
-              </tr>
-              <tr class="tr1">
-                <td width="25%" class="tdc2">节数</td>
-                <td width="25%" class="tdc1"></td>
-                <td width="25%" class="tdc1"></td>
-                <td width="25%" class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td width="25%" class="tdc2">出厂日期</td>
-                <td width="25%" class="tdc1">2015-03-01</td>
-                <td width="25%" class="tdc1">2015-03-01</td>
-                <td width="25%" class="tdc1">2015-03-01</td>
-              </tr>
-              <tr class="tr1">
-                <td width="25%" class="tdc2">出厂编号</td>
-                <td width="25%" class="tdc1">150607908</td>
-                <td width="25%" class="tdc1">150607909</td>
-                <td width="25%" class="tdc1">150607907</td>
-              </tr>
-              <tr class="tr1">
-                <td width="25%" class="tdc2">额定电压(kV)</td>
-                <td width="25%" class="tdc1">17</td>
-                <td width="25%" class="tdc1">17</td>
-                <td width="25%" class="tdc1">17</td>
-              </tr>
-              <tr class="tr1">
-                <td width="25%" class="tdc2">相位</td>
-                <td width="25%" class="tdc1">1</td>
-                <td width="25%" class="tdc1">2</td>
-                <td width="25%" class="tdc1">3</td>
-              </tr>
-              <tr class="tr1">
-                <td width="25%" class="tdc2">型号</td>
-                <td width="25%" class="tdc1">HY5WR-17/45 G600A</td>
-                <td width="25%" class="tdc1">HY5WR-17/45 G600A</td>
-                <td width="25%" class="tdc1">HY5WR-17/45 G600A</td>
-              </tr>
-              <tr class="tr1">
-                <td width="25%" class="tdc2">直流参考电压（kV）</td>
-                <td width="25%" class="tdc1"></td>
-                <td width="25%" class="tdc1"></td>
-                <td width="25%" class="tdc1"></td>
-              </tr>
-              <tr class="tr2">
-                <td width="25%" colspan="4" >温度：20.0℃  湿度：20.0%</td>
-              </tr>
-            </table>
-            
-            <table width="100%"  class="sybgtab" border="0" cellspacing="0" cellpadding="0">
-              <tr class="tr1">
-                <td width="25%" class="tdc" colspan="2">绝缘电阻(不分节)</td>
-                <td width="25%">耐压前绝缘电阻(MΩ)</td>
-                <td width="25%">耐压后绝缘电阻(MΩ)</td>
-              </tr>
-              <tr class="tr1">
-                <td width="25%" class="tdc1" rowspan="2">A</td>
-                <td width="25%" class="tdc1">本体</td>
-                <td width="25%" class="tdc1">100000</td>
-                <td width="25%" class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td width="25%" class="tdc1">底座</td>
-                <td width="25%" class="tdc1">1000</td>
-                <td width="25%" class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td width="25%" class="tdc1" rowspan="2">B</td>
-                <td width="25%" class="tdc1">本体</td>
-                <td width="25%" class="tdc1">100000</td>
-                <td width="25%" class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td width="25%" class="tdc1">底座</td>
-                <td width="25%" class="tdc1">1000</td>
-                <td width="25%" class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td width="25%" class="tdc1" rowspan="2">C</td>
-                <td width="25%" class="tdc1">本体</td>
-                <td width="25%" class="tdc1">100000</td>
-                <td width="25%" class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td width="25%" class="tdc1">底座</td>
-                <td width="25%" class="tdc1">1000</td>
-                <td width="25%" class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td colspan="4"> 试验仪器:绝缘电阻表 <span style="padding-left:300px;">仪器编号:1</span></td>
-              </tr>
-              <tr class="tr1">
-                <td colspan="4">项目结论:合格</td>
-              </tr>
-              <tr class="tr2">
-                <td colspan="4" >温度：20.0℃  湿度：20.0%</td>
-              </tr>
-            </table>
-            <table width="100%"  class="sybgtab" border="0" cellspacing="0" cellpadding="0">
-              <tr class="tr1">
-                <td width="20%" class="tdc" colspan="2">直流试验</td>
-                <td width="16%" class="tdc1">U1mA (kV)</td>
-                <td width="16%" class="tdc1">U1mA 初值(kV)</td>
-                <td width="16%" class="tdc1">U1mA 初值差(%)</td>
-                <td width="16%" class="tdc1">75%U1mA 下的电流(uA)</td>
-                <td width="16%" class="tdc1">75%U1mA 初值差(%)</td>
-              </tr>
-              <tr class="tr1">
-                <td width="10%" class="tdc1" rowspan="4">A</td>
-                <td width="10%" class="tdc1">第一节</td>
-                <td width="16%" class="tdc1">25.2</td>
-                <td width="16%" class="tdc1"></td>
-                <td width="16%" class="tdc1">0</td>
-                <td width="16%" class="tdc1">2</td>
-                <td width="16%" class="tdc1">2</td>
-              </tr>
-              <tr class="tr1">
-                <td class="tdc1">第二节</td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td class="tdc1">第三节</td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td class="tdc1">第四节</td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td width="10%" class="tdc1" rowspan="4">B</td>
-                <td width="10%" class="tdc1">第一节</td>
-                <td width="16%" class="tdc1">25.7</td>
-                <td width="16%" class="tdc1"></td>
-                <td width="16%" class="tdc1">0</td>
-                <td width="16%" class="tdc1">3</td>
-                <td width="16%" class="tdc1">0</td>
-              </tr>
-              <tr class="tr1">
-                <td class="tdc1">第二节</td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td class="tdc1">第三节</td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td class="tdc1">第四节</td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td width="10%" class="tdc1" rowspan="4">C</td>
-                <td width="10%" class="tdc1">第一节</td>
-                <td width="16%" class="tdc1">25.5</td>
-                <td width="16%" class="tdc1"></td>
-                <td width="16%" class="tdc1">0</td>
-                <td width="16%" class="tdc1">3</td>
-                <td width="16%" class="tdc1">0</td>
-              </tr>
-              <tr class="tr1">
-                <td class="tdc1">第二节</td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td class="tdc1">第三节</td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td class="tdc1">第四节</td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-                <td class="tdc1"></td>
-              </tr>
-              <tr class="tr1">
-                <td colspan="7"> 试验仪器:绝缘电阻表 <span style="padding-left:300px;">仪器编号:1</span></td>
-              </tr>
-              <tr class="tr1">
-                <td colspan="7">项目结论:合格</td>
-              </tr>
-              <tr class="tr2">
-                <td colspan="7" >温度：20.0℃  湿度：20.0%</td>
-              </tr>
-            </table>
-            
-            
-            <table width="100%"  class="sybgtab" border="0" cellspacing="0" cellpadding="0">
-              <tr class="tr1">
-                <td width="33%" class="tdc1">外观和计数器动作检查</td>
-                <td width="33%" class="tdc1">计数器动作检查</td>
-                <td width="34%" class="tdc1">外观检查</td>
-              </tr>
-              <tr class="tr1">
-                <td class="tdc1">A</td>
-                <td class="tdc1" >正常</td>
-                <td class="tdc1" >正常</td>
-              </tr>
-              <tr class="tr1">
-                <td class="tdc1">B</td>
-                <td class="tdc1" >正常</td>
-                <td class="tdc1" >正常</td>
-              </tr>
-              <tr class="tr1">
-                <td class="tdc1">C</td>
-                <td class="tdc1" >正常</td>
-                <td class="tdc1" >正常</td>
-              </tr>
-              <tr class="tr1">
-                <td colspan="3"> 试验仪器:绝缘电阻表 <span style="padding-left:300px;">仪器编号:1</span></td>
-              </tr>
-              <tr class="tr1">
-                <td colspan="3">项目结论:合格</td>
-              </tr>
-            </table>
-            <table width="100%"  class="sybgtab" border="0" cellspacing="0" cellpadding="0">
-              <tr class="tr1">
-                <td width="15%" class="tdc2">试验结论</td>
-                <td width="60%" >合规</td>
-                <td width="25%" class="tdc1" rowspan="2" height="100">单位盖章处</td>
-              </tr>
-              <tr class="tr1">
-                <td class="tdc2">备注</td>
-                <td ></td>
-              </tr>
-            </table>
+        
+        <div class="reporttitle">
+        	<table class="main">
+        		<tr>
+        			<td style="width:10%">试验单位</td>
+        			<td style="width:40%"><input name="test_unit" class="dfinput" style="width:200px" autofocus="autofocus"/></td>
+        			<td style="width:10%">试验日期</td>
+        			<td style="width:40%"><input name="test_date" class="dfinput" style="width:150px"/></td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:15%">天气</td>
+        			<td style="width:18%"><%=session.getAttribute("test_weather") %></td>
+        			<td style="width:15%">温度</td>
+        			<td style="width:18%"><%=session.getAttribute("test_temperature") %>&nbsp;℃</td>
+        			<td style="width:15%">湿度</td>
+        			<td style="width:18%"><%=session.getAttribute("test_humidity") %>&nbsp;%</td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:15%">试验人员</td>
+        			<td style="width:18%"><input name="test_person" class="dfinput" style="width:80px"/></td>
+        			<td style="width:15%">试验地点</td>
+        			<td style="width:18%"><input name="test_location" class="dfinput" style="width:80px"/></td>
+        			<td style="width:15%">报告日期</td>
+        			<td style="width:18%"><%=session.getAttribute("report_date") %></td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:15%">报告人</td>
+        			<td style="width:18%"><input name="report-person" class="dfinput" style="width:80px"/></td>
+        			<td style="width:15%">审核人</td>
+        			<td style="width:18%"><input name="assessor" class="dfinput" style="width:80px"/></td>
+        			<td style="width:15%">批准人</td>
+        			<td style="width:18%"><input name="approver" class="dfinput" style="width:80px"/></td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:10%">试验型号</td>
+        			<td style="width:40%"><input name="test_model" class="dfinput" style="width:150px"/></td>
+        			<td style="width:10%">运行编号</td>
+        			<td style="width:40%"><input name="runtime_serialnumber" class="dfinput" style="width:150px"/></td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:10%">额定电压</td>
+        			<td style="width:40%"><input name="rated_voltage" class="dfinput" style="width:150px"/></td>
+        			<td style="width:10%">额定容量</td>
+        			<td style="width:40%"><input name="rated_capacity" class="dfinput" style="width:150px"/></td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:10%">额定电流</td>
+        			<td style="width:40%"><input name="rated_current" class="dfinput" style="width:150px"/></td>
+        			<td style="width:10%">连接组别</td>
+        			<td style="width:40%"><input name="connection_group" class="dfinput" style="width:150px"/></td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:10%">生产厂家</td>
+        			<td style="width:40%"><input name="manufacture_name" class="dfinput" style="width:150px"/></td>
+        			<td style="width:10%">生产日期</td>
+        			<td style="width:40%"><input name="manufacture_date" class="dfinput" style="width:150px"/></td>
+        		</tr>
+        	</table>
+        	<table class="main">
+        		<tr>
+        			<td style="width:10%">安装地点</td>
+        			<td style="width:40%"><input name="install_location" class="dfinput" style="width:150px"/></td>
+        			<td style="width:10%">出厂编号</td>
+        			<td style="width:40%"><input name="manufacture_number" class="dfinput" style="width:150px"/></td>
+        		</tr>
+        	</table>
         </div>
-          <!--/列表信息-->
+        <br/>
+        <div class="reporttemplate">
+        	<table class="title" style="width:70%; margin:auto; text-align:center; margin-bottom:1px">
+        		<tr>
+        			<td>试验记录</td>
+        		</tr>
+        	</table>
+			<table class="main" cellpadding="0px">
+				<tr></tr>
+				<%
+					String equipmentName = (String)session.getAttribute("test_equipmentname");
+					List<String> projects = (List<String>)session.getAttribute("test_projectslist");
+					HashMap<String, ArrayList<String>> positionListMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_positionofprojectmap");
+					HashMap<String, ArrayList<String>> paramListMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_paramofpositionmap");
+					HashMap<String, String> standardMap = (HashMap<String, String>)session.getAttribute("test_standardMap");
+					HashMap<String, String> testInstrumentMap = (HashMap<String, String>)session.getAttribute("test_testinstrumentMap");
+					HashMap<String, ArrayList<String>> paramOfFirstLineMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_paramoffirstlinemap");
+					HashMap<String, HashMap<String, ArrayList<String>>> paramOfProjectMap = (HashMap<String, HashMap<String, ArrayList<String>>>)session.getAttribute("test_paramofprojectmap");
+					HashMap<String, ArrayList<String>> paramOfNoPositionMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_paramofnoposition");
+					for (String project : projects) {
+						HashMap<String, ArrayList<String>> paramOfSingleProjectMap = paramOfProjectMap.get(project);
+				 %>
+				 		<tr>
+				 			<td><%=project %></td>
+				 			<td>
+				 				<table class="sub">
+				 					<%
+				 						ArrayList<String> positionListOfProject = positionListMap.get(project);
+				 						if (positionListOfProject == null) {
+				 							ArrayList<String> paramOfNoPosition = paramOfNoPositionMap.get(project);
+				 							if (paramOfNoPosition.size() == 1) {
+				 								String tdName = equipmentName + "_" + project;
+				 					 %>
+				 					 			<tr>
+				 					 				<td class="sub"><input class="dfinput" name=<%=tdName %> type="text"  /></td>
+				 					 			</tr>
+				 					 <%
+				 					 		}
+				 					 		else {
+				 					  %>
+				 					  			<tr>
+				 					 <%
+				 					  			for (String param : paramOfNoPosition) {
+				 					  				String tdName = equipmentName + "_" + project;
+				 					  %>
+				 					   				<td class="sub">
+				 					   					<%=param %>
+				 					   				</td>
+				 					   				<td class="sub"><input class="dfinput" name=<%=tdName %> type="text" /></td>
+				 					 <%
+				 					  			}
+				 					  %>
+				 					  			</tr>
+				 					 <%
+				 					  			}
+				 					  		}
+				 					  	else {
+				 					  %>
+				 					   			<tr>
+				 					   				<td>试验位置</td>
+				 					 <%
+				 					   		ArrayList<String> paramOfFirstLineList = paramOfFirstLineMap.get(project);
+				 					   		if (paramOfFirstLineList != null) {
+				 					   			if (paramOfFirstLineList.size() == 1) {
+				 					  %>
+				 					   				 <td class="sub">试验值</td>
+				 					 <%
+				 					   			}
+				 					   			else {
+				 					   				for (String param : paramOfFirstLineList) {
+				 					  %>
+				 					   				 	<td class="sub"><%=param %></td>
+				 					 <%
+				 					   				}
+				 					   			}
+				 					   		}
+				 					  %>
+				 					   			</tr>
+				 					 <%
+				 					   		for (String position : positionListOfProject) {		
+				 				      %>
+				 					   			<tr>
+				 					   				<td style="width:120px"><%=position %></td>
+				 					   				<%
+				 					   				HashMap<String, ArrayList<String>> paramOfThisPositionMap = paramOfProjectMap.get(project);
+				 					   				ArrayList<String> paramOfThisPositionList = paramOfThisPositionMap.get(position);
+				 					   				if (paramOfThisPositionList != null) {
+				 					   				if (paramOfThisPositionList.size() == paramOfFirstLineList.size()) {
+				 					   					for (int j = 0 ; j < paramOfThisPositionList.size() ; j++) {
+				 					   						String tdName = equipmentName + "_" + project + "_" + position;
+				 					   				 %>
+				 					   				 		<td class="sub"><input class="dfinput" name=<%=tdName %> type="text" /></td>
+				 					   				<%
+				 					   					}
+				 					   				}
+				 					   				else {
+				 					   					if (paramOfThisPositionList.size() == 1) {
+				 					   						String tdName = equipmentName + "_" + project + "_" + position;
+				 					   				 %>
+				 					   				 		<td id="singleparam"><input class="dfinput" name=<%=tdName %> type="text"/></td>
+				 					   				<%
+				 					   					}
+				 					   					else {
+				 					   						for (String parameter : paramOfThisPositionList) {
+				 					   							String tdName = equipmentName + "_" + project + "_" + position;
+				 					   				 %>
+				 					   				 			<td><%=parameter %></td>
+				 					   				 			<td><input class="dfinput" name=<%=tdName %> type="text"/></td>
+				 					   				<%
+				 					   						}
+				 					   					}
+				 					   				}
+				 					   				 %>
+				 					   			</tr>
+				 					 <%
+				 					 			}
+				 					 		}
+				 					 	}
+				 					  %>
+				 				</table>
+				 			</td>
+				 		</tr>
+				 		<tr>
+				 			<td>试验标准</td>
+				 			<td class="standard"><%=standardMap.get(project) %></td>
+				 		</tr>
+				 		<tr>
+				 			<td>试验仪器</td>
+				 			<td class="instrument"><%=testInstrumentMap.get(project) %></td>
+				 		</tr>
+				 		<tr>
+				 			<td>项目结论</td>
+				 			<td>
+				 				<input type="text" size="9" placeholder="合格/不合格"/>
+				 			</td>
+				 		</tr>
+				 <%
+				 	}
+				  %>
+				 <tr>
+				 	<td>试验报告是否合格</td>
+				 	<td>
+				 		<input type="text" size="9" placeholder="合格/不合格"/>
+				 	</td>
+				 </tr>
+			</table>
+		</div>
     </div> 
 </div>
 

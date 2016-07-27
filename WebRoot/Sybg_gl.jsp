@@ -119,7 +119,7 @@ $(function(){
               			<td style="text-align:center"><%=testReport.getTestPerson() %></td>
               			<td style="text-align:center"><%=testReport.getTestDate() %></td>
               			<td style="text-align:center"><%=testReport.getReportDate() %></td>
-              			<td style="text-align:center"><a href="#">查看详细</a></td>
+              			<td style="text-align:center"><a href="viewTestReport?testreportname=<%=testReport.getTestReportName() %>">查看详细</a></td>
                 	</tr>
               <%
               	}

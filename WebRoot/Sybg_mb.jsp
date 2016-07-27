@@ -114,7 +114,7 @@ $(function(){
                				<td style="text-align:center"><%=template.getEquipmentType() %></td>
                				<td style="text-align:center">交接</td>
                				<td style="text-align:center"><%=template.getTemplateAddedTime() %></td>
-               				<td style="text-align:center"><a href="Sybg_mbdetails.jsp?templatename=<%=template.getTemplateName() %>">查看详细</a></td>
+               				<td style="text-align:center"><a href="checkTemplate?templatename=<%=template.getTemplateName() %>">查看详细</a></td>
                			</tr>
               <%
               		}
