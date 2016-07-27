@@ -22,6 +22,9 @@ public class FindAllTestReportInfos extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
+		
+		String requestFile = request.getParameter("requestfilename");
+		
 		/**
 		 * 用一个ArrayList存储所有的试验报告的元数据信息
 		 */
@@ -43,7 +46,19 @@ public class FindAllTestReportInfos extends HttpServlet {
 		}
 		
 		session.setAttribute("report_test_metainfolist", testReportsList);
-		response.sendRedirect("Sybg_gl.jsp");
+		
+		/**
+		 * 根据请求的页面,跳转到不同的页面
+		 */
+		if (requestFile.equals("Sybg_gl.jsp")) {
+			response.sendRedirect("Sybg_gl.jsp");
+		}
+		else if (requestFile.equals("Sybg_shh.jsp")) {
+			response.sendRedirect("Sybg_shh.jsp");
+		}
+		else {
+			response.sendRedirect("Sybg_tj.jsp");
+		}
 	}
 	
 	@Override

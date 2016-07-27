@@ -1,4 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@page import="songbiandian.javabean.TestReportMetaData"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -143,37 +145,50 @@ $(function(){
           <table width="100%" class="zltab" border="0" cellspacing="0" cellpadding="0">
               <tr class="tr0">
                 <td width="4%" class="tdc"><input name="chkAll" type="checkbox" id="chkAll" onclick="CheckAll(this.form)" value="checkbox" /></td>
-                <td width="26%">试验报告名称</td>
-                <td width="10%">站名</td>
-                <td width="10%">设备类型</td>
-                <td width="10%">试验性质</td>
-                <td width="8%">试验人员</td>
-                <td width="7%">是否审核</td>
-                <td width="10%">审核时间</td>
-                <td width="15%">操作</td>
+                <td style="text-align:center" width="26%">试验报告名称</td>
+                <td style="text-align:center" width="10%">站名</td>
+                <td style="text-align:center" width="12%">设备类型</td>
+                <td style="text-align:center" width="8%">试验性质</td>
+                <td style="text-align:center" width="8%">试验人员</td>
+                <td style="text-align:center" width="7%">是否审核</td>
+                <td style="text-align:center" width="10%">审核时间</td>
+                <td style="text-align:center" width="15%">操作</td>
               </tr>
-              <tr class="tr1">
-                <td class="tdc"><input name='ID' type='checkbox' onclick="unselectall()" value='1' /></td>
-                <td>利民道-220kV避雷器-电气-交接试验-20160126</td>
-                <td>黄花店新</td>
-                <td>避雷器</td>
-                <td>交接</td>
-                <td>孙大康</td>
-                <td>是</td>
-                <td>2015-10-13</td>
-                <td><a href="Sybg_details.jsp">查看详细</a></td>
-              </tr> 
-              <tr class="tr1">
-                <td class="tdc"><input name='ID' type='checkbox' onclick="unselectall()" value='2' /></td>
-                <td>利民道-220kV避雷器-电气-交接试验-20160127</td>
-                <td>黄花店新</td>
-                <td>避雷器</td>
-                <td>交接</td>
-                <td>孙大康</td>
-                <td>是</td>
-                <td>2015-10-13</td>
-                <td><a href="Sybg_details.jsp">查看详细</a></td>
-              </tr>                                   
+              <%
+              ArrayList<TestReportMetaData> testReportList = (ArrayList<TestReportMetaData>)session.getAttribute("report_test_metainfolist");
+              if (testReportList.size() == 0) {
+               %>
+              		<tr class="tr1">
+              			<td><input name='ID' type='checkbox' onclick="unselectall()" value='1'></input></td>
+              			<td></td>
+              			<td></td>
+              			<td></td>
+              			<td></td>
+              			<td></td>
+              			<td></td>
+              			<td></td>
+              			<td></td>
+              		</tr>
+              <%
+              }
+              else {
+              	for (TestReportMetaData testReport : testReportList) {
+               %>
+                	<tr class="tr1">
+                		<td class="tdc"><input name='ID' type='checkbox' onclick="unselectall()" value='1'></input></td>
+                		<td style="text-align:center"><%=testReport.getTestReportName() %></td>
+              			<td style="text-align:center"><%=testReport.getStationName() %></td>
+              			<td style="text-align:center"><%=testReport.getEquipmentType() %></td>
+              			<td style="text-align:center"><%=testReport.getTestAttribute() %></td>
+              			<td style="text-align:center"><%=testReport.getTestPerson() %></td>
+              			<td style="text-align:center">否</td>
+              			<td style="text-align:center"></td>
+              			<td style="text-align:center"><a href="#">查看详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">通过</a></td>
+                	</tr>
+              <%
+              	}
+              }
+               %>                                 
               <tr class="tr2">
                 <td colspan="9">
                 	<div id="paging1" class="page" style="float:right"></div>

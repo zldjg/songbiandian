@@ -42,9 +42,9 @@
         	<ul class="submenu">           
 			<li><a href="findAllTemplates"  target="mainFrame"><img src="images/menu_03.png" alt="" width="16" height="16" />&nbsp;&nbsp;试验模板管理</a></li>
             <!--li><a href="Sybg_gl.jsp" target="mainFrame"><img src="images/menu_03.png" alt="" width="16" height="16" />&nbsp;&nbsp;试验参数管理</a></li-->
-			<li><a href="findAllTestReportInfos"  target="mainFrame"><img src="images/menu_03.png" alt="" width="16" height="16" />&nbsp;&nbsp;试验报告管理</a></li>
-            <li><a href="Sybg_shh.jsp" target="mainFrame"><img src="images/menu_03.png" alt="" width="16" height="16" />&nbsp;&nbsp;试验报告审核</a></li>
-			<li><a href="Sybg_tj.jsp"  target="mainFrame"><img src="images/menu_03.png" alt="" width="16" height="16" />&nbsp;&nbsp;试验报告统计</a></li>
+			<li><a href="findAllTestReportInfos?requestfilename=Sybg_gl.jsp"  target="mainFrame"><img src="images/menu_03.png" alt="" width="16" height="16" />&nbsp;&nbsp;试验报告管理</a></li>
+            <li><a href="findAllTestReportInfos?requestfilename=Sybg_shh.jsp" target="mainFrame"><img src="images/menu_03.png" alt="" width="16" height="16" />&nbsp;&nbsp;试验报告审核</a></li>
+			<li><a href="findAllTestReportInfos?requestfilename=Sybg_tj.jsp"  target="mainFrame"><img src="images/menu_03.png" alt="" width="16" height="16" />&nbsp;&nbsp;试验报告统计</a></li>
 			</ul>
         </li>
         <li><a href="Zhengshu_gl.jsp" target="mainFrame"><img src="images/menu-user.png" alt="" width="16" height="16" />&nbsp;&nbsp;人员资质管理</a> 

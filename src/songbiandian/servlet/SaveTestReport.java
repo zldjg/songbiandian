@@ -3,12 +3,15 @@ package songbiandian.servlet;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import songbiandian.javabean.TestReportMetaData;
 import songbiandian.jdbc.*;
 //import songbiandian.javabean.*;
 import songbiandian.middleware.SqlStringProcess;
@@ -26,6 +29,10 @@ public class SaveTestReport extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		/**
+		 * 设置日期格式
+		 */
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		/**
 		 * 数据库相关对象
 		 */
 		DBConn dbConn = DBConn.getInstanceOfDBConn();
@@ -36,6 +43,7 @@ public class SaveTestReport extends HttpServlet {
 		 * 取出session并且把session中的数据取出来
 		 */
 		HttpSession session = request.getSession();
+		ArrayList<TestReportMetaData> testReportMetaDatas = (ArrayList<TestReportMetaData>) session.getAttribute("report_test_metainfolist");
 		String equipmentName = (String)session.getAttribute("test_equipmentname");
 		List<String> projectsList = (List<String>)session.getAttribute("test_projectslist");
 		HashMap<String, ArrayList<String>> positionListMap = (HashMap<String, ArrayList<String>>)session.getAttribute("test_positionofprojectmap");
@@ -129,6 +137,8 @@ public class SaveTestReport extends HttpServlet {
 		
 		//试验报告名称
 		String testReportName = (String) session.getAttribute("testreportname");
+		//试验性质
+		String testAttribute = (String) session.getAttribute("test_attribute");
 		//站名
 		String stationName = (String) session.getAttribute("stationname");
 		//设备类型
@@ -138,11 +148,11 @@ public class SaveTestReport extends HttpServlet {
 		//试验日期
 		String testDate = request.getParameter("test_date");
 		//天气
-		String weather = (String) session.getAttribute("test_weather");
+		//String weather = (String) session.getAttribute("test_weather");
 		//温度
-		String temperature = (String) session.getAttribute("test_temperature");
+		//String temperature = (String) session.getAttribute("test_temperature");
 		//湿度
-		String humidity = (String) session.getAttribute("test_humidity");
+		//String humidity = (String) session.getAttribute("test_humidity");
 		//试验人员
 		String testPerson = request.getParameter("test_person");
 		//试验地点
@@ -175,15 +185,59 @@ public class SaveTestReport extends HttpServlet {
 		String insatllLocation = request.getParameter("install_location");
 		//出厂编号
 		String manufactureNumber = request.getParameter("manufacture_number");
+
 		
-		String insertTestReportTitleSql = "insert into test_report_metadata(test_report_name,station_name,equipment_type,test_attribute,test_person,test_date,report_date,test_unit,report_person,test_approver,test_location,assessor,test_model,runtime_serialnumber,rated_voltage,rated_current,rated_capacity,connection_group,manufacture_name,manufacture_date,install_location,manufacture_number) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		
+		String insertTestReportTitleSql = "insert into test_report_metadata(test_report_name,station_name,equipment_type,test_attribute,test_person,test_date,report_date,test_unit,report_person,test_approver,test_location,assessor,test_model,runtime_serialnumber,rated_voltage,rated_current,rated_capacity,connection_group,manufacture_name,manufacture_date,install_location,manufacture_number,addedTime) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		
+		String addedTime = "";
+		
 		try {
 			preparedStatement = connection.prepareStatement(insertTestReportTitleSql);
-			//TO DO
+			preparedStatement.setString(1, testReportName);
+			preparedStatement.setString(2, stationName);
+			preparedStatement.setString(3, equipmentType);
+			preparedStatement.setString(4, testAttribute);
+			preparedStatement.setString(5, testPerson);
+			preparedStatement.setString(6, testDate);
+			preparedStatement.setString(7, reportDate);
+			preparedStatement.setString(8, testUnit);
+			preparedStatement.setString(9, reportPerson);
+			preparedStatement.setString(10, approver);
+			preparedStatement.setString(11, testLocation);
+			preparedStatement.setString(12, assessor);
+			preparedStatement.setString(13, testModel);
+			preparedStatement.setString(14, runtimeSerialNumber);
+			preparedStatement.setString(15, ratedVoltage);
+			preparedStatement.setString(16, ratedCurrent);
+			preparedStatement.setString(17, ratedCapacity);
+			preparedStatement.setString(18, connectionGroup);
+			preparedStatement.setString(19, manufactureName);
+			preparedStatement.setString(20, manufactureDate);
+			preparedStatement.setString(21, insatllLocation);
+			preparedStatement.setString(22, manufactureNumber);
+			addedTime = dateFormat.format(new Date());
+			preparedStatement.setString(23, addedTime);
+			
+			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("插入数据失败!");
 			e.printStackTrace();
 		}
+		
+		int testReportId = 0;
+		
+		String findTestReportIdSql = "select test_report_ID from test_report_metadata where addedTime='" + addedTime + "'";
+		ResultSet resultSet = dbConn.executeQuery(findTestReportIdSql);
+		try {
+			while (resultSet.next()) {
+				testReportId = resultSet.getInt(1);
+			}
+		} catch (SQLException e) {
+			System.out.println("查找试验报告ID失败!");
+		}
+		
+		testReportMetaDatas.add(TestReportMetaData.getInstanceOfTestReportMetaData(testReportId, testReportName, stationName, equipmentType, testAttribute, testPerson, testDate, reportDate));
 		
 		response.sendRedirect("Sybg_gl.jsp");
 	}

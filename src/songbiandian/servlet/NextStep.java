@@ -265,6 +265,7 @@ public class NextStep extends HttpServlet {
 		session.setAttribute("test_weather", weather);
 		session.setAttribute("test_temperature", temperature);
 		session.setAttribute("test_humidity", humidity);
+		session.setAttribute("test_attribute", testAttribute);
 		
 		/**
 		 * 跳转数据录入界面
