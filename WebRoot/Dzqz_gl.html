@@ -1,43 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="com.entity.*" import="java.util.*" import="com.Dao.UserDao"  import="com.Dao.GroupDao"%> 
-<%@ page import="java.io.*,java.util.*,java.sql.*"%>
-
-<%
-int pageSize = 3;
-int totalPage;
-UserDao ud = new UserDao();
-List<User> users = new ArrayList<User>();
-ShowRecordByPage p = new ShowRecordByPage();
-try{
-	int totalResult = ud.getUser().size();
-	 totalPage = (totalResult % pageSize) == 0 ?  totalResult / pageSize : totalResult / pageSize +1;
-	
-	int pageNow = 1;
-	String pageNows = request.getParameter("pageNow");
-	if(pageNows != null) {
-		pageNow = Integer.parseInt(pageNows);
-		if(pageNow < 1) pageNow = 1;
-		if(pageNow > totalPage) pageNow = totalPage;
-	}
-	
-	 p = ud.getUsersByPage(pageNow, pageSize);
-
-
-if(p != null) {
-	users = p.getDatas();}
-
-	
-}catch(Exception e){
-	throw new ServletException();
-}
-
-%> 
-   
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
 <link href="css/iestyle.css" rel="stylesheet" type="text/css" />
@@ -85,18 +48,6 @@ $(function(){
 	$("#end").text(t);
 })	
 </script>
-
-<script type="text/javascript">
-function del(){
-	document.forms.form1.action="user.do?method=del";
-	document.forms.form1.submit();
-}
-function edit(){
-	document.forms.form1.action="user.do?method=edit";
-	document.forms.form1.submit();
-}
-</script>
-
 <!--/select options-->
 </head>
 <body>
@@ -105,97 +56,102 @@ function edit(){
     <span>位置：</span>
     <ul class="placeul">
         <li>首页</li>
-        <li>系统设置</li>
-        <li>用户管理</li>
+        <li>电子签章管理</li>
+        <li>签章管理</li>
     </ul>
 </div>
 <!--/当前位置-->
 
 <div class="mainindex" id="mainindex">
-     <form name="form1"   action="" method="post" >
     <div class="maincon">
         <!--btns-->
         <ul class="btnOptions">
-          <li><a href="User_new.jsp"><img src="images/btn-add.jpg" width="75" height="35" /></a></li>
-          <li><input type="button" value="" style="width:75px;height:35px;border:0;background:url(images/btn-edit.jpg)" onclick="edit();"></li>
-          <li><input type="button" value=""  style="width:75px;height:35px;border:0;background:url(images/btn-del.jpg)" onclick="del();"></li>
+          <li><a href="Dzqz_new.jsp"><img src="images/btn-add.jpg" width="75" height="35" /></a></li>
+          <li><a href="Dzqz_new.html"><img src="images/btn-edit.jpg" width="75" height="35" /></a></li>
+          <li><a href="#"><img src="images/btn-del.jpg" width="75" height="35" /></a></li>
+          <li id="searchbtn"><img src="images/btn-sear.jpg" width="75" height="35" /></li>
 
         </ul>
         <!--/btns-->
         <!--列表信息-->
         <div class="ziliaobox">
-  
-    	   
+        
+        	<table width="100%"  class="zltab" border="0" cellspacing="0" cellpadding="0" id="daorutable" style="display:none">
+              <tr class="tr0">
+                <td colspan="4" class="tdc">资料导入</td>
+              </tr>
+              <tr class="tr1">
+                <td width="10%" class="tdc2">上传文件：</td>
+                <td width="90%" colspan="5"><input name="" type="text" class="dfinput" style="width:80%; float:left" />  <a href="#" class="longgrey">上传</a></td>
+              </tr>
+              </tr>
+              <tr class="tr1">
+                <td width="10%"></td>
+                <td width="90%" colspan="3">
+                    <a href="#" target="_blank" class="longred">确定</a>
+                </td>
+              </tr>
+            </table>
+        	<table width="100%"  class="zltab" border="0" cellspacing="0" cellpadding="0" id="searchtable" style="display:none">
+              <tr class="tr0">
+                <td colspan="5" class="tdc">查询条件</td>
+              <tr class="tr1">
+                <td width="10%" class="tdc2">签章名称：</td>
+                <td width="20%"><input name="" type="text" class="dfinput" style=" width:85%;" placeholder="" /></td>
+                <td width="10%" class="tdc2">创建时间：</td>
+                <td width="20%"><input class="inline laydate-icon" id="start" style=" width:80%">
+                </td>
+                <td width="40%">
+                    <a href="#" target="_blank" class="longred">查询</a>
+                </td>
+              </tr>
+            </table>  
+            
+    	<form name="del" method="post" action="#">    
           <table width="100%" class="zltab" border="0" cellspacing="0" cellpadding="0">
               <tr class="tr0">
                 <td width="4%" class="tdc"><input name="chkAll" type="checkbox" id="chkAll" onclick=CheckAll(this.form) value="checkbox"></td>
                 <td width="4%" class="tdc">序号</td>
-                <td width="20%">真实姓名</td>
-                <td width="20%">登录名</td>
-                <td width="13%">管理组</td>
-                <td width="13%">最后登录时间</td>
-                <td width="13%">最后登录IP</td>
-                <td width="13%">状态</td>
+                <td width="20%">签章名称</td>
+                <td width="20%">签章内容</td>
+                <td width="13%">创建时间</td>
+                <td width="13%">创建人</td>
+                <td width="13%">附件下载</td>
+                <td width="13%">操作</td>
               </tr>
-            <%
-            int state;
-            String status;
-            for(int i = 0; i<users.size();i++) {
-         	   User user = (User)users.get(i);
-         	  state = user.getState();
-         	 if(state == 0){
-         		 status ="启用";
-         	 }else{
-         		 status="禁用";
-         	 }
-         	   
-%>
               <tr class="tr1">
-                <td class="tdc"><input name='userid' id="userid" type='checkbox' value='<%=user.getUserid() %>'></td>
-                <td class="tdc"><%=(i+1)%></td>
-                <td><%=user.getName() %></td>
-                <td><%=user.getUsername() %></td>
-                <td><%=user.getGroup() %></td>
+                <td class="tdc"><input name='ID' type='checkbox' onClick="unselectall()" value='1'></td>
+                <td class="tdc">1</td>
                 <td></td>
                 <td></td>
-                <td class="tdc"><%=status %></td>
- <%}%>  
-                
-                <tr >
-    		<td colspan="8">
-    		<%if(p != null) {%>
-    			<div  align="right"  class="page" style="float:right">
-    			
-    				当前页<%=p.getPageNow() %>
-    				&nbsp;&nbsp;
-    				
-    				<% for(int i =0;i<totalPage;i++){ %>
-    	<a href="userList?pageNow=<%=(i+1) %>" ><%=(i+1) %></a>
-    	<%} %>    				
-    				<%if(p.getPageNow() > 1) { %>
-    				<a href="userList?pageNow=<%=p.getPageNow()-1 %>" >上一页</a>
-    				
-    				<% } if(p.getPageNow() <totalPage ) { %>
-    				<a href="userList?pageNow=<%=p.getPageNow()+1 %>" >下一页</a>
-    				<% } %>
-    			</div>
-    			<% } %>
-    		</td>
-    	</tr>              
-               <tr class="tr2">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a class="yulan1">预览</a></td>
+              </tr> 
+              <tr class="tr1">
+                <td class="tdc"><input name='ID' type='checkbox' onClick="unselectall()" value='1'></td>
+                <td class="tdc">2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a class="yulan1">预览</a></td>
+              </tr>                                   
+              <tr class="tr2">
                 <td colspan="12">
                 	<div id="paging1" class="page" style="float:right"></div>
                 </td>
-              </tr>             
-              </table>
-          
+              </tr>
+            </table>
+          </form>
           </div>
           <!--/列表信息-->
     </div> 
-    </form>
 </div>
- 
- <div class="popupLayerL">
+
+<div class="popupLayerL">
     <div id="blkh1" class="Mapdetails">
         <div class="detail-main">
             <a href="javascript:void(0)" class="closed1"></a>
@@ -206,8 +162,7 @@ function edit(){
     </div>
 </div>
 
-
-
+<script type="text/javascript" src="js/popup_layer.js"></script>
 <!--height Resize js-->
 <script type="text/javascript">
 $(document).ready(function() {	

@@ -1,5 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"  import="java.util.*"
     pageEncoding="UTF-8"%>
+ <%@ page import="com.entity.*" %>
+ <%
+ User user = (User)request.getAttribute("user");
+
+%>  
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -50,6 +56,30 @@ $(function(){
 	$("#end").text(t);
 })	
 </script>
+<script type="text/javascript">
+String.prototype.trim = function(){  
+    // 用正则表达式将前后空格  
+    // 用空字符串替代。  
+    return this.replace(/(^\s*)|(\s*$)/g, "");  
+}
+
+function Check()
+{
+	if (document.getElementById('username').value.trim() == '') {
+		alert('登入名不能为空');
+		document.getElementById('username').focus();
+		return false;
+	}
+ 
+	if (document.getElementById("password").value.trim() == ''){
+		alert('密码不能为空');
+		document.getElementById("password").focus();
+		return false;
+	}
+
+	
+}
+</script>
 <!--/select options-->
 </head>
 <body>
@@ -59,61 +89,63 @@ $(function(){
     <ul class="placeul">
         <li>首页</li>
         <li>系统设置</li>
-        <li>权限设置</li>
-        <li>添加组</li>
+        <li>用户管理</li>
+        <li>添加</li>
     </ul>
 </div>
 <!--/当前位置-->
 <div class="mainindex" id="mainindex">
-<form action="group.do?method=add" method="post" >
     <div class="maincon">
         <!--列表信息-->
         <div class="ziliaobox">
+        <form action="user.do?method=modify" method="post" onsubmit="return Check();">
             <table width="100%"  class="zltab" border="0" cellspacing="0" cellpadding="0">
               <tr class="tr0">
-                <td colspan="2" class="tdc">添加管理组信息</td>
-              <tr class="tr1">
-                <td width="20%" style="text-align:right">组名称：</td>
+                <td colspan="2" class="tdc">修改用户信息</td>
+                <td><input type="hidden" name="userid" value="<%=user.getUserid()%>"></td></tr>
+                <tr class="tr1">
+                <td width="20%" style="text-align:right">真实姓名：</td>
                 <td width="80%">
-                    <input name="groupname" type="text" class="dfinput" style=" width:85%;" />
+                    <input name="name" id="name" type="text" value="<%=user.getName() %> " class="dfinput" style=" width:85%;" placeholder="" />
+                </td>
+              </tr>
+                <tr class="tr1">
+                <td width="20%" style="text-align:right">登录名：</td>
+                <td width="80%">
+                    <input name="username" id="username" type="text" value="<%=user.getUsername() %> " class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
               </tr>
               <tr class="tr1">
-                <td width="20%"  style="text-align:right">组描述：</td>
-                <td width="80%"><input name="descriptor" type="text" class="dfinput" style=" width:85%;"  /></td>
+                <td width="20%"  style="text-align:right">登录密码：</td>
+                <td width="80%"><input name="password" id="password" type="text" value="<%= user.getPassword()%>" class="dfinput" style=" width:85%;" placeholder="" /></td>
               </tr>
-             <tr  class="tr1">
-                <td width="20%"  style="text-align:right">权限：</td>
+              <tr class="tr1">
+                <td width="20%"  style="text-align:right">确认密码：</td>
+                <td width="80%"><input name="" type="text" value="<%= user.getPassword()%>" class="dfinput" style=" width:85%;" placeholder="" /></td>
+              </tr>
+              <tr class="tr1">
+                <td width="20%"  style="text-align:right">所属业务组：</td>
                 <td width="80%">
-                    <select class="select1" name="authority"  style=" width:85%">
-                        <option>9999</option>
-                        <option>999</option>
+                    <select class="select1"  name="groupname" style=" width:85%">
+                        <option>请选择</option>
                     </select>
                 </td>
-              </tr> 
-              <tr class="tr1">
-                <td width="20%"  style="text-align:right">特调试验管理：</td>
-                <td width="80%"><input name='ID' type='checkbox' onClick="unselectall()" value='1'> 模板管理  <input name='ID' type='checkbox' onClick="unselectall()" value='2'> 方案管理 <input name='ID' type='checkbox' onClick="unselectall()" value='3'> 方案审批 <input name='ID' type='checkbox' onClick="unselectall()" value='4'>  方案查询</td>
               </tr>
               <tr class="tr1">
-                <td width="20%"  style="text-align:right">计量试验设备管理：</td>
-                <td width="80%"><input name='ID' type='checkbox' onClick="unselectall()" value='5'> 设备台账管理  <input name='ID' type='checkbox' onClick="unselectall()" value='6'> 设备台账审核 <input name='ID' type='checkbox' onClick="unselectall()" value='7'> 设备台账统计</td>
+                <td width="20%"  style="text-align:right">职务：</td>
+                <td width="80%"><input name="rank" type="text" value="<%= user.getRank()%>" class="dfinput" style=" width:85%;" placeholder="" /></td>
               </tr>
               <tr class="tr1">
-                <td width="20%"  style="text-align:right">试验报告管理：</td>
-                <td width="80%"><input name='ID' type='checkbox' onClick="unselectall()" value='8'> 试验模板管理  <input name='ID' type='checkbox' onClick="unselectall()" value='9'> 试验报告管理 <input name='ID' type='checkbox' onClick="unselectall()" value='10'> 试验报告审核 <input name='ID' type='checkbox' onClick="unselectall()" value='11'>  试验报告统计</td>
+                <td width="20%"  style="text-align:right">办公室座机：</td>
+                <td width="80%"><input name="phonenumber" type="text" value="<%= user.getPhonenumber()%>" class="dfinput" style=" width:85%;" placeholder="" /></td>
               </tr>
               <tr class="tr1">
-                <td width="20%"  style="text-align:right">人员资质管理：</td>
-                <td width="80%"><input name='ID' type='checkbox' onClick="unselectall()" value='12'> 资质证书管理</td>
+                <td width="20%"  style="text-align:right">手机：</td>
+                <td width="80%"><input name="mobilephone" type="text"  value="<%= user.getMobilephone()%>"class="dfinput" style=" width:85%;" placeholder="" /></td>
               </tr>
               <tr class="tr1">
-                <td width="20%"  style="text-align:right">电子签章管理：</td>
-                <td width="80%"><input name='ID' type='checkbox' onClick="unselectall()" value='13'> 签章管理</td>
-              </tr>
-              <tr class="tr1">
-                <td width="20%"  style="text-align:right">系统设置：</td>
-                <td width="80%"><input name='ID' type='checkbox' onClick="unselectall()" value='14'> 权限设置 <input name='ID' type='checkbox' onClick="unselectall()" value='15'> 用户管理</td>
+                <td width="20%"  style="text-align:right">E-mail：</td>
+                <td width="80%"><input name="email" type="text"  value="<%= user.getEmail()%>" class="dfinput" style=" width:85%;" placeholder="" /></td>
               </tr>
               <tr class="tr1">
                 <td width="20%"  style="text-align:right">状态：</td>
@@ -127,14 +159,14 @@ $(function(){
               <tr class="tr1">
                 <td width="20%"></td>
                 <td width="80%" colspan="3">
-                    <input type="submit" class="longblue" value="保存"> <a onclick="history.go(-1)" class="longgrey">取消</a>
+                     <input type="submit" value="保存" class="longblue"><a onclick="history.go(-1)" class="longgrey">取消</a>
                 </td>
               </tr>
             </table>
+            </form>
         </div>
           <!--/列表信息-->
     </div> 
-    </form>
 </div>
 
 

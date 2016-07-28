@@ -1,5 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import="java.util.*"
     pageEncoding="UTF-8"%>
+ <%@ page import="com.entity.*" %>
+ <%
+ Managroup managroup = (Managroup)request.getAttribute("managroup");
+ 
+
+
+%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -65,29 +72,32 @@ $(function(){
 </div>
 <!--/当前位置-->
 <div class="mainindex" id="mainindex">
-<form action="group.do?method=add" method="post" >
+<form action="group.do?method=modify" method="post" >
     <div class="maincon">
         <!--列表信息-->
         <div class="ziliaobox">
             <table width="100%"  class="zltab" border="0" cellspacing="0" cellpadding="0">
               <tr class="tr0">
-                <td colspan="2" class="tdc">添加管理组信息</td>
+                <td colspan="2" class="tdc">修改管理组信息</td>
+                 <td><input type="hidden" name="groupid" value="<%= managroup.getGroup_id()%>"></td></tr>
               <tr class="tr1">
                 <td width="20%" style="text-align:right">组名称：</td>
                 <td width="80%">
-                    <input name="groupname" type="text" class="dfinput" style=" width:85%;" />
+                    <input name="groupname" type="text" value="<%=managroup.getGroupname()%>" class="dfinput" style=" width:85%;" />
                 </td>
               </tr>
               <tr class="tr1">
                 <td width="20%"  style="text-align:right">组描述：</td>
-                <td width="80%"><input name="descriptor" type="text" class="dfinput" style=" width:85%;"  /></td>
+                <td width="80%"><input name="descriptor" type="text"  value="<%=managroup.getDescriptor()%>" class="dfinput" style=" width:85%;"  /></td>
               </tr>
              <tr  class="tr1">
                 <td width="20%"  style="text-align:right">权限：</td>
                 <td width="80%">
-                    <select class="select1" name="authority"  style=" width:85%">
+                    <select class="select1" name="authority" value="<%=managroup.getAuthority()%>" style=" width:85%">
                         <option>9999</option>
                         <option>999</option>
+                        <option>99</option>
+                        <option>9</option>
                     </select>
                 </td>
               </tr> 

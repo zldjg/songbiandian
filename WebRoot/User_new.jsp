@@ -1,16 +1,17 @@
-<%@ page pageEncoding="utf-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
 <link href="css/iestyle.css" rel="stylesheet" type="text/css" />
 <link href="css/select.css" rel="stylesheet" type="text/css" />
 <!--scrollbar style-->
-<link href="css/perfect-scrollbar.css" rel="stylesheet" />
+<link href="css/perfect-scrollbar.css" rel="stylesheet">
 <!--/scrollbar style-->
 <!--menu style-->
-<link href="css/style-menu.css" rel="stylesheet" />
+<link href="css/style-menu.css" rel="stylesheet">
 <!--/menu style-->
 <!--分页插件style-->
 <link type="text/css" rel="stylesheet" href="css/simplePagination.css"/>
@@ -49,6 +50,30 @@ $(function(){
 	$("#end").text(t);
 })	
 </script>
+<script type="text/javascript">
+String.prototype.trim = function(){  
+    // 用正则表达式将前后空格  
+    // 用空字符串替代。  
+    return this.replace(/(^\s*)|(\s*$)/g, "");  
+}
+
+function Check()
+{
+	if (document.getElementById('username').value.trim() == '') {
+		alert('登入名不能为空');
+		document.getElementById('username').focus();
+		return false;
+	}
+ 
+	if (document.getElementById("password").value.trim() == ''){
+		alert('密码不能为空');
+		document.getElementById("password").focus();
+		return false;
+	}
+
+	
+}
+</script>
 <!--/select options-->
 </head>
 <body>
@@ -67,63 +92,71 @@ $(function(){
     <div class="maincon">
         <!--列表信息-->
         <div class="ziliaobox">
+        <form action="user.do?method=add" method="post" onsubmit="return Check();">
             <table width="100%"  class="zltab" border="0" cellspacing="0" cellpadding="0">
               <tr class="tr0">
                 <td colspan="2" class="tdc">添加用户信息</td>
+                <tr class="tr1">
+                <td width="20%" style="text-align:right">真实姓名：</td>
+                <td width="80%">
+                    <input name="name" id="name" type="text" class="dfinput" style=" width:85%;" placeholder="" />
+                </td>
               </tr>
               <tr class="tr1">
                 <td width="20%" style="text-align:right">登录名：</td>
                 <td width="80%">
-                    <input name="" type="text" class="dfinput" style=" width:85%;" />
+                    <input name="username" id="username" type="text" class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
               </tr>
               <tr class="tr1">
                 <td width="20%"  style="text-align:right">登录密码：</td>
-                <td width="80%"><input name="" type="text" class="dfinput" style="width:85%" /></td>
+                <td width="80%"><input name="password" id="password" type="text" class="dfinput" style=" width:85%;" placeholder="" /></td>
               </tr>
               <tr class="tr1">
                 <td width="20%"  style="text-align:right">确认密码：</td>
-                <td width="80%"><input name="" type="text" class="dfinput" style=" width:85%;"/></td>
+                <td width="80%"><input name="" type="text" class="dfinput" style=" width:85%;" placeholder="" /></td>
               </tr>
               <tr class="tr1">
                 <td width="20%"  style="text-align:right">所属业务组：</td>
                 <td width="80%">
-                    <select class="select1"   style=" width:85%">
+                    <select class="select1"  name="groupname" style=" width:85%">
                         <option>请选择</option>
                     </select>
                 </td>
               </tr>
               <tr class="tr1">
                 <td width="20%"  style="text-align:right">职务：</td>
-                <td width="80%"><input name="" type="text" class="dfinput" style=" width:85%;" /></td>
+                <td width="80%"><input name="rank" type="text" class="dfinput" style=" width:85%;" placeholder="" /></td>
               </tr>
               <tr class="tr1">
                 <td width="20%"  style="text-align:right">办公室座机：</td>
-                <td width="80%"><input name="" type="text" class="dfinput" style=" width:85%;" /></td>
+                <td width="80%"><input name="phonenumber" type="text" class="dfinput" style=" width:85%;" placeholder="" /></td>
               </tr>
               <tr class="tr1">
                 <td width="20%"  style="text-align:right">手机：</td>
-                <td width="80%"><input name="" type="text" class="dfinput" style=" width:85%;" /></td>
+                <td width="80%"><input name="mobilephone" type="text" class="dfinput" style=" width:85%;" placeholder="" /></td>
               </tr>
               <tr class="tr1">
                 <td width="20%"  style="text-align:right">E-mail：</td>
-                <td width="80%"><input name="" type="text" class="dfinput" style=" width:85%;" /></td>
+                <td width="80%"><input name="email" type="text" class="dfinput" style=" width:85%;" placeholder="" /></td>
               </tr>
               <tr class="tr1">
                 <td width="20%"  style="text-align:right">状态：</td>
                 <td width="80%">
-                    <select class="select1"   style=" width:85%">
+                    <select class="select1"  name="state" style=" width:85%">
                         <option>启用</option>
+                        <option>禁用</option>
                     </select>
                 </td>
               </tr>
               <tr class="tr1">
                 <td width="20%"></td>
                 <td width="80%" colspan="3">
-                    <a href="Zhengshu_gl.jsp" class="longblue">保存</a> <a onclick="history.go(-1)" class="longgrey">取消</a>
+                     <input type="submit" value="保存" class="longblue"><a onclick="history.go(-1)" class="longgrey">取消</a>
                 </td>
               </tr>
             </table>
+            </form>
         </div>
           <!--/列表信息-->
     </div> 
@@ -169,7 +202,7 @@ var start = {
     istoday: false,
     choose: function(datas){
          end.min = datas; //开始日选好后，重置结束日的最小日期
-         end.start = datas; //将结束日的初始值设定为开始日
+         end.start = datas //将结束日的初始值设定为开始日
     }
 };
 
@@ -182,7 +215,7 @@ var start2 = {
     istoday: false,
     choose: function(datas){
          end.min = datas; //开始日选好后，重置结束日的最小日期
-         end.start = datas; //将结束日的初始值设定为开始日
+         end.start = datas //将结束日的初始值设定为开始日
     }
 };
 var end = {

@@ -104,4 +104,81 @@
         <servlet-name>viewTestReport</servlet-name>
         <url-pattern>/viewTestReport</url-pattern>
     </servlet-mapping>
+     <servlet>
+        <servlet-name>UserLoginServlet</servlet-name>
+        <servlet-class>com.servlet.userLoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserLoginServlet</servlet-name>
+        <url-pattern>/UserLogin</url-pattern>
+    </servlet-mapping>
+    
+      <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>com.servlet.userServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/user.do</url-pattern>
+    </servlet-mapping>     
+    
+    <servlet>
+        <servlet-name>SignatureAddServlet</servlet-name>
+        <servlet-class>com.servlet.signatureServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SignatureAddServlet</servlet-name>
+        <url-pattern>/signatureAdd</url-pattern>
+    </servlet-mapping>
+    
+   <servlet>
+        <servlet-name>CertificateAddServlet</servlet-name>
+        <servlet-class>com.servlet.certificateServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CertificateAddServlet</servlet-name>
+        <url-pattern>/zhengshuAdd</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>StandingAddServlet</servlet-name>
+        <servlet-class>com.servlet.standingServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StandingAddServlet</servlet-name>
+        <url-pattern>/standingAdd</url-pattern>
+        </servlet-mapping>
+    <servlet>
+        <servlet-name>ManagroupServlet</servlet-name>
+        <servlet-class>com.servlet.managroupServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ManagroupServlet</servlet-name>
+        <url-pattern>/group.do</url-pattern>
+        </servlet-mapping> 
+    
+     <servlet>
+        <servlet-name>userlistServlet</servlet-name>
+        <servlet-class>com.servlet.userList</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>userlistServlet</servlet-name>
+        <url-pattern>/userList</url-pattern>
+        </servlet-mapping>  
+        
+    <filter>
+        <filter-name>CharacterEncoding</filter-name>
+        <filter-class>com.filter.CharacterEncoding</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncoding</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

@@ -1,16 +1,17 @@
-<%@ page pageEncoding="utf-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
 <link href="css/iestyle.css" rel="stylesheet" type="text/css" />
 <link href="css/select.css" rel="stylesheet" type="text/css" />
 <!--scrollbar style-->
-<link href="css/perfect-scrollbar.css" rel="stylesheet" />
+<link href="css/perfect-scrollbar.css" rel="stylesheet">
 <!--/scrollbar style-->
 <!--menu style-->
-<link href="css/style-menu.css" rel="stylesheet" />
+<link href="css/style-menu.css" rel="stylesheet">
 <!--/menu style-->
 <!--分页插件style-->
 <link type="text/css" rel="stylesheet" href="css/simplePagination.css"/>
@@ -49,6 +50,30 @@ $(function(){
 	$("#end").text(t);
 })	
 </script>
+<script type="text/javascript">
+String.prototype.trim = function(){  
+    // 用正则表达式将前后空格  
+    // 用空字符串替代。  
+    return this.replace(/(^\s*)|(\s*$)/g, "");  
+}
+
+function Check()
+{
+	if (document.getElementById('name').value.trim() == '') {
+		alert('请输入姓名');
+		document.getElementById('name').focus();
+		return false;
+	}
+ 
+	if (document.getElementById("age").value.trim() == ''){
+		alert('请输入年龄');
+		document.getElementById("age").focus();
+		return false;
+	}
+
+	
+}
+</script>
 <!--/select options-->
 </head>
 <body>
@@ -67,18 +92,18 @@ $(function(){
     <div class="maincon">
         <!--列表信息-->
         <div class="ziliaobox">
+        <form action="zhengshuAdd" method="post" onsubmit="return Check();">
             <table width="100%"  class="zltab" border="0" cellspacing="0" cellpadding="0">
               <tr class="tr0">
                 <td colspan="4" class="tdc">添加资质证书信息</td>
-              </tr>
               <tr class="tr1">
                 <td width="10%" class="tdc2">姓名：</td>
                 <td width="40%">
-                    <input name="" type="text" class="dfinput" style=" width:85%;" />
+                    <input name="name" id="name" type="text" class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
                 <td width="10%" class="tdc2">性别：</td>
                 <td width="40%">
-                    <select class="select1"  style=" width:85%">
+                    <select  name="sex" class="select1"  style=" width:85%">
                         <option>男</option>
                         <option>女</option>
                     </select>
@@ -86,33 +111,35 @@ $(function(){
               </tr>
               <tr class="tr1">
                 <td width="10%" class="tdc2">年龄：</td>
-                <td width="40%"><input name="" type="text" class="dfinput" style=" width:85%;" />
+                <td width="40%"><input name="age" id="age" type="text" class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
              
                 <td width="10%" class="tdc2">出生日期：</td>
                 <td width="40%">
-                    <input class="inline laydate-icon" id="start" style=" width:80%" />
+                    <input class="inline laydate-icon" name="birthdate"  id="start" style=" width:80%">
                 </td>
               </tr>
               <tr class="tr1">
                 <td width="10%" class="tdc2">证书类型：</td>
                 <td width="40%">
-                    <select class="select1"   style=" width:85%">
+                    <select class="select1"  name="cer_type" style=" width:85%">
                         <option>请选择</option>
                     </select>
                 </td>
-                <td width="10%" class="tdc2">颁发日期：</td>
+                <td width="10%" class="tdc2">颁发机关：</td>
                 <td width="40%">
-                    <input class="inline laydate-icon" id="end" style=" width:80%"></input>
+                    <input type="text"  name="issue_office" class="dfinput" style=" width:82%;" placeholder="">
                 </td>
               </tr>
               <tr class="tr1">
+               <td width="10%" class="tdc2">颁发日期：</td>
+                <td width="40%">
+                    <input class="inline laydate-icon" name="issue_date" id="end" style=" width:80%">
+                </td>
                 <td width="10%" class="tdc2">有效期：</td>
                 <td width="40%">
-                    <input class="inline laydate-icon" id="start2" style=" width:80%"></input>
-                </td>
-             
-                <td colspan="2"></td>
+                    <input class="inline laydate-icon" name="validity" id="start2" style=" width:80%">
+                </td>                             
               </tr>
               <tr class="tr1">
                 <td width="10%" class="tdc2">附件上传：</td>
@@ -121,10 +148,11 @@ $(function(){
               <tr class="tr1">
                 <td width="10%"></td>
                 <td width="90%" colspan="3">
-                    <a href="Zhengshu_gl.jsp" class="longblue">保存</a> <a onclick="history.go(-1)" class="longgrey">取消</a>
+                    <input type="submit" value="保存" class="longgrey"> <a onclick="history.go(-1)" class="longgrey">取消</a>
                 </td>
               </tr>
             </table>
+            </form>
         </div>
           <!--/列表信息-->
     </div> 
@@ -170,7 +198,7 @@ var start = {
     istoday: false,
     choose: function(datas){
          end.min = datas; //开始日选好后，重置结束日的最小日期
-         end.start = datas; //将结束日的初始值设定为开始日
+         end.start = datas //将结束日的初始值设定为开始日
     }
 };
 
@@ -183,7 +211,7 @@ var start2 = {
     istoday: false,
     choose: function(datas){
          end.min = datas; //开始日选好后，重置结束日的最小日期
-         end.start = datas; //将结束日的初始值设定为开始日
+         end.start = datas //将结束日的初始值设定为开始日
     }
 };
 var end = {

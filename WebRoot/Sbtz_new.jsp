@@ -1,16 +1,16 @@
-<%@ page pageEncoding="utf-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
 <link href="css/iestyle.css" rel="stylesheet" type="text/css" />
 <link href="css/select.css" rel="stylesheet" type="text/css" />
 <!--scrollbar style-->
-<link href="css/perfect-scrollbar.css" rel="stylesheet"></link>
+<link href="css/perfect-scrollbar.css" rel="stylesheet">
 <!--/scrollbar style-->
 <!--menu style-->
-<link href="css/style-menu.css" rel="stylesheet"></link>
+<link href="css/style-menu.css" rel="stylesheet">
 <!--/menu style-->
 <!--分页插件style-->
 <link type="text/css" rel="stylesheet" href="css/simplePagination.css"/>
@@ -49,6 +49,30 @@ $(function(){
 	$("#end").text(t);
 })	
 </script>
+<script type="text/javascript">
+String.prototype.trim = function(){  
+    // 用正则表达式将前后空格  
+    // 用空字符串替代。  
+    return this.replace(/(^\s*)|(\s*$)/g, "");  
+}
+
+function Check()
+{
+	if (document.getElementById('equ_name').value.trim() == '') {
+		alert('请输入设备名称');
+		document.getElementById('equ_name').focus();
+		return false;
+	}
+ 
+	if (document.getElementById("equ_cord").value.trim() == ''){
+		alert('请输入设备编号');
+		document.getElementById("equ_cord").focus();
+		return false;
+	}
+
+	
+}
+</script>
 <!--/select options-->
 </head>
 <body>
@@ -67,45 +91,45 @@ $(function(){
     <div class="maincon">
         <!--列表信息-->
         <div class="ziliaobox">
+        <form action="standingAdd"  method="post" onsubmit="return Check();" >
             <table width="100%"  class="zltab" border="0" cellspacing="0" cellpadding="0">
               <tr class="tr0">
                 <td colspan="4" class="tdc">添加台账信息</td>
-              </tr>
               <tr class="tr1">
                 <td width="10%" class="tdc2">所属单位：</td>
                 <td width="40%">
-                    <select class="select1"  style=" width:85%">
+                    <select class="select1" nane="bel_unit" style=" width:85%">
                         <option>请选择所属单位</option>
                     </select>
                 </td>
                 <td width="10%" class="tdc2">ERP编码：</td>
                 <td width="40%">
-                    <input name="" type="text" class="dfinput" style=" width:85%;" />
+                    <input name="erp_cord" type="text" class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
               </tr>
               <tr class="tr1">
                 <td width="10%" class="tdc2">保管单位：</td>
                 <td width="40%">
-                    <select class="select1"   style=" width:85%">
+                    <select class="select1" name="sto_unit" style=" width:85%">
                         <option>请选择保管单位</option>
                     </select>
                 </td>
              
                 <td width="10%" class="tdc2">保管人：</td>
                 <td width="40%">
-                    <input name="" type="text" class="dfinput" style=" width:85%;"/>
+                    <input name="custodian" type="text" class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
               </tr>
               <tr class="tr1">
                 <td width="10%" class="tdc2">设备一级分类：</td>
                 <td width="40%">
-                    <select class="select1"   style=" width:85%">
+                    <select class="select1"  name="equ_sort1" style=" width:85%">
                         <option>全部</option>
                     </select>
                 </td>
                 <td width="10%" class="tdc2">设备二级分类：</td>
                 <td width="40%">
-                    <select class="select1"   style=" width:85%">
+                    <select class="select1" name="equ_sort2"  style=" width:85%">
                         <option>全部</option>
                     </select>
                 </td>
@@ -113,35 +137,35 @@ $(function(){
               <tr class="tr1">
                 <td width="10%" class="tdc2">设备名称：</td>
                 <td width="40%">
-                    <input name="" type="text" class="dfinput" style=" width:85%;" />
+                    <input name="equ_name" id="equ_name" type="text" class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
              
                 <td width="10%" class="tdc2">设备编号：</td>
                 <td width="40%">
-                    <input name="" type="text" class="dfinput" style=" width:85%;" />
+                    <input name="equ_cord" id="equ_cord" type="text" class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
               </tr>
               <tr class="tr1">
                 <td width="10%" class="tdc2">设备增加方式：</td>
                 <td width="40%">
-                    <select class="select1"   style=" width:85%">
+                    <select class="select1" name="equ_add" style=" width:85%">
                         <option>设备增加-零星购置</option>
                     </select>
                 </td>
              
                 <td width="10%" class="tdc2">下达计划项目号：</td>
                 <td width="40%">
-                    <input name="" type="text" class="dfinput" style=" width:85%;" />
+                    <input name="item_number" type="text" class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
               </tr>
               <tr class="tr1">
                 <td width="10%" class="tdc2">规格型号：</td>
                 <td width="40%">
-                    <input name="" type="text" class="dfinput" style=" width:85%;"  />
+                    <input name="standard" type="text" class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
                 <td width="10%" class="tdc2">设备状态：</td>
                 <td width="40%">
-                    <select class="select1"   style=" width:85%">
+                    <select class="select1" name="equ_condition"  style=" width:85%">
                         <option>正常</option>
                     </select>
                 </td>
@@ -149,11 +173,11 @@ $(function(){
               <tr class="tr1">
                 <td width="10%" class="tdc2">设备数量：</td>
                 <td width="40%">
-                    <input name="" type="text" class="dfinput" style=" width:85%;" />
+                    <input name="equ_number" type="text" class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
                 <td width="10%" class="tdc2">计量单位：</td>
                 <td width="40%">
-                    <select class="select1"   style=" width:85%">
+                    <select class="select1" name="measurement"  style=" width:85%">
                         <option>台</option>
                     </select>
                 </td>
@@ -161,44 +185,45 @@ $(function(){
               <tr class="tr1">
                 <td width="10%" class="tdc2">生产厂家：</td>
                 <td width="40%">
-                    <input name="" type="text" class="dfinput" style=" width:85%;" />
+                    <input name="manufacturer" type="text" class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
              
                 <td width="10%" class="tdc2">生产日期：</td>
                 <td width="40%">
-                    <input class="inline laydate-icon" id="end" style=" width:80%" />
+                    <input class="inline laydate-icon" name="m_date" id="end" style=" width:80%">
                 </td>
               </tr>
               <tr class="tr1">
                 <td width="10%" class="tdc2">上次检验日期：</td>
                 <td width="40%">
-                    <input name="" type="text" class="dfinput" style=" width:85%;" />
+                    <input name="examine_date" type="text" class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
              
                 <td width="10%" class="tdc2">到期日期：</td>
                 <td width="40%">
-                    <input name="" type="text" class="dfinput" style=" width:85%;" />
+                    <input name="maturity" type="text" class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
               </tr>
               <tr class="tr1">
                 <td width="10%" class="tdc2">是否到期：</td>
                 <td width="40%">
-                    <select class="select1"   style=" width:85%">
+                    <select class="select1" name="is_mature"  style=" width:85%">
                         <option>否</option>
                     </select>
                 </td>
                 <td width="10%" class="tdc2">备注：</td>
                 <td width="40%">
-                    <input name="" type="text" class="dfinput" style=" width:85%;" />
+                    <input name="remark" type="text" class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
               </tr>
               <tr class="tr1">
                 <td width="10%"></td>
                 <td width="90%" colspan="3">
-                    <a href="Sbtz_gl.jsp" class="longblue">保存</a> <a onclick="history.go(-1)" class="longgrey">取消</a>
+                    <input type="submit" value="保存" class="longblue"> <a onclick="history.go(-1)" class="longgrey">取消</a>
                 </td>
               </tr>
             </table>
+            </form>
         </div>
           <!--/列表信息-->
     </div> 
@@ -244,7 +269,7 @@ var start = {
     istoday: false,
     choose: function(datas){
          end.min = datas; //开始日选好后，重置结束日的最小日期
-         end.start = datas; //将结束日的初始值设定为开始日
+         end.start = datas //将结束日的初始值设定为开始日
     }
 };
 

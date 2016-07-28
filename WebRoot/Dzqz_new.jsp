@@ -1,16 +1,17 @@
-<%@ page pageEncoding="utf-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
 <link href="css/iestyle.css" rel="stylesheet" type="text/css" />
 <link href="css/select.css" rel="stylesheet" type="text/css" />
 <!--scrollbar style-->
-<link href="css/perfect-scrollbar.css" rel="stylesheet"></link>
+<link href="css/perfect-scrollbar.css" rel="stylesheet">
 <!--/scrollbar style-->
 <!--menu style-->
-<link href="css/style-menu.css" rel="stylesheet"></link>
+<link href="css/style-menu.css" rel="stylesheet">
 <!--/menu style-->
 <!--分页插件style-->
 <link type="text/css" rel="stylesheet" href="css/simplePagination.css"/>
@@ -49,6 +50,41 @@ $(function(){
 	$("#end").text(t);
 })	
 </script>
+<script type="text/javascript">
+String.prototype.trim = function(){  
+    // 用正则表达式将前后空格  
+    // 用空字符串替代。  
+    return this.replace(/(^\s*)|(\s*$)/g, "");  
+}
+
+function Check()
+{
+	if (document.getElementById('sig_name').value.trim() == '') {
+		alert('请输入签章名称');
+		document.getElementById('sig_name').focus();
+		return false;
+	}
+ 
+	if (document.getElementById("sig_content").value.trim() == ''){
+		alert('请输入签章内容');
+		document.getElementById("sig_content").focus();
+		return false;
+	}
+	if (document.getElementById("start").value.trim() == ''){
+		alert('请选择创建时间');
+		document.getElementById("start").focus();
+		return false;
+	}
+	
+	if (document.getElementById("creator").value.trim() == ''){
+		alert('请输入创建人');
+		document.getElementById("creator").focus();
+		return false;
+	}
+
+	
+}
+</script>
 <!--/select options-->
 </head>
 <body>
@@ -67,29 +103,29 @@ $(function(){
     <div class="maincon">
         <!--列表信息-->
         <div class="ziliaobox">
+        <form action="signatureAdd" method="post" onsubmit="return Check();">
             <table width="100%"  class="zltab" border="0" cellspacing="0" cellpadding="0">
               <tr class="tr0">
                 <td colspan="2" class="tdc">添加电子签章信息</td>
-              </tr>
               <tr class="tr1">
                 <td width="20%" class="tdc2">签章名称：</td>
                 <td width="80%">
-                    <input name="" type="text" class="dfinput" style=" width:85%;" />
+                    <input name="sig_name"  id="sig_name" type="text" class="dfinput" style=" width:85%;" placeholder="" />
                 </td>
               </tr>
               <tr class="tr1">
                 <td width="20%" class="tdc2">签章内容：</td>
-                <td width="80%"><input name="" type="text" class="dfinput" style=" width:85%;"/></td>
+                <td width="80%"><input name="sig_content" id="sig_content" type="text" class="dfinput" style=" width:85%;" placeholder="" /></td>
               </tr>
               <tr class="tr1">
                 <td width="20%" class="tdc2">创建时间：</td>
                 <td width="80%">
-                    <input class="inline laydate-icon" id="start" style=" width:80%"></input>
+                    <input  name="creation_date"  class="inline laydate-icon" id="start" style=" width:80%">
                 </td>
               </tr>
               <tr class="tr1">
                 <td width="20%" class="tdc2">创建人：</td>
-                <td width="80%"><input name="" type="text" class="dfinput" style=" width:85%;"/></td>
+                <td width="80%"><input name="creator" id="creator" type="text" class="dfinput" style=" width:85%;" placeholder="" /></td>
               </tr>
               <tr class="tr1">
                 <td width="20%" class="tdc2">附件上传：</td>
@@ -98,10 +134,11 @@ $(function(){
               <tr class="tr1">
                 <td width="20%"></td>
                 <td width="80%" colspan="3">
-                    <a href="Zhengshu_gl.jsp" class="longblue">保存</a> <a onclick="history.go(-1)" class="longgrey">取消</a>
+                    <input type="submit" class="longblue" value="保存"> 
                 </td>
               </tr>
             </table>
+            </form>
         </div>
           <!--/列表信息-->
     </div> 
@@ -147,7 +184,7 @@ var start = {
     istoday: false,
     choose: function(datas){
          end.min = datas; //开始日选好后，重置结束日的最小日期
-         end.start = datas; //将结束日的初始值设定为开始日
+         end.start = datas //将结束日的初始值设定为开始日
     }
 };
 
@@ -160,7 +197,7 @@ var start2 = {
     istoday: false,
     choose: function(datas){
          end.min = datas; //开始日选好后，重置结束日的最小日期
-         end.start = datas; //将结束日的初始值设定为开始日
+         end.start = datas //将结束日的初始值设定为开始日
     }
 };
 var end = {
@@ -179,4 +216,5 @@ laydate(start2);
 laydate(end);
 </script>
 </body>
+
 </html>

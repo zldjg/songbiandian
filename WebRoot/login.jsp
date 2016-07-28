@@ -1,28 +1,51 @@
-<%@ page pageEncoding="utf-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0051)http://localhost:8088/TransformerInfo/jsp/login.jsp -->
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<title>ç³»ç»Ÿç™»å½•</title>
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=gb2312"
+    pageEncoding="gb2312"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>ÏµÍ³µÇÂ¼</title>
 <link  href="css/style_login.css"  rel="stylesheet"  type="text/css">
+<script type="text/javascript">
+String.prototype.trim = function(){  
+    // ÓÃÕıÔò±í´ïÊ½½«Ç°ºó¿Õ¸ñ  
+    // ÓÃ¿Õ×Ö·û´®Ìæ´ú¡£  
+    return this.replace(/(^\s*)|(\s*$)/g, "");  
+}
+
+function Check()
+{
+	if (document.getElementById("username").value.trim() == '') {
+		alert('ÇëÊäÈëÓÃ»§Ãû');
+		document.getElementById("username").focus();
+		return false;
+	}
+	
+	if (document.getElementById("password").value.trim() == ''){
+		alert('ÇëÊäÈëÃÜÂë');
+		document.getElementById("password").focus();
+		return false;
+	}
+}
+</script>
 </head>
 <body>
 <div class="wrap">
     <div class="box_login">
-    <form method="post" action="http://localhost:8088/TransformerInfo/UserLoginServlet">
+    <form method="post" action="UserLogin" onsubmit="return Check();">
         <ul class="logins">
             <li>
                 <div class="pic"><img src="images/userbg-login.png" width="41" height="41" /></div>
-                <div class="inputbox"><input  type="text" name="name" id="username" placeholder="è¯·è¾“å…¥ç”¨æˆ·å" /></div>
+                <div class="inputbox"><input  type="text" name="username" id="username" placeholder="ÇëÊäÈëÓÃ»§Ãû"/></div>
             </li>
             <li>
                 <div class="pic"><img src="images/passbg.png" width="41" height="41" /></div>
-                <div class="inputbox"><input  type="password" name="password" id="password"  placeholder="è¯·è¾“å…¥å¯†ç "/></div>
+                <div class="inputbox"><input  type="password" name="password"  id = "password" placeholder="ÇëÊäÈëÃÜÂë"/></div>
             </li>
             <li class="okbut">
-                <input name="" type="button" value="ç™»å½•" onclick="javascript:window.location.href='main.jsp'" />
+                <input name="" type="submit" value="µÇÂ¼"  />
             </li>
         </ul>
+        
     </form>
     </div>
 </div>

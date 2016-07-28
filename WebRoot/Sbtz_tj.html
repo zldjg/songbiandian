@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
@@ -35,10 +34,10 @@
 <script type="text/javascript">
 $(document).ready(function(e) {
     $(".select1").uedSelect({
-		width : 200			  
+		width : 300			  
 	});
 	$(".select2").uedSelect({
-		width : 500  
+		width : 150  
 	});
 });
 </script>
@@ -57,94 +56,117 @@ $(function(){
     <span>位置：</span>
     <ul class="placeul">
         <li>首页</li>
-        <li>特调试验管理</li>
-        <li>方案模板</li>
-        <li>模板添加</li>
+        <li>计量试验设备管理</li>
+        <li>设备台账统计</li>
     </ul>
 </div>
 <!--/当前位置-->
+
 <div class="mainindex" id="mainindex">
     <div class="maincon">
         <!--列表信息-->
         <div class="ziliaobox">
-            <table width="100%"  class="zltab" border="0" cellspacing="0" cellpadding="0">
+        	<table width="100%"  class="zltab" border="0" cellspacing="0" cellpadding="0" >
               <tr class="tr0">
-                <td colspan="6" class="tdc">模板添加</td>
-                </tr>
+                <td colspan="6" class="tdc">查询条件</td>
               <tr class="tr1">
-                <td width="10%" class="tdc2">模板名称：</td>
-                <td width="50%" colspan="3" >
-                    <input name="" type="text" class="dfinput" style=" width:74%;" placeholder="请输入模板名称" />
-                </td>
-                <td width="10%" class="tdc2">变电站：</td>
-                <td width="30%" >
-                    <select class="select1"   style=" width:75%">
-                        <option>请选择变电站</option>
-                        <option>利民道</option>
-                        <option selected="selected">新华路</option>
-                        <option>白庙</option>
+                <td width="10%" class="tdc2">所属单位：</td>
+                <td width="20%">
+                    <select class="select2" >
+                        <option>请选择变单位名称</option>
                     </select>
-                </td>               
+                </td>
+                <td width="10%" class="tdc2">保管单位：</td>
+                <td width="20%">
+                    <select class="select2">
+                        <option>请选择保管单位</option>
+                    </select>
+                </td>
+                <td width="10%" class="tdc2">设备状态：</td>
+                <td width="30%">
+                    <select class="select2" >
+                        <option>全部</option>
+                    </select>
+                </td>
               </tr>
               <tr class="tr1">
-               <td width="10%" class="tdc2">电压等级：</td>
-                <td width="25%">
-                    <select class="select1"  style=" width:75%">
-                        <option>请选择电压等级</option>
-                        <option>35kV</option>
-                        <option>110kV</option>
-                        <option>220kV</option>
-                        <option>500kV</option>
+                <td width="10%" class="tdc2">设备一级分类：</td>
+                <td width="20%">
+                    <select class="select2" >
+                        <option>全部</option>
                     </select>
                 </td>
-              
-                <td width="10%" class="tdc2">设备类型：</td>
-                <td width="25%">
-                    <select class="select1"   style=" width:75%">
-                        <option>请选择设备类型</option>
-                        <option>电力变压器及电抗器</option>
-                        <option>互感器</option>
-                        <option>开关设备</option>
-                        <option>电容器</option>
+                <td width="10%" class="tdc2">设备二级分类：</td>
+                <td width="20%">
+                    <select class="select2">
+                        <option>全部</option>
                     </select>
                 </td>
-                <td width="10%" class="tdc2">试验项目：</td>
-                <td width="20%" >
-                    <select class="select1"  style=" width:75%">
-                        <option>请选择试验项目</option>
-                        <option>交流耐压</option>
-                        <option>绝缘电阻</option>
-                        <option>GIS局部放电测量</option>
-                        <option>断路器的机械特性试验</option>
-                        <option>导电回路电阻</option>
-                    </select>
+                <td width="10%" class="tdc2">到期日期：</td>
+                <td width="30%">
+                    <input class="inline laydate-icon" id="start" style=" width:150px"> 
                 </td>
-                </tr>
-              
-              <tr class="tr1">
-                <td width="10%" class="tdc2">试验分工：</td>
-                <td width="90%" colspan="5"><textarea name="" cols="" rows="" class="dfinput-area" style=" width:95%"></textarea></td>
-              </tr>
-              <tr class="tr1">
-                <td width="10%" class="tdc2">试验步骤：</td>
-                <td width="90%" colspan="5"><textarea name="" cols="" rows="" class="dfinput-area" style=" width:95%"></textarea></td>
-              </tr>
-              <tr class="tr1">
-                <td width="10%" class="tdc2">组合电器操作及试验详细步骤：</td>
-                <td width="90%" colspan="5"><textarea name="" cols="" rows="" class="dfinput-area" style=" width:95%"></textarea></td>
               </tr>
               <tr class="tr1">
                 <td width="10%"></td>
-                <td width="90%" colspan="3">
-                    <a href="Fangan_mbdetails.html" class="longblue">生成模板</a> <a href="#" class="longgrey">取消</a>
+                <td width="90%" colspan="5">
+                    <a href="#" target="_blank" class="longred">查询</a>
+                </td>
+              </tr>
+            </table>   
+          <table width="100%" class="zltab" border="0" cellspacing="0" cellpadding="0">
+              <tr class="tr0">
+                <td width="4%" class="tdc">序号</td>
+                <td width="9%">所属单位</td>
+                <td width="9%">保管单位</td>
+                <td width="9%">设备一级分类</td>
+                <td width="9%">设备二级分类</td>
+                <td width="9%">设备名称</td>
+                <td width="9%">设备状态</td>
+                <td width="9%">生产厂家</td>
+                <td width="9%">生产日期</td>
+                <td width="8%">是否到期</td>
+                <td width="8%">台账状态</td>
+                <td width="8%">操作</td>
+              </tr>
+              <tr class="tr1">
+                <td class="tdc">1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="Sbtz_new.html">详细</a></td>
+              </tr> 
+              <tr class="tr1">
+                <td class="tdc">2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="Sbtz_new.html">详细</a></td>
+              </tr>                                   
+              <tr class="tr2">
+                <td colspan="12">
+                	<div id="paging1" class="page" style="float:right"></div>
                 </td>
               </tr>
             </table>
-        </div>
+          </div>
           <!--/列表信息-->
     </div> 
 </div>
-
 
 <!--height Resize js-->
 <script type="text/javascript">
